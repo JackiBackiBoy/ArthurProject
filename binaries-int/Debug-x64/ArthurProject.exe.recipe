@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ProjectOutputs>C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe</ProjectOutputs>
-  <ContentFiles></ContentFiles>
-  <SatelliteDlls></SatelliteDlls>
-  <NonRecipeFileRefs></NonRecipeFileRefs>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\GameDevelopment\ArthurProject\binaries\Debug-x64\ArthurProject.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
 </Project>

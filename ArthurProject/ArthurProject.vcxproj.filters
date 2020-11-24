@@ -18,9 +18,6 @@
     <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Classy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

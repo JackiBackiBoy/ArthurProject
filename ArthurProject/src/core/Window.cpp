@@ -1,23 +1,38 @@
 #include "Window.h"
-#include "SFML/Graphics.hpp"
 
 void Window::Run()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	myRawWindow = new sf::RenderWindow(sf::VideoMode(myWidth, myHeight), myTitle);
+
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
 
-	while (window.isOpen())
+	while (myRawWindow->isOpen())
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (myRawWindow->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				window.close();
+				myRawWindow->close();
 		}
 
-		window.clear();
-		window.draw(shape);
-		window.display();
+		myRawWindow->clear();
+		myRawWindow->draw(shape);
+		myRawWindow->display();
 	}
+}
+
+void Window::OnStart()
+{
+
+}
+
+void Window::OnUpdate()
+{
+
+}
+
+void Window::OnRender()
+{
+
 }

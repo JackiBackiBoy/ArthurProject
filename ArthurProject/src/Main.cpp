@@ -1,12 +1,13 @@
 #include <iostream>
 #include "core/Window.h"
 
+extern Window* BuildWindow();
+
 int main()
 {
-	Window* tempWindow = new Window("Arthur Project", 1280, 720);
+	Window* tempWindow = BuildWindow();
 	tempWindow->Run();
 	delete tempWindow;
-	std::cout << "yes";
 
 	return 0;
 }

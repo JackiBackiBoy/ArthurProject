@@ -1,8 +1,14 @@
 #include "Window.h"
 
+Window::~Window()
+{
+	delete myRawWindow;
+	myRawWindow = nullptr;
+}
+
 void Window::Run()
 {
-	myRawWindow = new sf::RenderWindow(sf::VideoMode(myWidth, myHeight), myTitle);
+	myRawWindow = new sf::RenderWindow(sf::VideoMode(myWidth, myHeight), sf::String(myTitle));
 
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);

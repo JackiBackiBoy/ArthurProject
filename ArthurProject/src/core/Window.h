@@ -8,6 +8,7 @@ class Window
 {
 public:
 	Window(const std::string& aTitle, const int& aWidth, const int& aHeight) : myTitle(aTitle), myWidth(aWidth), myHeight(aHeight), myRawWindow(nullptr) {};
+	~Window();
 
 	void Run();
 

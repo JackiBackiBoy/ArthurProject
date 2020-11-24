@@ -1,32 +1,12 @@
 #include <iostream>
+#include "core/Window.h"
 
 int main()
 {
-	std::cout << "Arthur" << std::endl;
-	std::cout << "Narthur" << std::endl;
-	std::cout << "Harthur" << std::endl;
-	std::cout << "Karthur" << std::endl;
-	std::cout << "Farthur" << std::endl;
-	std::cout << "Tarthur" << std::endl;
-	std::cout << "Barthur" << std::endl;
+	Window* tempWindow = new Window("Arthur Project", 1280, 720);
+	tempWindow->Run();
 
+	delete tempWindow;
 
-
-	std::cout << "Narthur" << std::endl;
-
-
-
-
-
-	std::cout << "Karthur" << std::endl;
-	std::cout << "Farthur" << std::endl;
-	std::cout << "Tarthur" << std::endl;
-	std::cout << "Barthur" << std::endl;
-	std::cout << "Narthur" << std::endl;
-	std::cout << "Harthur" << std::endl;
-	std::cout << "Karthur" << std::endl;
-	std::cout << "Farthur" << std::endl;
-	std::cout << "Tarthur" << std::endl;
-	std::cout << "Barthur" << std::endl;
-
+	return 0;
 }

@@ -24,7 +24,6 @@ int main()
 	std::cout << "Farthur" << std::endl;
 	std::cout << "Tarthur" << std::endl;
 	std::cout << "Barthur" << std::endl;
-	std::cout << "Barthur" << std::endl;
 	std::cout << "Narthur" << std::endl;
 	std::cout << "Harthur" << std::endl;
 	std::cout << "Karthur" << std::endl;

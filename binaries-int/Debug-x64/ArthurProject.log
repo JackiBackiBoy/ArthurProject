@@ -1,1 +1,20 @@
-﻿  ArthurProject.vcxproj -> F:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe
+﻿  Sandbox.cpp
+C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(39,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(39,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+  ArthurProject.vcxproj -> C:\GameDevelopment\ArthurProject\binaries\Debug-x64\ArthurProject.exe

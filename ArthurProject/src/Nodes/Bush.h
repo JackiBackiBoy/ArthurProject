@@ -8,5 +8,6 @@ public:
 	Bush(const sf::Vector2f& aPosition, Node* aParent);
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow);
+	void SetPosition(const sf::Vector2f& aPosition) override;
 };
 

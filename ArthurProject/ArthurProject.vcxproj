@@ -97,6 +97,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,6 +115,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,7 +132,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,7 +150,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,49 +163,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Node.cpp" />
-    <ClCompile Include="SpriteRenderer.cpp" />
+    <ClCompile Include="src\Node.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Sandbox.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\ui\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Node.h" />
-    <ClInclude Include="SpriteRenderer.h" />
+    <ClInclude Include="src\Node.h" />
     <ClInclude Include="src\AssetManager.h" />
     <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\ui\UIElement.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Hurt.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Idle.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Walk.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Death.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Hurt.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Idle.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Walk.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Death.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Death D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png" />
+    <ClInclude Include="src\ui\UIText.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

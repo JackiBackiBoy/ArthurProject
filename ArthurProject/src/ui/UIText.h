@@ -6,9 +6,11 @@
 class UIText : public UIElement
 {
 public:
+	UIText() : UIElement() {};
 	UIText(const std::string& aText, const sf::Vector2f& aPosition, const std::string& aFontName, const int& aFontSize);
-
 	inline sf::Text* GetRawText() { return myRawText; }
+	inline void OnUpdate() override { Node::OnUpdate(); };
+	inline void OnRender(sf::RenderWindow* aWindow) override { Node::OnRender(aWindow); };
 
 private:
 	std::string myText;

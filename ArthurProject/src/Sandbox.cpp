@@ -23,7 +23,7 @@ public:
 	{
 		myScene = new Scene();
 		AssetManager::Init();
-		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), "Fonts/ArialCE", 60);
+		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), sf::Color::Cyan,"Fonts/ArialCE", 60);
 
 		myAudioSource = AudioSource();
 	}
@@ -43,7 +43,7 @@ public:
 			myTimer += TimeTracker::GetDeltaTime();
 
 		}
-	}
+	
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !isPressed)
 		{
 			anItem = new Bush(sf::Vector2f(0, 0), nullptr);

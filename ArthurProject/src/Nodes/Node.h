@@ -6,13 +6,13 @@
 class Node
 {
 public:
-	Node() : myParent(nullptr), myPosition({ 0, 0 }) {};
+	Node() {};
 	Node(const sf::Vector2f& aPosition, Node *aParent);
 	~Node();
 	virtual void OnUpdate() = 0;
 	virtual void OnRender(sf::RenderWindow *aWindow) = 0;
 	virtual void SetPosition(const sf::Vector2f& aPosition);
-	sf::Vector2f GetPosition() const;
+	sf::Vector2f GetPosition();
 	void SetActive(const bool& aState);
 	bool GetActive();
 protected:

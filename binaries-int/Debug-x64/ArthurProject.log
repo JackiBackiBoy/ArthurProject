@@ -1,2 +1,30 @@
 ﻿  Sandbox.cpp
+F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,80): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(62,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+F:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(62,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
   ArthurProject.vcxproj -> F:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe

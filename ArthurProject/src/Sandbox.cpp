@@ -23,7 +23,7 @@ public:
 	{
 		myScene = new Scene();
 		AssetManager::Init();
-		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), "Fonts/ArialCE", 60);
+		//tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), "Fonts/ArialCE", 60);
 
 		myAudioSource = AudioSource();
 	}
@@ -33,30 +33,30 @@ public:
 		TimeTracker::Update();
 
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::G) && myTimer > 1000)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::G) && myTimer > 1)
 		{
 			myAudioSource.Play("TempAssets/Arrow Flying Past 1");
 			myTimer = 0;
 		}
-		else if (myTimer < 1000)
+		else if (myTimer < 1)
 		{
 			myTimer += TimeTracker::GetDeltaTime();
 
 		}
-	}
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !isPressed)
 		{
 			anItem = new Bush(sf::Vector2f(0, 0), nullptr);
-			anItem->AddChild(new UIButton());
+			//anItem->AddChild(new UIButton());
 			isPressed = true;
 		}
-		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && isPressed) 
+		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && isPressed)
 		{
 			isPressed = false;
 			myScene->AddChild(anItem);
 			anItem = nullptr;
 		}
-		if (anItem != nullptr) 
+		if (anItem != nullptr)
 		{
 			sf::Vector2i tempVector = sf::Mouse::getPosition(*myRawWindow);
 			anItem->SetPosition(sf::Vector2f(tempVector.x, tempVector.y));
@@ -67,7 +67,7 @@ public:
 
 	void OnRender() override
 	{
-		myRawWindow->draw(*tempText->GetRawText());
+		//myRawWindow->draw(*tempText->GetRawText());
 		if (anItem != nullptr)
 		{
 			anItem->OnRender(myRawWindow);

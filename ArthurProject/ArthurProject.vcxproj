@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bush.cpp" />
     <ClCompile Include="src\Managers\AssetManager.cpp" />
     <ClCompile Include="src\Managers\MusicManager.cpp" />
     <ClCompile Include="src\Nodes\Animator.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="src\ui\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bush.h" />
     <ClInclude Include="src\Managers\AssetManager.h" />
     <ClInclude Include="src\Managers\MusicManager.h" />
     <ClInclude Include="src\Nodes\Animator.h" />

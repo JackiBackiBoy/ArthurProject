@@ -15,6 +15,7 @@ public:
 	sf::Vector2f GetPosition() const;
 	void SetActive(const bool& aState);
 	bool GetActive();
+	void AddChild(Node* aChild);
 protected:
 	bool myActive = true;
 	Node* myParent;

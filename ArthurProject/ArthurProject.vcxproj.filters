@@ -30,6 +30,9 @@
     <ClCompile Include="Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Window.h">
@@ -44,5 +47,94 @@
     <ClInclude Include="Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Hurt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Idle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Walk.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Death.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Hurt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Idle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Walk.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Death.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle D.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle R.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle U.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk D.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk R.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk U.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack D.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack R.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack U.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Death D.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt D.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt R.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt U.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle D.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle R.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle U.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk D.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk R.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

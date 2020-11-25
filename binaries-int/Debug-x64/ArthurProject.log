@@ -1,7 +1,6 @@
 ﻿  Node.cpp
   AssetManager.cpp
-  Sandbox.cpp
-  Window.cpp
-  Main.cpp
   Generating Code...
+  LINK : C:\GameDevelopment\ArthurProject\binaries\Debug-x64\ArthurProject.exe not found or not built by the last incremental link; performing full link
+Sandbox.obj : warning LNK4099: PDB '' was not found with 'Sandbox.obj' or at ''; linking object as if no debug info
   ArthurProject.vcxproj -> C:\GameDevelopment\ArthurProject\binaries\Debug-x64\ArthurProject.exe

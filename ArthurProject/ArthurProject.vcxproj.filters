@@ -24,6 +24,7 @@
     <ClCompile Include="src\Sandbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Node.cpp">
     <ClCompile Include="src\AssetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,6 +34,16 @@
     <ClCompile Include="src\Nodes\Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Managers\AssetManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Managers\MusicManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TimeTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
     <ClCompile Include="src\Nodes\SpriteRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -59,12 +70,19 @@
     <ClInclude Include="src\ui\UIElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\AssetManager.h">
+    <ClInclude Include="src\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ui\UIText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Managers\AssetManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Managers\MusicManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TimeTracker.h">
     <ClInclude Include="src\Nodes\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -105,6 +123,9 @@
     <Font Include="Assets\Fonts\ArialCE.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -189,5 +210,22 @@
     <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\TempAssets\Arrow Flying Past 1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\DPL Music\New Hope.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\..\Assets\Ultimate Sound FX Bundle\OST Pro\Full Soundtracks\OST Pro - See The Light.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\DPL Music\See The Light.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Fonts\ArialCE.ttf" />
   </ItemGroup>
 </Project>

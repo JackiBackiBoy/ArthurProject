@@ -1,5 +1,5 @@
 #include "UIText.h"
-#include "AssetManager.h"
+#include "Managers/AssetManager.h"
 
 UIText::UIText(const std::string& aText, const sf::Vector2f& aPosition, const std::string& aFontName, const int& aFontSize) : UIElement(aPosition)
 {

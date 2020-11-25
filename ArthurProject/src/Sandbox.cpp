@@ -1,7 +1,7 @@
 #include "core/Window.h"
 #include "SFML/Graphics.hpp"
 #include "ui/UIText.h"
-#include "AssetManager.h"
+#include "Managers/AssetManager.h"
 
 class Sandbox : public Window
 {

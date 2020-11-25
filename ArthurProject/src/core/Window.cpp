@@ -1,17 +1,19 @@
 #include "Window.h"
-
+#include "Managers/MusicManager.h"
 Window::~Window()
 {
 	delete myRawWindow;
 	myRawWindow = nullptr;
 }
-
+bool tempFlag = false;
 void Window::Run()
 {
 	myRawWindow = new sf::RenderWindow(sf::VideoMode(myWidth, myHeight), sf::String(myTitle));
 
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
+
+	MusicManager::TransitionTo("New Hope");
 
 	// Call OnStart once
 	OnStart();
@@ -23,6 +25,11 @@ void Window::Run()
 		{
 			if (event.type == sf::Event::Closed)
 				myRawWindow->close();
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::G) && !tempFlag)
+		{
+			tempFlag = true;
+			MusicManager::TransitionTo("See The Light");
 		}
 
 		myRawWindow->clear();

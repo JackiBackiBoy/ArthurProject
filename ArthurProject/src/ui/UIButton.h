@@ -8,6 +8,6 @@ class UIButton : public UIElement
 public:
 	UIButton() : UIElement({ 0, 0 }) {};
 	//UIButton(const std::string& aText, const sf::Vector2f& aPosition, )
-	UIButton(const UIText& aText, ) : UIElement(aText.{}
+	UIButton(const UIText& aText);
 };
 #endif

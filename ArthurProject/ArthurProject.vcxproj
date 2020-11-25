@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Nodes\Animator.cpp" />
     <ClCompile Include="src\Nodes\SpriteRenderer.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="src\ui\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Nodes\Animator.h" />
     <ClInclude Include="src\Nodes\SpriteRenderer.h" />
     <ClInclude Include="src\Nodes\Node.h" />
     <ClInclude Include="src\AssetManager.h" />

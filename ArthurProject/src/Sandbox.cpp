@@ -9,14 +9,14 @@ class Sandbox : public Window
 {
 public:
 	Sandbox(const std::string& aTitle, const int& aWidth, const int& aHeight) : Window(aTitle, aWidth, aHeight) {};
-	Scene* myScene;
-	Node* anItem;
+	Scene* myScene = nullptr;
+	Node* anItem = nullptr;
 	bool isPressed = false;
 	void OnStart() override
 	{
 		myScene = new Scene();
 		AssetManager::Init();
-		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), "Fonts/ArialCE", 60);
+		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), sf::Color::Cyan,"Fonts/ArialCE", 60);
 	}
 
 	void OnUpdate() override
@@ -24,7 +24,6 @@ public:
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !isPressed)
 		{
 			anItem = new Bush(sf::Vector2f(0, 0), nullptr);
-			anItem->AddChild(new UIButton());
 			isPressed = true;
 		}
 		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && isPressed) 

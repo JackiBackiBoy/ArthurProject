@@ -1,5 +1,15 @@
 ﻿  Sandbox.cpp
-C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(39,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIText.h(17,80): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(38,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=int
@@ -8,7 +18,7 @@ C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(39,61): warning C
           [
               T=float
           ]
-C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(39,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(38,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=int
@@ -17,4 +27,19 @@ C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(39,47): warning C
           [
               T=float
           ]
+  Window.cpp
+  Main.cpp
+  UIButton.cpp
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIText.h(17,80): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIButton.cpp(17,39): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+  Generating Code...
   ArthurProject.vcxproj -> C:\GameDevelopment\ArthurProject\binaries\Debug-x64\ArthurProject.exe

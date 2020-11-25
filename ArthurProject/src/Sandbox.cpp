@@ -2,6 +2,8 @@
 #include "SFML/Graphics.hpp"
 #include "ui/UIText.h"
 #include "Managers/AssetManager.h"
+#include "Nodes/AudioSource.h"
+#include "TimeTracker.h"
 #include "Nodes\Scene.h"
 #include "Nodes\Bush.h"
 
@@ -9,21 +11,43 @@ class Sandbox : public Window
 {
 public:
 	Sandbox(const std::string& aTitle, const int& aWidth, const int& aHeight) : Window(aTitle, aWidth, aHeight) {};
-	Scene* myScene = nullptr;
-	Node* anItem = nullptr;
+
+
+	AudioSource myAudioSource;
+	float myTimer = 0;
+
+	Scene* myScene;
+	Node* anItem;
 	bool isPressed = false;
 	void OnStart() override
 	{
 		myScene = new Scene();
 		AssetManager::Init();
-		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), sf::Color::Cyan,"Fonts/ArialCE", 60);
+		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), "Fonts/ArialCE", 60);
+
+		myAudioSource = AudioSource();
 	}
 
 	void OnUpdate() override
 	{
+		TimeTracker::Update();
+
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::G) && myTimer > 1000)
+		{
+			myAudioSource.Play("TempAssets/Arrow Flying Past 1");
+			myTimer = 0;
+		}
+		else if (myTimer < 1000)
+		{
+			myTimer += TimeTracker::GetDeltaTime();
+
+		}
+	}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !isPressed)
 		{
 			anItem = new Bush(sf::Vector2f(0, 0), nullptr);
+			anItem->AddChild(new UIButton());
 			isPressed = true;
 		}
 		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && isPressed) 

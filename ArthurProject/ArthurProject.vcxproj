@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Nodes\AudioSource.cpp" />
     <ClCompile Include="src\Nodes\Bush.cpp" />
     <ClCompile Include="src\Nodes\Scene.cpp" />
     <ClCompile Include="src\Managers\AssetManager.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="src\ui\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Nodes\AudioSource.h" />
     <ClInclude Include="src\Nodes\Bush.h" />
     <ClInclude Include="src\Nodes\Scene.h" />
     <ClInclude Include="src\Managers\AssetManager.h" />

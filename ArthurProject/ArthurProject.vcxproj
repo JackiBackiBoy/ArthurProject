@@ -199,6 +199,7 @@
     <Font Include="Assets\Fonts\ArialCE.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\Bush.png" />
     <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png" />
     <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Hurt.png" />
     <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Idle.png" />

@@ -1,2 +1,7 @@
-﻿  Window.cpp
-  ArthurProject.vcxproj -> C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe
+﻿  Node.cpp
+  AssetManager.cpp
+  Sandbox.cpp
+  Window.cpp
+  Main.cpp
+  Generating Code...
+  ArthurProject.vcxproj -> C:\GameDevelopment\ArthurProject\binaries\Debug-x64\ArthurProject.exe

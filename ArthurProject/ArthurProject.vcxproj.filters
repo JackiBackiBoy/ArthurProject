@@ -60,6 +60,7 @@
     <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk D.png" />
     <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk R.png" />
     <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png" />
+    <Image Include="Assets\Bush.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Fonts\ArialCE.ttf" />

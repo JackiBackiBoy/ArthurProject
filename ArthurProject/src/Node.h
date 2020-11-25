@@ -14,7 +14,8 @@ public:
 	bool GetActive();
 	void SetPosition(const sf::Vector2f& aPosition);
 	sf::Vector2f GetPosition();
-private:
+
+protected:
 	bool myActive = true;
 	Node* myParent;
 	std::vector<Node*> myChildren;

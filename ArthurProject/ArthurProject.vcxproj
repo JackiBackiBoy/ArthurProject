@@ -163,6 +163,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Managers\AssetManager.cpp" />
+    <ClCompile Include="src\Managers\MusicManager.cpp" />
     <ClCompile Include="src\Nodes\Animator.cpp" />
     <ClCompile Include="src\Nodes\SpriteRenderer.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
@@ -170,21 +172,27 @@
     <ClCompile Include="src\Sandbox.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\TimeTracker.cpp" />
     <ClCompile Include="src\ui\UIButton.cpp" />
     <ClCompile Include="src\ui\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Managers\AssetManager.h" />
+    <ClInclude Include="src\Managers\MusicManager.h" />
     <ClInclude Include="src\Nodes\Animator.h" />
     <ClInclude Include="src\Nodes\SpriteRenderer.h" />
     <ClInclude Include="src\Nodes\Node.h" />
     <ClInclude Include="src\AssetManager.h" />
     <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\TimeTracker.h" />
     <ClInclude Include="src\ui\UIButton.h" />
     <ClInclude Include="src\ui\UIElement.h" />
     <ClInclude Include="src\ui\UIText.h" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="Assets\DPL Music\New Hope.wav" />
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />
+    <Media Include="Assets\DPL Music\See The Light.wav" />
     <Media Include="Assets\TempAssets\Arrow Flying Past 1.wav" />
   </ItemGroup>
   <ItemGroup>

@@ -26,11 +26,7 @@ void Window::Run()
 			if (event.type == sf::Event::Closed)
 				myRawWindow->close();
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::G) && !tempFlag)
-		{
-			tempFlag = true;
-			MusicManager::TransitionTo("See The Light");
-		}
+
 
 		myRawWindow->clear();
 

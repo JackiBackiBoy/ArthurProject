@@ -50,18 +50,6 @@
     <ClCompile Include="src\ui\UIButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nodes\Animator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Managers\AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Managers\MusicManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TimeTracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Window.h">
@@ -92,30 +80,12 @@
     <ClInclude Include="src\ui\UIButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nodes\Animator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Managers\MusicManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Managers\AssetManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TimeTracker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav">
       <Filter>Resource Files</Filter>
     </Media>
     <Media Include="Assets\TempAssets\Arrow Flying Past 1.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
-    <Media Include="Assets\DPL Music\New Hope.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
-    <Media Include="Assets\DPL Music\See The Light.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>

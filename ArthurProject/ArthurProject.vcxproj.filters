@@ -12,6 +12,8 @@
     <ClCompile Include="src\Managers\AssetManager.cpp" />
     <ClCompile Include="src\Managers\MusicManager.cpp" />
     <ClCompile Include="src\TimeTracker.cpp" />
+    <ClCompile Include="src\Nodes\Scene.cpp" />
+    <ClCompile Include="src\Nodes\Bush.cpp" />
     <ClCompile Include="src\Nodes\AudioSource.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +27,8 @@
     <ClInclude Include="src\Managers\AssetManager.h" />
     <ClInclude Include="src\Managers\MusicManager.h" />
     <ClInclude Include="src\TimeTracker.h" />
+    <ClInclude Include="src\Nodes\Scene.h" />
+    <ClInclude Include="src\Nodes\Bush.h" />
     <ClInclude Include="src\Nodes\AudioSource.h" />
   </ItemGroup>
   <ItemGroup>

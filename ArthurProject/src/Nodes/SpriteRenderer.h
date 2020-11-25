@@ -3,7 +3,7 @@
 class SpriteRenderer : public Node
 {
 public:
-	SpriteRenderer() : Node() {};
+	SpriteRenderer() : Node(sf::Vector2f(0,0), nullptr) {};
 	SpriteRenderer(const sf::Vector2f& aPosition, Node* aParent, const sf::Texture& aTexture);
 	inline void OnUpdate() override { Node::OnUpdate(); }
 	void OnRender(sf::RenderWindow *aWindow) override;

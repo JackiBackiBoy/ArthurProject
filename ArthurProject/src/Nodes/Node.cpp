@@ -25,7 +25,7 @@ void Node::SetActive(const bool& aState)
 bool Node::GetActive() 
 {
 	if (myParent == nullptr) return myActive;
-	return myActive + myParent->GetActive();
+	return myActive && myParent->GetActive();
 }
 
 void Node::SetPosition(const sf::Vector2f& aPosition) 
@@ -53,4 +53,9 @@ void Node::OnRender(sf::RenderWindow* aWindow)
 	{
 		myChildren.at(i)->OnRender(aWindow);
 	}
+}
+
+void Node::AddChild(Node* aChild) 
+{
+	myChildren.push_back(aChild);
 }

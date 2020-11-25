@@ -16,6 +16,10 @@ public:
 	virtual void OnUpdate() = 0;
 	virtual void OnRender() = 0;
 
+	inline sf::RenderWindow* GetRawWindow() const { return myRawWindow; }
+
+	static Window* CurrentWindow;
+
 protected:
 	std::string myTitle;
 	int myWidth;

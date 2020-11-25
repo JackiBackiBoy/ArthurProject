@@ -6,7 +6,7 @@
 class Node
 {
 public:
-	Node() {};
+	inline Node() { myParent = nullptr; };
 	Node(const sf::Vector2f& aPosition, Node *aParent);
 	~Node();
 	virtual void OnUpdate() = 0;

@@ -1,4 +1,9 @@
-﻿  Sandbox.cpp
+﻿  Node.cpp
+  AssetManager.cpp
+  Sandbox.cpp
+  Window.cpp
+  Main.cpp
   UIText.cpp
   Generating Code...
-  ArthurProject.vcxproj -> C:\Code\ArthurProject\binaries\Debug-x64\ArthurProject.exe
+  LINK : C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe not found or not built by the last incremental link; performing full link
+  ArthurProject.vcxproj -> C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe

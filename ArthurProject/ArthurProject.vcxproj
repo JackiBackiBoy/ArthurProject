@@ -168,12 +168,14 @@
     <ClCompile Include="src\Sandbox.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\ui\UIButton.cpp" />
     <ClCompile Include="src\ui\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Node.h" />
     <ClInclude Include="src\AssetManager.h" />
     <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\ui\UIButton.h" />
     <ClInclude Include="src\ui\UIElement.h" />
     <ClInclude Include="src\ui\UIText.h" />
   </ItemGroup>

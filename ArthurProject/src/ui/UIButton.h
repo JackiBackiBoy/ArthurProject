@@ -7,7 +7,21 @@ class UIButton : public UIElement
 {
 public:
 	UIButton() : UIElement({ 0, 0 }) {};
-	//UIButton(const std::string& aText, const sf::Vector2f& aPosition, )
-	UIButton(const UIText& aText);
+	UIButton(const UIText& aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)());
+
+	void OnUpdate() override;
+	void OnRender(sf::RenderWindow* aWindow) override;
+
+private:
+	UIText myText;
+	int myWidth;
+	int myHeight;
+	void(*myOnClick)();
+
+	sf::IntRect myRectangle;
+	sf::Color myButtonColor;
+	sf::RectangleShape myButtonShape;
+
+	bool myIsHovered;
 };
 #endif

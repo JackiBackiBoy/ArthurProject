@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,7 +147,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\SFML\include\;$(SolutionDir)Vendor\SFML\include\SFML\;$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,17 +159,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="src\Node.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Sandbox.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\ui\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Node.h" />
+    <ClInclude Include="src\Node.h" />
     <ClInclude Include="src\AssetManager.h" />
     <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\ui\UIElement.h" />
+    <ClInclude Include="src\ui\UIText.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

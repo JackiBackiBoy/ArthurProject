@@ -1,6 +1,7 @@
 #Directories
 .vs/
 binaries-int/
+binaries/
 
 #Files
 *.user

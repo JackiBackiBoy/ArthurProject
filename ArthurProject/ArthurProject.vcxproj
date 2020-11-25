@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="src\Managers\MusicManager.cpp" />
     <ClCompile Include="src\Node.cpp" />
     <ClCompile Include="src\Managers\AssetManager.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="src\TimeTracker.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="src\Managers\MusicManager.h" />
     <ClInclude Include="src\Node.h" />
     <ClInclude Include="src\Managers\AssetManager.h" />

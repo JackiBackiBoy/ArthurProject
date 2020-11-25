@@ -1,199 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="src\Nodes\Animator.cpp" />
+    <ClCompile Include="src\Nodes\SpriteRenderer.cpp" />
+    <ClCompile Include="src\Nodes\Node.cpp" />
+    <ClCompile Include="src\Sandbox.cpp" />
+    <ClCompile Include="src\core\Window.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\ui\UIButton.cpp" />
+    <ClCompile Include="src\ui\UIText.cpp" />
+    <ClCompile Include="src\Managers\AssetManager.cpp" />
+    <ClCompile Include="src\Managers\MusicManager.cpp" />
+    <ClCompile Include="src\TimeTracker.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Sandbox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Node.cpp">
-    <ClCompile Include="src\AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ui\UIText.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nodes\Node.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Managers\AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Managers\MusicManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TimeTracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteRenderer.cpp">
-    <ClCompile Include="src\Nodes\SpriteRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ui\UIButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="src\Nodes\Animator.h" />
+    <ClInclude Include="src\Nodes\SpriteRenderer.h" />
+    <ClInclude Include="src\Nodes\Node.h" />
+    <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\ui\UIButton.h" />
+    <ClInclude Include="src\ui\UIElement.h" />
+    <ClInclude Include="src\ui\UIText.h" />
+    <ClInclude Include="src\Managers\AssetManager.h" />
+    <ClInclude Include="src\Managers\MusicManager.h" />
+    <ClInclude Include="src\TimeTracker.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\core\Window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ui\UIElement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Node.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ui\UIText.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Managers\AssetManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Managers\MusicManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TimeTracker.h">
-    <ClInclude Include="src\Nodes\Node.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nodes\SpriteRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ui\UIButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />
+    <Media Include="Assets\TempAssets\Arrow Flying Past 1.wav" />
+    <Media Include="Assets\DPL Music\See The Light.wav" />
+    <Media Include="Assets\DPL Music\New Hope.wav" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Assets\DPL Music\OST Pro - New Hope.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
-    <Media Include="Assets\TempAssets\Arrow Flying Past 1.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="Assets\Fonts\ArialCE.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Hurt.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Idle.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Walk.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Death.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Hurt.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Idle.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Walk.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Death.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle D.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle R.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle U.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk D.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk R.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk U.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack D.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack R.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack U.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Death D.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt D.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt R.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt U.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle D.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle R.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle U.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk D.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk R.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Assets\TempAssets\Arrow Flying Past 1.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
-    <Media Include="Assets\DPL Music\New Hope.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
-    <Media Include="..\..\..\Assets\Ultimate Sound FX Bundle\OST Pro\Full Soundtracks\OST Pro - See The Light.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
-    <Media Include="Assets\DPL Music\See The Light.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Hurt.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Idle.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Walk.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Death.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Hurt.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Idle.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Walk.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Death.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle D.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle R.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle U.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk D.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk R.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk U.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack D.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack R.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack U.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Death D.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt D.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt R.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt U.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle D.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle R.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle U.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk D.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk R.png" />
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png" />
+    <Image Include="Assets\Bush.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Fonts\ArialCE.ttf" />

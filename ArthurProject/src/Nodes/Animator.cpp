@@ -8,3 +8,8 @@ void Animator::OnUpdate()
 {
 
 }
+
+void Animator::OnRender(sf::RenderWindow* aWindow)
+{
+
+}

@@ -12,7 +12,7 @@ public:
 	virtual void OnUpdate() = 0;
 	virtual void OnRender(sf::RenderWindow *aWindow) = 0;
 	virtual void SetPosition(const sf::Vector2f& aPosition);
-	sf::Vector2f GetPosition();
+	sf::Vector2f GetPosition() const;
 	void SetActive(const bool& aState);
 	bool GetActive();
 protected:

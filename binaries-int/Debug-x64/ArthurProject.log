@@ -1,2 +1,36 @@
-﻿  Animator.cpp
+﻿  Sandbox.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,80): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  UIButton.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,80): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(17,39): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+  UIText.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,80): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
   ArthurProject.vcxproj -> C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe

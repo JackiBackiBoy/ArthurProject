@@ -68,7 +68,7 @@ public:
 
 	void OnRender() override
 	{
-		//myRawWindow->draw(*tempText->GetRawText());
+		myRawWindow->draw(*tempText->GetRawText());
 		if (anItem != nullptr)
 		{
 			anItem->OnRender(myRawWindow);

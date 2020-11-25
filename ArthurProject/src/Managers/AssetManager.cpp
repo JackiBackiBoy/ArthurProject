@@ -47,7 +47,15 @@ void AssetManager::Init()
 			//add a spot with the index [filename]
 			myFonts.emplace(s, sf::Font());
 			//Set Font in map
-			myFonts[s].loadFromFile(myPathOrigin + "/" + s + ".ttf");
+			if (!myFonts[s].loadFromFile(myPathOrigin + "/" + s + ".ttf"))
+			{
+				std::cout << "Failed to load font" << std::endl;
+			}
+			else
+			{
+				std::cout << "Success loading font" << std::endl;
+				std::string temp = s;
+			}
 		}
 		//If File is a wav file
 		else if (s.find(".wav") != std::string::npos)
@@ -103,17 +111,17 @@ std::vector<std::string> AssetManager::GetAllFilesInDirectory(std::string aStrin
 	return tempFiles;
 }
 
-const sf::Texture& AssetManager::GetTexture(std::string aString)
+sf::Texture& AssetManager::GetTexture(std::string aString)
 {
 	return myTextures[aString];
 }
 
-const sf::Font& AssetManager::GetFont(std::string aString)
+sf::Font& AssetManager::GetFont(std::string aString)
 {
 	return myFonts[aString];
 }
 
-const sf::SoundBuffer& AssetManager::GetSoundBuffer(std::string aString)
+sf::SoundBuffer& AssetManager::GetSoundBuffer(std::string aString)
 {
 	return mySoundBuffers[aString];
 }

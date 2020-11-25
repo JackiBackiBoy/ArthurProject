@@ -8,6 +8,7 @@
 class AssetManager
 {
 private:
+	AssetManager() {};
 	static std::map<std::string, sf::Texture> myTextures;
 	static std::map<std::string, sf::Font> myFonts;
 	static std::map<std::string, sf::SoundBuffer> mySoundBuffers;
@@ -17,8 +18,8 @@ public:
 	~AssetManager();
 	static void Init();
 	static void Unload();
-	static const sf::Texture& GetTexture(std::string aString);
-	static const sf::Font& GetFont(std::string aString);
-	static const sf::SoundBuffer& GetSoundBuffer(std::string aString);
+	static sf::Texture& GetTexture(std::string aString);
+	static sf::Font& GetFont(std::string aString);
+	static sf::SoundBuffer& GetSoundBuffer(std::string aString);
 };
 

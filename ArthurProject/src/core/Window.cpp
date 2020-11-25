@@ -15,6 +15,9 @@ void Window::Run()
 
 	MusicManager::TransitionTo("New Hope");
 
+	// Call OnStart once
+	OnStart();
+
 	while (myRawWindow->isOpen())
 	{
 		sf::Event event;
@@ -30,7 +33,15 @@ void Window::Run()
 		}
 
 		myRawWindow->clear();
-		myRawWindow->draw(shape);
+
+		// Call base functions and overriden versions of OnUpdate and OnRender
+		OnUpdate();
+		Window::OnUpdate();
+
+		OnRender();
+		Window::OnRender();
+
+		//myRawWindow->draw(shape);
 		myRawWindow->display();
 	}
 }

@@ -30,6 +30,9 @@
     <ClCompile Include="src\ui\UIText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\Managers\AssetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\TimeTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -146,6 +152,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk R.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

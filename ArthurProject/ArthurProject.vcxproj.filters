@@ -15,6 +15,8 @@
     <ClCompile Include="src\Nodes\Scene.cpp" />
     <ClCompile Include="src\Nodes\Bush.cpp" />
     <ClCompile Include="src\Nodes\AudioSource.cpp" />
+    <ClCompile Include="src\data\Options.cpp" />
+    <ClCompile Include="src\data\SaveLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
@@ -30,12 +32,15 @@
     <ClInclude Include="src\Nodes\Scene.h" />
     <ClInclude Include="src\Nodes\Bush.h" />
     <ClInclude Include="src\Nodes\AudioSource.h" />
+    <ClInclude Include="src\data\Options.h" />
+    <ClInclude Include="src\data\SaveLoad.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />
     <Media Include="Assets\TempAssets\Arrow Flying Past 1.wav" />
     <Media Include="Assets\DPL Music\See The Light.wav" />
     <Media Include="Assets\DPL Music\New Hope.wav" />
+    <Media Include="Assets\TempAssets\Dirt footstep 1.wav" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png" />

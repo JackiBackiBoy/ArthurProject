@@ -19,12 +19,19 @@ public:
 	Scene* myScene;
 	Node* anItem;
 	bool isPressed = false;
+
+	static void K()
+	{
+
+	}
+
 	void OnStart() override
 	{
 		myScene = new Scene();
 		AssetManager::Init();
 		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), sf::Color::Cyan,"Fonts/ArialCE", 60);
-
+		tempButton = new UIButton(*tempText, 200, 50, sf::Color::White, K);
+		myScene->AddChild(tempButton);
 		myAudioSource = AudioSource();
 	}
 
@@ -68,7 +75,9 @@ public:
 
 	void OnRender() override
 	{
-		myRawWindow->draw(*tempText->GetRawText());
+		//myRawWindow->draw(*tempText->GetRawText());
+		//tempButton->OnRender(myRawWindow);
+
 		if (anItem != nullptr)
 		{
 			anItem->OnRender(myRawWindow);
@@ -78,6 +87,7 @@ public:
 
 private:
 	UIText* tempText;
+	UIButton* tempButton;
 };
 
 Window* BuildWindow()

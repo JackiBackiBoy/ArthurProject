@@ -15,6 +15,8 @@ UIButton::UIButton(const UIText& aText, const int& aWidth, const int& aHeight, c
 	float tempHeaviestScale = tempTextScaleX < tempTextScaleY ? tempTextScaleX : tempTextScaleY;
 
 	myText.SetFontSize(tempHeaviestScale * myText.GetFontSize());
+	AddChild(&myText);
+
 }
 
 void UIButton::OnUpdate()
@@ -60,5 +62,6 @@ void UIButton::OnRender(sf::RenderWindow* aWindow)
 	aWindow->draw(myButtonShape);
 
 	// Draw the text on the button
-	myText.OnRender(aWindow);
+	//myText.OnRender(aWindow);
+	UIElement::OnRender(aWindow);
 }

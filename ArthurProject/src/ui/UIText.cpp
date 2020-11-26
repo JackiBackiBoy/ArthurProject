@@ -1,8 +1,8 @@
 #include "UIText.h"
 #include "Managers/AssetManager.h"
 
-UIText::UIText(const std::string& aText, const sf::Vector2f& aPosition, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize)
-	: myColor(aColor), myFontSize(aFontSize), UIElement(aPosition)
+UIText::UIText(const sf::Vector2f& aPosition, Node* aParent, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize)
+	: myColor(aColor), myFontSize(aFontSize), UIElement(aPosition, aParent)
 {
 	// Load desired font
 	myFont = &AssetManager::GetFont(aFontName);
@@ -12,17 +12,18 @@ UIText::UIText(const std::string& aText, const sf::Vector2f& aPosition, const sf
 	myRawText->setFillColor(aColor);
 
 	// Position the text correctly
-	myRawText->setPosition(sf::Vector2f(myPosition.x, myPosition.y - myRawText->getGlobalBounds().top));
+	myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y - myRawText->getGlobalBounds().top));
 }
 
 void UIText::OnUpdate()
 {
-	Node::OnUpdate();
+	SetFontPosition(GetPosition());
+	myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y - myRawText->getGlobalBounds().top));
+    UIElement::OnUpdate();
 }
 
 void UIText::OnRender(sf::RenderWindow* aWindow)
 {
 	aWindow->draw(*myRawText);
-
-	Node::OnRender(aWindow);
+	UIElement::OnRender(aWindow);
 }

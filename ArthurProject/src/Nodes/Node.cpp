@@ -3,6 +3,10 @@ Node::Node(const sf::Vector2f& aPosition, Node* aParent)
 {
 	myPosition = aPosition;
 	myParent = aParent;
+	if (myParent != nullptr) 
+	{
+		myParent->AddChild(this);
+	}
 }
 
 Node::~Node() 
@@ -59,5 +63,4 @@ void Node::AddChild(Node* aChild)
 {
 	aChild->myParent = this;
 	myChildren.push_back(aChild);
-	
 }

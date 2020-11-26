@@ -6,14 +6,13 @@
 class UIButton : public UIElement
 {
 public:
-	UIButton() : UIElement({ 0, 0 }) {};
-	UIButton(const UIText& aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)());
+	UIButton() : UIElement() {};
+	UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)());
 
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;
 
 private:
-	UIText myText;
 	int myWidth;
 	int myHeight;
 	void(*myOnClick)();

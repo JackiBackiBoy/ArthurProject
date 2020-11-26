@@ -22,6 +22,12 @@ public:
 	Scene* myScene;
 	Node* anItem;
 	bool isPressed = false;
+
+	static void K()
+	{
+
+	}
+
 	void OnStart() override
 	{
 		AssetManager::Init();
@@ -32,17 +38,10 @@ public:
 
 
 		myScene = new Scene();
-		tempText = new UIText("Arthur Project", sf::Vector2f(0, 0), sf::Color::Cyan, "Fonts/ArialCE", 60);
-
-		myAudioSource = AudioSource(sf::Vector2f(0, 0), nullptr);
-		sf::Listener::setPosition(0, 0, 0);
-
-		sf::Listener::setDirection(1.f, 0.f, 0.f);
-
-		SaveLoad::Save("MVol", std::to_string(100));
-		SaveLoad::Save("SeffVol", std::to_string(100));
-
-
+		AssetManager::Init();
+		tempText = new UIText(sf::Vector2f(0, 0), nullptr, "Play", sf::Color::Black,"Fonts/ArialCE", 60);
+		tempButton = new UIButton(sf::Vector2f(100, 100), myScene, tempText, 100, 30, sf::Color::White, K);
+		myAudioSource = AudioSource();
 	}
 
 	void OnUpdate() override
@@ -61,7 +60,7 @@ public:
 
 		}
 
-
+	
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !isPressed)
 		{
 			anItem = new Bush(sf::Vector2f(0, 0), nullptr);
@@ -85,7 +84,9 @@ public:
 
 	void OnRender() override
 	{
-		myRawWindow->draw(*tempText->GetRawText());
+		//myRawWindow->draw(*tempText->GetRawText());
+		//tempButton->OnRender(myRawWindow);
+
 		if (anItem != nullptr)
 		{
 			anItem->OnRender(myRawWindow);
@@ -95,6 +96,7 @@ public:
 
 private:
 	UIText* tempText;
+	UIButton* tempButton;
 };
 
 Window* BuildWindow()

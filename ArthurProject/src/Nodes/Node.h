@@ -16,6 +16,13 @@ public:
 	void SetActive(const bool& aState);
 	bool GetActive();
 	void AddChild(Node* aChild);
+
+	template <typename T>
+	T* GetChild(const int& anIndex)
+	{
+		return (T*)myChildren[anIndex];
+	}
+
 protected:
 	bool myActive = true;
 	Node* myParent;

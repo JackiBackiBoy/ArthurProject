@@ -5,10 +5,10 @@
 UIButton::UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)())
 	: myWidth(aWidth), myHeight(aHeight), myButtonColor(aButtonColor), myOnClick(anOnClick), UIElement(aPosition, aParent)
 {
-	myRectangle = sf::IntRect((int)myPosition.x, (int)myPosition.y, myWidth, myHeight);
+	myRectangle = sf::IntRect((int)GetPosition().x, (int)GetPosition().y, myWidth, myHeight);
 	myButtonShape = sf::RectangleShape(sf::Vector2f((float)myWidth, (float)myHeight));
 	myButtonShape.setFillColor(myButtonColor);
-	myButtonShape.setPosition(myPosition);
+	myButtonShape.setPosition(GetPosition());
 
 	float tempTextScaleX = (float)(myWidth * 0.5f) / aText->GetTextWidth();
 	float tempTextScaleY = (float)(myHeight * 0.5f) / aText->GetTextHeight();
@@ -24,16 +24,19 @@ UIButton::UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, 
 	sf::Vector2f tempNewPosition = { tempButtonCenter.x - tempTextCenter.x, tempButtonCenter.y - tempTextCenter.y };
 
 	tempChild.SetFontPosition(myPosition + tempNewPosition);
+
+
+	myPressedFlag = false;
 }
 
 void UIButton::OnUpdate()
 {
-	//myText.SetPosition(myPosition);
-	//myText.SetFontPosition(myPosition);
+	/*myText.SetPosition(GetPosition());
+	myText.SetFontPosition(GetPosition());*/
 
-	myButtonShape.setPosition(myPosition);
+	myButtonShape.setPosition(GetPosition());
 
-	myRectangle = sf::IntRect((int)myPosition.x, (int)myPosition.y, myWidth, myHeight);
+	myRectangle = sf::IntRect((int)GetPosition().x, (int)GetPosition().y, myWidth, myHeight);
 
 	// Hovering detection
 	if (myRectangle.contains(sf::Mouse::getPosition(*Window::CurrentWindow->GetRawWindow())))
@@ -47,6 +50,16 @@ void UIButton::OnUpdate()
 			myButtonShape.setFillColor(myButtonColor);
 
 			myIsHovered = true;
+
+		}
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !myPressedFlag)
+		{
+			myPressedFlag = true;
+			myOnClick();
+		}
+		else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && myPressedFlag)
+		{
+			myPressedFlag = false;
 		}
 	}
 	else

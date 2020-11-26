@@ -1,5 +1,6 @@
 #include "Options.h"
 #include "data/SaveLoad.h"
+#include "SFML/Audio.hpp"
 
 
 float Options::myMasterVolume = 100;
@@ -19,8 +20,15 @@ void Options::Load()
 
 
 	myMasterVolume = std::stof(SaveLoad::Load("MVol"));
-	myMasterVolume = std::stof(SaveLoad::Load("SEffVol"));
-	myMasterVolume = std::stof(SaveLoad::Load("MusicVol"));
+	mySoundEffectVolume = std::stof(SaveLoad::Load("SEffVol"));
+	myMusicVolume = std::stof(SaveLoad::Load("MusicVol"));
+}
+
+void Options::Save()
+{
+	SaveLoad::Save("MVol", std::to_string(myMasterVolume));
+	SaveLoad::Save("SEffVol", std::to_string(mySoundEffectVolume));
+	SaveLoad::Save("MusicVol", std::to_string(myMusicVolume));
 }
 
 float Options::GetMasterVolume()
@@ -36,4 +44,20 @@ float Options::GetMusicVolume()
 float Options::GetSoundEffectVolume()
 {
 	return mySoundEffectVolume;
+}
+
+void Options::SetMasterVolume(float aValue)
+{
+	myMasterVolume = aValue;
+	sf::Listener::setGlobalVolume(aValue);
+}
+
+void Options::SetMusicVolume(float aValue)
+{
+	myMusicVolume = aValue;
+}
+
+void Options::SetSoundEffectVolume(float aValue)
+{
+	mySoundEffectVolume = aValue;
 }

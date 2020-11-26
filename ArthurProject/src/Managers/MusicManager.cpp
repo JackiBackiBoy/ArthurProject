@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>
 #include <SFML/System/Clock.hpp>
+#include "data/Options.h"
 
 sf::Music MusicManager::myMusic[2];
 int MusicManager::myCurrentMusicIndex = 0;
@@ -9,9 +10,11 @@ float MusicManager::myTransitionTime = 2;
 float MusicManager::myTransitionPercent = 0;
 sf::Clock MusicManager::myTransitionThreadClock = sf::Clock();
 bool MusicManager::myLoopingFlag = true;
+bool MusicManager::myTransitioningFlag = false;
 
 void MusicManager::TransitionTo(std::string aString)
 {
+	myTransitioningFlag = true;
 	myCurrentMusicIndex = GetOtherMusicIndex();
 	myMusic[myCurrentMusicIndex].setVolume(0);
 	Start(aString);
@@ -30,11 +33,20 @@ void MusicManager::TransitionThread()
 {
 	while (myTransitionPercent < 100)
 	{
-		myTransitionPercent += myTransitionThreadClock.restart().asSeconds()*100 / myTransitionTime;
-		myMusic[myCurrentMusicIndex].setVolume(myTransitionPercent);
-		myMusic[GetOtherMusicIndex()].setVolume(100 - myTransitionPercent);
+		myTransitionPercent += myTransitionThreadClock.restart().asSeconds() * 100 / myTransitionTime;
+		myMusic[myCurrentMusicIndex].setVolume((myTransitionPercent/100) * Options::GetMusicVolume());
+		myMusic[GetOtherMusicIndex()].setVolume((100 - myTransitionPercent) * Options::GetMusicVolume());
 	}
-	myMusic[myCurrentMusicIndex].setVolume(100);
+	myMusic[myCurrentMusicIndex].setVolume(Options::GetMusicVolume());
+	myTransitioningFlag = false;
+}
+
+void MusicManager::OnUpdate()
+{
+	if (myMusic[myCurrentMusicIndex].getVolume() != Options::GetMusicVolume() && !myTransitioningFlag)
+	{
+		myMusic[myCurrentMusicIndex].setVolume(Options::GetMusicVolume());
+	}
 }
 
 void MusicManager::Stop()

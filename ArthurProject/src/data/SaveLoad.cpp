@@ -34,6 +34,7 @@ void SaveLoad::ReadSave()
 	std::vector<std::string> tempSplit2;
 	for (std::string s : tempSplit)
 	{
+		tempSplit2.clear();
 		std::stringstream tempSs = (std::stringstream)s;
 		while (std::getline(tempSs, tempSegment, ':'))
 		{

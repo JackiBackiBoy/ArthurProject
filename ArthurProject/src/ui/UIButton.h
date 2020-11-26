@@ -16,6 +16,7 @@ private:
 	int myWidth;
 	int myHeight;
 	void(*myOnClick)();
+	bool myPressedFlag;
 
 	sf::IntRect myRectangle;
 	sf::Color myButtonColor;

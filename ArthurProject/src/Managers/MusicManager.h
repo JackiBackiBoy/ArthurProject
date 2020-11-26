@@ -12,7 +12,7 @@ public:
 	static void Resume();
 	static void SetLoopingFlag(bool aFlag);
 	static bool GetLoopingFlag();
-
+	static void OnUpdate();
 private:
 	static void TransitionThread();
 	static sf::Music myMusic[];

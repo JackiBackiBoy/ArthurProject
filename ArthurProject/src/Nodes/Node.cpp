@@ -57,5 +57,6 @@ void Node::OnRender(sf::RenderWindow* aWindow)
 
 void Node::AddChild(Node* aChild) 
 {
+	aChild->myParent = this;
 	myChildren.push_back(aChild);
 }

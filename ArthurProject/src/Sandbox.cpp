@@ -29,8 +29,8 @@ public:
 	{
 		myScene = new Scene();
 		AssetManager::Init();
-		tempText = new UIText(sf::Vector2f(0, 0), nullptr, "Arthur Project", sf::Color::Cyan,"Fonts/ArialCE", 60);
-		tempButton = new UIButton(sf::Vector2f(100, 100), myScene, tempText, 200, 100, sf::Color::White, K);
+		tempText = new UIText(sf::Vector2f(0, 0), nullptr, "Play", sf::Color::Black,"Fonts/ArialCE", 60);
+		tempButton = new UIButton(sf::Vector2f(100, 100), myScene, tempText, 100, 30, sf::Color::White, K);
 		myAudioSource = AudioSource();
 	}
 

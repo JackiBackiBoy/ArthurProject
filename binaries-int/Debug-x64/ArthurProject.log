@@ -4,12 +4,12 @@ C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244
           [
               T=float
           ]
-C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,80): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(70,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(69,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=int
@@ -18,7 +18,7 @@ C:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(70,61): warning C4244
           [
               T=float
           ]
-C:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(70,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(69,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=int

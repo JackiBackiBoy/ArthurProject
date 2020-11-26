@@ -10,18 +10,27 @@ UIButton::UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, 
 	myButtonShape.setFillColor(myButtonColor);
 	myButtonShape.setPosition(myPosition);
 
-	float tempTextScaleX = (float)myWidth / aText->GetTextWidth();
-	float tempTextScaleY = (float)myHeight / aText->GetTextHeight();
+	float tempTextScaleX = (float)(myWidth * 0.5f) / aText->GetTextWidth();
+	float tempTextScaleY = (float)(myHeight * 0.5f) / aText->GetTextHeight();
 	float tempHeaviestScale = tempTextScaleX < tempTextScaleY ? tempTextScaleX : tempTextScaleY;
 
 	aText->SetFontSize(tempHeaviestScale * aText->GetFontSize());
 	AddChild(aText);
+
+	UIText& tempChild = *GetChild<UIText>(0);
+
+	sf::Vector2f tempButtonCenter = { (float)(myWidth / 2), (float)(myHeight / 2) };
+	sf::Vector2f tempTextCenter = { (float)(tempChild.GetTextWidth() / 2), (float)(tempChild.GetTextHeight() / 2) };
+	sf::Vector2f tempNewPosition = { tempButtonCenter.x - tempTextCenter.x, tempButtonCenter.y - tempTextCenter.y };
+
+	tempChild.SetFontPosition(myPosition + tempNewPosition);
 }
 
 void UIButton::OnUpdate()
 {
 	//myText.SetPosition(myPosition);
 	//myText.SetFontPosition(myPosition);
+
 	myButtonShape.setPosition(myPosition);
 
 	myRectangle = sf::IntRect((int)myPosition.x, (int)myPosition.y, myWidth, myHeight);

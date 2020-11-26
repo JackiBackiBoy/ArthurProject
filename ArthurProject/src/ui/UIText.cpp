@@ -1,5 +1,6 @@
 #include "UIText.h"
 #include "Managers/AssetManager.h"
+#include <ui/UIButton.h>
 
 UIText::UIText(const sf::Vector2f& aPosition, Node* aParent, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize)
 	: myColor(aColor), myFontSize(aFontSize), UIElement(aPosition, aParent)
@@ -12,13 +13,13 @@ UIText::UIText(const sf::Vector2f& aPosition, Node* aParent, const std::string& 
 	myRawText->setFillColor(aColor);
 
 	// Position the text correctly
-	myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y - myRawText->getGlobalBounds().top));
+	//myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y - myRawText->getGlobalBounds().top));
 }
 
 void UIText::OnUpdate()
 {
-	SetFontPosition(GetPosition());
-	myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y - myRawText->getGlobalBounds().top));
+	//SetFontPosition(GetPosition());
+	//myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y - myRawText->getGlobalBounds().top));
     UIElement::OnUpdate();
 }
 

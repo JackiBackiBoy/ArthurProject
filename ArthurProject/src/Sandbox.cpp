@@ -9,6 +9,7 @@
 #include "Nodes\Bush.h"
 #include "Data/SaveLoad.h"
 #include "data/Options.h"
+#include "Nodes/Camera.h"
 
 class Sandbox : public Window
 {
@@ -21,6 +22,7 @@ public:
 	Node* anItem;
 	Node* myOptionsHolder;
 	bool isPressed = false;
+	Camera* myCamera;
 
 	static void K()
 	{
@@ -37,9 +39,12 @@ public:
 
 
 		myScene = new Scene();
+
+		myCamera = new Camera(sf::Vector2f(0,0), myScene);
+
 		tempText = new UIText(sf::Vector2f(0, 0), myScene, "Arthur Project", sf::Color::Cyan, "Fonts/ArialCE", 60);
 
-		//new UIButton(sf::Vector2f(myWidth - 50, 0), myScene, new UIText(sf::Vector2f(0, 0), nullptr, "O", sf::Color::Black, "Fonts/ArialCE", 50), 50, 50, sf::Color::Green, InvertOptionsEnable);
+		//new UIButton(sf::Vector2f(myWidth - 50, 0), myScene, new UIText(sf::Vector2f(0, 0), nullptr, "O", sf::Color::Black, "Fonts/ArialCE", 50), 50, 50, sf::Color::Green, [this]() { myOptionsHolder->SetActive(!myOptionsHolder->GetActive()); });
 		//Options
 		myOptionsHolder = new UIText(sf::Vector2f(myWidth - 300, 0), myScene, "Options", sf::Color::Cyan, "Fonts/ArialCE", 30, false);
 

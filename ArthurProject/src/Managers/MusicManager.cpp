@@ -56,6 +56,7 @@ void MusicManager::Stop()
 void MusicManager::Start(std::string aString)
 {
 	myMusic[myCurrentMusicIndex].openFromFile("Assets/DPL Music/" + aString + ".wav");
+	myMusic[myCurrentMusicIndex].setLoop(myLoopingFlag);
 	myMusic[myCurrentMusicIndex].play();
 }
 void MusicManager::Pause()
@@ -71,6 +72,7 @@ void MusicManager::Resume()
 void MusicManager::SetLoopingFlag(bool aFlag)
 {
 	myLoopingFlag = aFlag;
+	myMusic[myCurrentMusicIndex].setLoop(myLoopingFlag);
 }
 
 bool MusicManager::GetLoopingFlag()

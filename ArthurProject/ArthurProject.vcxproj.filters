@@ -17,6 +17,7 @@
     <ClCompile Include="src\Nodes\AudioSource.cpp" />
     <ClCompile Include="src\data\Options.cpp" />
     <ClCompile Include="src\data\SaveLoad.cpp" />
+    <ClCompile Include="src\Nodes\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
@@ -34,6 +35,7 @@
     <ClInclude Include="src\Nodes\AudioSource.h" />
     <ClInclude Include="src\data\Options.h" />
     <ClInclude Include="src\data\SaveLoad.h" />
+    <ClInclude Include="src\Nodes\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

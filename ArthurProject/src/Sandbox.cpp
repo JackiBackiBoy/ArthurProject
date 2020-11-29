@@ -40,10 +40,7 @@ public:
 		myScene = new Scene();
 		myScene->AddChild(new UIText(sf::Vector2f(0, 0), "text", "Arthur Project", sf::Color::Cyan, "Fonts/ArialCE", 60));
 
-		myCamera = new Camera(sf::Vector2f(0,0), myScene);
-
-		tempText = new UIText(sf::Vector2f(0, 0), myScene, "Arthur Project", sf::Color::Cyan, "Fonts/ArialCE", 60);
-
+		myCamera = new Camera(sf::Vector2f(0,0),"MainCam");
 		//new UIButton(sf::Vector2f(myWidth - 50, 0), myScene, new UIText(sf::Vector2f(0, 0), nullptr, "O", sf::Color::Black, "Fonts/ArialCE", 50), 50, 50, sf::Color::Green, [this]() { myOptionsHolder->SetActive(!myOptionsHolder->GetActive()); });
 		//Options
 		myOptionsHolder = new UIText(sf::Vector2f(myWidth - 300, 0), "opthold", "Options", sf::Color::Cyan, "Fonts/ArialCE", 30, false);

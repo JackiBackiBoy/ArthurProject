@@ -2,6 +2,7 @@
 #include "Managers/AssetManager.h"
 #include <ui/UIButton.h>
 
+
 UIText::UIText(const sf::Vector2f& aPosition, const std::string& aName, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize, bool aButtonTextFlag)
 	: myText(aText),myColor(aColor), myFontSize(aFontSize), myButtonTextFlag(aButtonTextFlag), UIElement(aPosition, aName)
 {

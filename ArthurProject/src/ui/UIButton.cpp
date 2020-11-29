@@ -1,6 +1,7 @@
 #include "UIButton.h"
 #include "SFML/Window/Mouse.hpp"
 #include "core/Window.h"
+#include "Nodes/Camera.h"
 
 UIButton::UIButton(const sf::Vector2f& aPosition, const std::string& aName, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)())
 	: myWidth(aWidth), myHeight(aHeight), myButtonColor(aButtonColor), myOnClick(anOnClick), UIElement(aPosition, aName)
@@ -37,7 +38,7 @@ void UIButton::OnUpdate()
 	myRectangle = sf::IntRect((int)GetPosition().x, (int)GetPosition().y, myWidth, myHeight);
 
 	// Hovering detection
-	if (myRectangle.contains(sf::Mouse::getPosition(*Window::CurrentWindow->GetRawWindow())))
+	if (myRectangle.contains((sf::Vector2i)Window::CurrentWindow->GetRawWindow()->mapPixelToCoords(sf::Mouse::getPosition(*Window::CurrentWindow->GetRawWindow()))))
 	{
 		// Make the color darker if hovered
 		if (!myIsHovered)

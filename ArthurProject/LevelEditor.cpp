@@ -68,7 +68,7 @@ public:
 	}
 };
 
-Window* BuildWindow()
-{
-	return new LevelEditor("LevelEditor", 1280, 720);
-}
+//Window* BuildWindow()
+//{
+//	return new LevelEditor("LevelEditor", 1280, 720);
+//}

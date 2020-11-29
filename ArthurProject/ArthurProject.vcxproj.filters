@@ -18,6 +18,7 @@
     <ClCompile Include="src\data\SaveLoad.cpp" />
     <ClCompile Include="src\Nodes\Camera.cpp" />
     <ClCompile Include="src\Managers\NodeManager.cpp" />
+    <ClCompile Include="LevelEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />

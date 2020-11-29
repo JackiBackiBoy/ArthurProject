@@ -15,4 +15,5 @@ Node* NodeManager::GenerateNode(const std::string& aPreset)
 	{
 
 	}
+	return nullptr;
 }

@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="src\Managers\NodeManager.cpp" />
     <ClCompile Include="src\Nodes\Camera.cpp" />
     <ClCompile Include="src\data\Options.cpp" />

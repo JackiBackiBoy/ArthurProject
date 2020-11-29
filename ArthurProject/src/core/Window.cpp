@@ -55,4 +55,5 @@ void Window::OnRender()
 
 }
 
+
 Window* Window::CurrentWindow = nullptr;

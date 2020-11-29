@@ -7,7 +7,7 @@ class Node
 {
 public:
 	inline Node() { myParent = nullptr; };
-	Node(const sf::Vector2f& aPosition, Node *aParent, const std::string& aName);
+	Node(const sf::Vector2f& aPosition, const std::string& aName);
 	~Node();
 	virtual void OnUpdate() = 0;
 	virtual void OnRender(sf::RenderWindow *aWindow) = 0;
@@ -21,9 +21,10 @@ public:
 	template <typename T>
 	T* GetChild(const std::string& aName)
 	{
-		for (int i = 0; i < myChildren.size; i++) 
+		for (int i = 0; i < myChildren.size(); i++)
 		{
-			if (myChildren.at(i)->myName == aName) {
+			if (myChildren.at(i)->myName == aName)
+			{
 				return (T*)myChildren.at(i);
 			}
 		}
@@ -37,4 +38,3 @@ protected:
 	sf::Vector2f myPosition;
 	std::string myName;
 };
-

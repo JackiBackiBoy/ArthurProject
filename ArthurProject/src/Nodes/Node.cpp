@@ -1,13 +1,8 @@
 #include "Node.h"
-Node::Node(const sf::Vector2f& aPosition, Node* aParent, const std::string& aName)
+Node::Node(const sf::Vector2f& aPosition, const std::string& aName)
 {
 	myPosition = aPosition;
-	myParent = aParent;
 	myName = aName;
-	if (myParent != nullptr)
-	{
-		myParent->AddChild(this);
-	}
 }
 
 Node::~Node()

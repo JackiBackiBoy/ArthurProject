@@ -16,7 +16,7 @@ void UIText::OnUpdate()
 	//SetFontPosition(GetPosition());
 	if (!myButtonTextFlag)
 	{
-		myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y /*- myRawText->getGlobalBounds().top*/));
+		myRawText->setPosition(GetPosition());
 	}
 	UIElement::OnUpdate();
 }

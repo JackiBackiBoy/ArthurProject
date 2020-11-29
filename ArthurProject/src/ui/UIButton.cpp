@@ -2,8 +2,8 @@
 #include "SFML/Window/Mouse.hpp"
 #include "core/Window.h"
 
-UIButton::UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)())
-	: myWidth(aWidth), myHeight(aHeight), myButtonColor(aButtonColor), myOnClick(anOnClick), UIElement(aPosition, aParent)
+UIButton::UIButton(const sf::Vector2f& aPosition, Node* aParent, const std::string& aName, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)())
+	: myWidth(aWidth), myHeight(aHeight), myButtonColor(aButtonColor), myOnClick(anOnClick), UIElement(aPosition, aParent, aName)
 {
 	myRectangle = sf::IntRect((int)GetPosition().x, (int)GetPosition().y, myWidth, myHeight);
 	myButtonShape = sf::RectangleShape(sf::Vector2f((float)myWidth, (float)myHeight));

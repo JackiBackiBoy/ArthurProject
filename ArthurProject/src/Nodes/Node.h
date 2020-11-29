@@ -7,7 +7,7 @@ class Node
 {
 public:
 	inline Node() { myParent = nullptr; };
-	Node(const sf::Vector2f& aPosition, Node *aParent);
+	Node(const sf::Vector2f& aPosition, Node *aParent, const std::string& aName);
 	~Node();
 	virtual void OnUpdate() = 0;
 	virtual void OnRender(sf::RenderWindow *aWindow) = 0;
@@ -16,11 +16,18 @@ public:
 	void SetActive(const bool& aState);
 	bool GetActive();
 	void AddChild(Node* aChild);
+	void OrphanChild(Node* aChild);
 
 	template <typename T>
-	T* GetChild(const int& anIndex)
+	T* GetChild(const std::string& aName)
 	{
-		return (T*)myChildren[anIndex];
+		for (int i = 0; i < myChildren.size; i++) 
+		{
+			if (myChildren.at(i)->myName == aName) {
+				return (T*)myChildren.at(i);
+			}
+		}
+		return nullptr;
 	}
 
 protected:
@@ -28,5 +35,6 @@ protected:
 	Node* myParent;
 	std::vector<Node*> myChildren;
 	sf::Vector2f myPosition;
+	std::string myName;
 };
 

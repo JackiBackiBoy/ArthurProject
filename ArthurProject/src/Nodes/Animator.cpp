@@ -1,5 +1,5 @@
 #include "Animator.h"
-Animator::Animator(const sf::Vector2f& aPosition, Node* aParent, const sf::Texture& aSpriteSheet) : SpriteRenderer(aPosition, aParent, aSpriteSheet)
+Animator::Animator(const sf::Vector2f& aPosition, Node* aParent, const std::string& aName, const sf::Texture& aSpriteSheet) : SpriteRenderer(aPosition, aParent, aName, aSpriteSheet)
 {
 
 }

@@ -7,7 +7,6 @@
 class UIElement : public Node
 {
 public:
-	UIElement() : Node({ 0, 0 }, nullptr) {};
 	UIElement(const sf::Vector2f& aPosition, Node* aParent) : Node(aPosition, aParent) {};
 
 	inline void OnUpdate() override { Node::OnUpdate(); };

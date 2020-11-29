@@ -177,6 +177,8 @@
     <ClCompile Include="src\TimeTracker.cpp" />
     <ClCompile Include="src\ui\UIButton.cpp" />
     <ClCompile Include="src\ui\UIText.cpp" />
+    <ClCompile Include="src\ui\windows\UIWindowsButton.cpp" />
+    <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\AudioSource.h" />
@@ -192,6 +194,8 @@
     <ClInclude Include="src\ui\UIButton.h" />
     <ClInclude Include="src\ui\UIElement.h" />
     <ClInclude Include="src\ui\UIText.h" />
+    <ClInclude Include="src\ui\windows\UIWindowsButton.h" />
+    <ClInclude Include="src\ui\windows\UIWindowsDropDown.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\New Hope.wav" />

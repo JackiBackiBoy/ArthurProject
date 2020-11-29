@@ -1,6 +1,8 @@
 #include "core/Window.h"
 #include "SFML/Graphics.hpp"
 #include "ui/UIText.h"
+#include "ui/windows/UIWindowsButton.h"
+#include "ui/windows/UIWindowsDropDown.h"
 #include "Managers/AssetManager.h"
 #include "Nodes/AudioSource.h"
 #include "TimeTracker.h"
@@ -20,17 +22,21 @@ public:
 	Node* anItem;
 	bool isPressed = false;
 
-	static void K()
-	{
-
-	}
-
 	void OnStart() override
 	{
 		myScene = new Scene();
 		AssetManager::Init();
-		tempText = new UIText(sf::Vector2f(0, 0), nullptr, "Play", sf::Color::Black,"Fonts/ArialCE", 60);
-		tempButton = new UIButton(sf::Vector2f(100, 100), myScene, tempText, 100, 30, sf::Color::White, K);
+		tempText = new UIText(sf::Vector2f(0, 0), nullptr, "File", sf::Color::Black, "Fonts/segoeui", 64);
+		//tempButton = new UIButton(sf::Vector2f(0, 0), myScene, tempText, 41, 19, sf::Color::White, K);
+		tempFileButton = new UIWindowsButton("File", { 41 * 4, 0 }, myScene);
+		tempEditButton = new UIWindowsButton("Edit", { 82 * 4, 0 }, myScene);
+		//tempFileButton->AddChild(tempEditButton);
+		
+		std::function<void()> tempFunction = [this]() { std::cout << "bruh" << std::endl; };
+		tempFileButton->SetOnClick(tempFunction);
+
+		tempFileDropDown = new UIWindowsDropDown("File", { 0, 0 }, myScene);
+
 		myAudioSource = AudioSource();
 	}
 
@@ -70,6 +76,8 @@ public:
 			anItem->OnUpdate();
 		}
 		myScene->OnUpdate();
+
+		//tempFileButton->OnUpdate();
 	}
 
 	void OnRender() override
@@ -82,11 +90,17 @@ public:
 			anItem->OnRender(myRawWindow);
 		}
 		myScene->OnRender(myRawWindow);
+
+		//tempFileButton->OnRender(myRawWindow);
 	}
 
 private:
 	UIText* tempText;
-	UIButton* tempButton;
+	//UIButton* tempButton;
+	UIWindowsButton* tempFileButton;
+	UIWindowsButton* tempEditButton;
+	UIWindowsButton* tempViewButton;
+	UIWindowsDropDown* tempFileDropDown;
 };
 
 Window* BuildWindow()

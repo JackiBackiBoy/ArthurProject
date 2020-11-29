@@ -6,7 +6,6 @@
 class UIText : public UIElement
 {
 public:
-	UIText() : UIElement() {};
 	UIText(const sf::Vector2f& aPosition, Node* aParent, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize);
 	inline sf::Text* GetRawText() { return myRawText; }
 
@@ -17,13 +16,15 @@ public:
 	inline int GetTextHeight() const { return myRawText->getGlobalBounds().height; }
 	inline int GetFontSize() const { return myFontSize; }
 	inline void SetFontSize(const int& aFontSize) const { myRawText->setCharacterSize(aFontSize); }
-	inline void SetFontPosition(const sf::Vector2f& aPosition) { myRawText->setPosition({ aPosition.x - myRawText->getGlobalBounds().left, aPosition.y - myRawText->getGlobalBounds().top }); };
+	inline void SetFontPosition(const sf::Vector2f& aPosition) { myRawText->setPosition({ aPosition.x, aPosition.y }); };
 
 private:
 	std::string myText;
 	sf::Text* myRawText;
 	sf::Font* myFont;
 	sf::Color myColor;
+	sf::Color myHoverColor;
+
 	int myFontSize;
 };
 #endif

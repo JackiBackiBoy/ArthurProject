@@ -19,7 +19,8 @@ UIText::UIText(const sf::Vector2f& aPosition, Node* aParent, const std::string& 
 void UIText::OnUpdate()
 {
 	//SetFontPosition(GetPosition());
-	//myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y - myRawText->getGlobalBounds().top));
+	//myRawText->setPosition(sf::Vector2f(GetPosition().x - GetTextWidth(), GetPosition().y));
+	//SetFontPosition({ GetPosition().x, GetPosition().y });
     UIElement::OnUpdate();
 }
 

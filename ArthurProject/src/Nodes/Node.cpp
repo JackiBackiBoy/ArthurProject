@@ -39,7 +39,11 @@ void Node::SetPosition(const sf::Vector2f& aPosition)
 
 sf::Vector2f Node::GetPosition() const
 {
-	if (myParent == nullptr) return myPosition;
+	if (myParent == nullptr)
+	{
+		return myPosition;
+	}
+
 	return myPosition + myParent->GetPosition();
 }
 

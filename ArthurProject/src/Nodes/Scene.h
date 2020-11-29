@@ -3,7 +3,7 @@
 class Scene : public Node
 {
 public:
-	Scene() : Node(sf::Vector2f(0,0), nullptr) {};
+	Scene() : Node(sf::Vector2f(0,0), "Scene") {};
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;
 };

@@ -47,15 +47,8 @@ void AssetManager::Init()
 			//add a spot with the index [filename]
 			myFonts.emplace(s, sf::Font());
 			//Set Font in map
-			if (!myFonts[s].loadFromFile(myPathOrigin + "/" + s + ".ttf"))
-			{
-				std::cout << "Failed to load font" << std::endl;
-			}
-			else
-			{
-				std::cout << "Success loading font" << std::endl;
-				std::string temp = s;
-			}
+			!myFonts[s].loadFromFile(myPathOrigin + "/" + s + ".ttf");
+
 		}
 		//If File is a wav file
 		else if (s.find(".wav") != std::string::npos)

@@ -13,8 +13,6 @@ void Window::Run()
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
 
-	MusicManager::TransitionTo("New Hope");
-
 	// Call OnStart once
 	OnStart();
 
@@ -56,5 +54,6 @@ void Window::OnRender()
 {
 
 }
+
 
 Window* Window::CurrentWindow = nullptr;

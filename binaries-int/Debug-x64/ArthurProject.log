@@ -1,20 +1,53 @@
-﻿  Sandbox.cpp
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+﻿  NodeManager.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(327,1): error C2207: 'std::pair<_Ty1,_Ty2>::second': a member of a class template cannot acquire a function type
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xtree(330): message : see reference to class template instantiation 'std::pair<const std::string,Node *(void)>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xtree(2021): message : see reference to class template instantiation 'std::_Tree_node<std::pair<const std::string,Node *(void)>,std::_Default_allocator_traits<_Alloc>::void_pointer>' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::pair<const std::string,Node *(void)>>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xtree(2017): message : while compiling class template member function 'void std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>::_Alloc_sentinel_and_proxy(void)'
+          with
+          [
+              _Kty=std::string,
+              _Ty=Node *(void),
+              _Pr=std::less<std::string>,
+              _Alloc=std::allocator<std::pair<const std::string,Node *(void)>>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xtree(886): message : see reference to function template instantiation 'void std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>::_Alloc_sentinel_and_proxy(void)' being compiled
+          with
+          [
+              _Kty=std::string,
+              _Ty=Node *(void),
+              _Pr=std::less<std::string>,
+              _Alloc=std::allocator<std::pair<const std::string,Node *(void)>>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\map(75): message : see reference to class template instantiation 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>' being compiled
+          with
+          [
+              _Kty=std::string,
+              _Ty=Node *(void),
+              _Pr=std::less<std::string>,
+              _Alloc=std::allocator<std::pair<const std::string,Node *(void)>>
+          ]
+C:\GameDevelopment\ArthurProject\ArthurProject\src\Managers\NodeManager.cpp(2): message : see reference to class template instantiation 'std::map<std::string,Node *(void),std::less<std::string>,std::allocator<std::pair<const std::string,Node *(void)>>>' being compiled
+  Sandbox.cpp
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-F:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(46,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(43,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-F:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(92,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(89,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=int
@@ -23,7 +56,7 @@ F:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(92,61): warning C4244
           [
               T=float
           ]
-F:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(92,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\GameDevelopment\ArthurProject\ArthurProject\src\Sandbox.cpp(89,47): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=int
@@ -32,17 +65,4 @@ F:\Development\ArthurProject\ArthurProject\src\Sandbox.cpp(92,47): warning C4244
           [
               T=float
           ]
-  UIButton.cpp
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(18,39): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
   Generating Code...
-  ArthurProject.vcxproj -> F:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe

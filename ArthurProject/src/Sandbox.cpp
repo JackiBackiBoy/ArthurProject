@@ -46,7 +46,7 @@ public:
 		myOptionsHolder = new UIText(sf::Vector2f(myWidth - 300, 0), "opthold", "Options", sf::Color::Cyan, "Fonts/ArialCE", 30, false);
 		myScene->AddChild(myOptionsHolder);
 		myOptionsHolder->AddChild(new UIText(sf::Vector2f(-50, 30), "MasVol", "Master Volume:" + std::to_string((int)Options::GetMasterVolume()), sf::Color::Cyan, "Fonts/ArialCE", 20, false));
-		myOptionsHolder->GetChild<UIText>("MasVol")->AddChild(new UIButton(sf::Vector2f(170, 0), "MasVol+", new UIText(sf::Vector2f(0, 0), "text", "+", sf::Color::Black, "Fonts/ArialCE", 20), 20, 20, sf::Color::White, []() { if (Options::GetMasterVolume() < 100)  Options::SetMasterVolume(Options::GetMasterVolume() + 10); ; }));
+		myOptionsHolder->GetChild<UIText>("MasVol")->AddChild(new UIButton(sf::Vector2f(170, 0), "MasVol+", new UIText(sf::Vector2f(0, 0), "text", "+", sf::Color::Black, "Fonts/ArialCE", 20), 20, 20, sf::Color::White, []() { if (Options::GetMasterVolume() < 100)  Options::SetMasterVolume(Options::GetMasterVolume() + 10); }));
 		myOptionsHolder->GetChild<UIText>("MasVol")->AddChild(new UIButton(sf::Vector2f(-20, 0), "MasVol-", new UIText(sf::Vector2f(0, 0), "text", "-", sf::Color::Black, "Fonts/ArialCE", 20), 20, 20, sf::Color::White, []() { if (Options::GetMasterVolume() > 0)Options::SetMasterVolume(Options::GetMasterVolume() - 10); }));
 
 		myOptionsHolder->AddChild(new UIText(sf::Vector2f(-50, 50), "SFX", "Sound Effects:" + std::to_string((int)Options::GetSoundEffectVolume()), sf::Color::Cyan, "Fonts/ArialCE", 20, false));

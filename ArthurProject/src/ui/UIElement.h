@@ -7,8 +7,8 @@
 class UIElement : public Node
 {
 public:
-	UIElement() : Node({ 0, 0 }, nullptr) {};
-	UIElement(const sf::Vector2f& aPosition, Node* aParent) : Node(aPosition, aParent) {};
+	UIElement() : Node({ 0, 0 }, "UIElement") {};
+	UIElement(const sf::Vector2f& aPosition, const std::string& aName) : Node(aPosition, aName) {};
 
 	inline void OnUpdate() override { Node::OnUpdate(); };
 	inline void OnRender(sf::RenderWindow* aWindow) override { Node::OnRender(aWindow); };

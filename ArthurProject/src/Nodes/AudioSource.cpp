@@ -11,7 +11,7 @@ void AudioSource::Play(std::string aString)
 	mySounds.back().play();
 }
 
-AudioSource::AudioSource(const sf::Vector2f& aPosition, Node* aParent):Node(aPosition, aParent)
+AudioSource::AudioSource(const sf::Vector2f& aPosition, const std::string& aName) : Node(aPosition, aName)
 {
 	mySounds = std::vector<sf::Sound>();
 }

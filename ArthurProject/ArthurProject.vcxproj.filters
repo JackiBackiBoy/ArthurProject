@@ -13,7 +13,6 @@
     <ClCompile Include="src\Managers\MusicManager.cpp" />
     <ClCompile Include="src\TimeTracker.cpp" />
     <ClCompile Include="src\Nodes\Scene.cpp" />
-    <ClCompile Include="src\Nodes\Bush.cpp" />
     <ClCompile Include="src\Nodes\AudioSource.cpp" />
     <ClCompile Include="src\data\Options.cpp" />
     <ClCompile Include="src\data\SaveLoad.cpp" />
@@ -31,7 +30,6 @@
     <ClInclude Include="src\Managers\MusicManager.h" />
     <ClInclude Include="src\TimeTracker.h" />
     <ClInclude Include="src\Nodes\Scene.h" />
-    <ClInclude Include="src\Nodes\Bush.h" />
     <ClInclude Include="src\Nodes\AudioSource.h" />
     <ClInclude Include="src\data\Options.h" />
     <ClInclude Include="src\data\SaveLoad.h" />

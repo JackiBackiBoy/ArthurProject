@@ -6,8 +6,8 @@
 class UIText : public UIElement
 {
 public:
-	UIText() : UIElement() {};
-	UIText(const sf::Vector2f& aPosition, Node* aParent, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize, bool aButtonTextFlag = true);
+	UIText() : UIElement({ 0,0 }, "UIText") {};
+	UIText(const sf::Vector2f& aPosition, const std::string& aName, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize, bool aButtonTextFlag = true);
 	inline sf::Text* GetRawText() { return myRawText; }
 
 	void OnUpdate() override;

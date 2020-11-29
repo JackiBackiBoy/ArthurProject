@@ -1,12 +1,8 @@
 #include "Node.h"
-Node::Node(const sf::Vector2f& aPosition, Node* aParent)
+Node::Node(const sf::Vector2f& aPosition, const std::string& aName)
 {
 	myPosition = aPosition;
-	myParent = aParent;
-	if (myParent != nullptr)
-	{
-		myParent->AddChild(this);
-	}
+	myName = aName;
 }
 
 Node::~Node()
@@ -17,8 +13,17 @@ Node::~Node()
 		delete myChildren.at(i);
 		myChildren.at(i) = nullptr;
 	}
-	delete myParent;
-	myParent = nullptr;
+	if (myParent != nullptr) 
+	{
+		myParent->OrphanChild(this);
+		delete myParent;
+		myParent = nullptr;
+	}
+}
+
+void Node::OrphanChild(Node* aChild) 
+{
+	myChildren.erase(std::find(myChildren.begin(), myChildren.end(), aChild));
 }
 
 void Node::SetActive(const bool& aState)

@@ -2,8 +2,8 @@
 #include "SFML/Window/Mouse.hpp"
 #include "core/Window.h"
 
-UIButton::UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)())
-	: myWidth(aWidth), myHeight(aHeight), myButtonColor(aButtonColor), myOnClick(anOnClick), UIElement(aPosition, aParent)
+UIButton::UIButton(const sf::Vector2f& aPosition, const std::string& aName, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)())
+	: myWidth(aWidth), myHeight(aHeight), myButtonColor(aButtonColor), myOnClick(anOnClick), UIElement(aPosition, aName)
 {
 	myRectangle = sf::IntRect((int)GetPosition().x, (int)GetPosition().y, myWidth, myHeight);
 	myButtonShape = sf::RectangleShape(sf::Vector2f((float)myWidth, (float)myHeight));
@@ -17,13 +17,11 @@ UIButton::UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, 
 	aText->SetFontSize(tempHeaviestScale * aText->GetFontSize());
 	AddChild(aText);
 
-	UIText& tempChild = *GetChild<UIText>(0);
-
 	sf::Vector2f tempButtonCenter = { (float)(myWidth / 2), (float)(myHeight / 2) };
-	sf::Vector2f tempTextCenter = { (float)(tempChild.GetTextWidth() / 2), (float)(tempChild.GetTextHeight() / 2) };
+	sf::Vector2f tempTextCenter = { (float)(aText->GetTextWidth() / 2), (float)(aText->GetTextHeight() / 2) };
 	sf::Vector2f tempNewPosition = { tempButtonCenter.x - tempTextCenter.x, tempButtonCenter.y - tempTextCenter.y };
 
-	tempChild.SetFontPosition(myPosition + tempNewPosition);
+	aText->SetFontPosition(myPosition + tempNewPosition);
 
 
 	myPressedFlag = false;

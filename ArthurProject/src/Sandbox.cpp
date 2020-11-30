@@ -7,7 +7,6 @@
 #include "Nodes/AudioSource.h"
 #include "TimeTracker.h"
 #include "Nodes\Scene.h"
-#include "Nodes\Bush.h"
 
 class Sandbox : public Window
 {
@@ -24,20 +23,23 @@ public:
 
 	void OnStart() override
 	{
-		myScene = new Scene();
 		AssetManager::Init();
-		tempText = new UIText(sf::Vector2f(0, 0), nullptr, "File", sf::Color::Black, "Fonts/segoeui", 64);
+		myScene = new Scene();
+		tempText = new UIText(sf::Vector2f(0, 0), "text", "File", sf::Color::Black, "Fonts/segoeui", 64);
 		//tempButton = new UIButton(sf::Vector2f(0, 0), myScene, tempText, 41, 19, sf::Color::White, K);
-		tempFileButton = new UIWindowsButton("File", { 41 * 4, 0 }, myScene);
-		tempEditButton = new UIWindowsButton("Edit", { 82 * 4, 0 }, myScene);
+		tempFileButton = new UIWindowsButton("File", { 41 * 4, 0 }, "FileBtn");
+		tempEditButton = new UIWindowsButton("Edit", { 82 * 4, 0 }, "EditBtn");
 		//tempFileButton->AddChild(tempEditButton);
-		
+		myScene->AddChild(tempFileButton);
+		myScene->AddChild(tempEditButton);
+
 		std::function<void()> tempFunction = [this]() { std::cout << "bruh" << std::endl; };
 		tempFileButton->SetOnClick(tempFunction);
 
-		tempFileDropDown = new UIWindowsDropDown("File", { 0, 0 }, myScene);
+		tempFileDropDown = new UIWindowsDropDown("File", { 0, 0 }, "FileDD");
+		myScene->AddChild(tempFileDropDown);
 
-		myAudioSource = AudioSource();
+	//	myAudioSource = AudioSource(sf::Vector2f(0, 0), "AudioSource");
 	}
 
 	void OnUpdate() override
@@ -59,7 +61,7 @@ public:
 	
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !isPressed)
 		{
-			anItem = new Bush(sf::Vector2f(0, 0), nullptr);
+			//anItem = new Bush(sf::Vector2f(0, 0));
 			//anItem->AddChild(new UIButton());
 			isPressed = true;
 		}

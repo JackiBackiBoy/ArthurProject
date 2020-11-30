@@ -2,8 +2,8 @@
 #include "Managers/AssetManager.h"
 #include <ui/UIButton.h>
 
-UIText::UIText(const sf::Vector2f& aPosition, Node* aParent, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize)
-	: myColor(aColor), myFontSize(aFontSize), UIElement(aPosition, aParent)
+UIText::UIText(const sf::Vector2f& aPosition, const std::string& aName, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize)
+	: myColor(aColor), myFontSize(aFontSize), UIElement(aPosition, aName)
 {
 	// Load desired font
 	myFont = &AssetManager::GetFont(aFontName);

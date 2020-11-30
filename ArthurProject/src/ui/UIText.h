@@ -6,7 +6,7 @@
 class UIText : public UIElement
 {
 public:
-	UIText(const sf::Vector2f& aPosition, Node* aParent, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize);
+	UIText(const sf::Vector2f& aPosition, const std::string& aName, const std::string& aText, const sf::Color& aColor, const std::string& aFontName, const int& aFontSize);
 	inline sf::Text* GetRawText() { return myRawText; }
 
 	void OnUpdate() override;

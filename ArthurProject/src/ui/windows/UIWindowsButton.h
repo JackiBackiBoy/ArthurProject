@@ -6,7 +6,7 @@
 class UIWindowsButton : public UIButton
 {
 public:
-	UIWindowsButton(const std::string& aText, const sf::Vector2f& aPosition, Node* aParent);
+	UIWindowsButton(const std::string& aText, const sf::Vector2f& aPosition, const std::string& aName);
 
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;

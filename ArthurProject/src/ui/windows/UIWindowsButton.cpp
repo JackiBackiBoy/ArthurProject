@@ -1,7 +1,7 @@
 #include "UIWindowsButton.h"
 
-UIWindowsButton::UIWindowsButton(const std::string& aText, const sf::Vector2f& aPosition, Node* aParent)
-	: UIButton(aPosition, aParent, new UIText(aPosition, nullptr, aText, sf::Color::Black, "Fonts/segoeui", 64), 41, 19, sf::Color::White, nullptr)
+UIWindowsButton::UIWindowsButton(const std::string& aText, const sf::Vector2f& aPosition, const std::string& aName)
+	: UIButton(aPosition, aName, new UIText(aPosition, aName, aText, sf::Color::Black, "Fonts/segoeui", 64), 41, 19, sf::Color::White, nullptr)
 {
 	//myBorderShape = sf::RectangleShape({ myWidth, myHeight });
 	//myBorderShape.

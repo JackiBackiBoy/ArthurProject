@@ -1,11 +1,11 @@
 #include "UIWindowsDropDown.h"
 
-UIWindowsDropDown::UIWindowsDropDown(const std::string& aHeaderTitle, const sf::Vector2f& aPosition, Node* aParent) : UIElement(aPosition, aParent)
+UIWindowsDropDown::UIWindowsDropDown(const std::string& aHeaderTitle, const sf::Vector2f& aPosition, const std::string& aName) : UIElement(aPosition, aName)
 {
-	myHeaderButton = new UIWindowsButton(aHeaderTitle, { 0, 0 }, this);
-
-	AddButton("Save");
-	AddButton("Load");
+	myHeaderButton = new UIWindowsButton(aHeaderTitle, { 0, 0 }, aName + "Btn");
+	myButtons = std::vector<UIWindowsButton*>();
+	//AddButton("Save");
+	//AddButton("Load");
 }
 
 
@@ -23,6 +23,6 @@ void UIWindowsDropDown::OnRender(sf::RenderWindow* aWindow)
 void UIWindowsDropDown::AddButton(const std::string& aButtonName, const std::function<void()>* anOnClick)
 {
 	sf::Vector2f tempCalculatedPos = { (float)10, (float)((myButtons.size() + 1) * 19) };
-
-	myButtons.push_back(new UIWindowsButton(aButtonName, tempCalculatedPos, myHeaderButton));
+	myHeaderButton->AddChild(new UIWindowsButton(aButtonName, tempCalculatedPos, aButtonName));
+	myButtons.push_back(myHeaderButton->GetChild<UIWindowsButton>(aButtonName));
 }

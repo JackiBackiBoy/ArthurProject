@@ -7,8 +7,8 @@
 class UIButton : public UIElement
 {
 public:
-	UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)());
-	//UIButton(const sf::Vector2f& aPosition, Node* aParent, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, std::function<void()>& lambda);
+	UIButton(const sf::Vector2f& aPosition, const std::string& aName, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)());
+	//UIButton(const sf::Vector2f& aPosition, const std::string& aName, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, std::function<void()>& lambda);
 
 	virtual void OnUpdate() override;
 	virtual void OnRender(sf::RenderWindow* aWindow) override;

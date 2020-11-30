@@ -1,12 +1,13 @@
-﻿  UIWindowsDropDown.cpp
-C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(15,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+﻿  UIButton.cpp
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIText.h(15,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIText.h(16,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-  ArthurProject.vcxproj -> C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe
+C:\GameDevelopment\ArthurProject\ArthurProject\src\ui\UIButton.cpp(19,39): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+  ArthurProject.vcxproj -> C:\GameDevelopment\ArthurProject\binaries\Debug-x64\ArthurProject.exe

@@ -7,7 +7,7 @@
 class UIWindowsDropDown : public UIElement
 {
 public:
-	UIWindowsDropDown(const std::string& aHeaderTitle, const sf::Vector2f& aPosition, Node* aParent);
+	UIWindowsDropDown(const std::string& aHeaderTitle, const sf::Vector2f& aPosition, const std::string& aName);
 
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;

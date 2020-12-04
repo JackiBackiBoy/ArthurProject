@@ -8,6 +8,7 @@ public:
 	Camera(const sf::Vector2f& aPosition,std::string aName);
 	~Camera();
 
+	void OnStart() override;
 	void OnUpdate() override;
 	inline void OnRender(sf::RenderWindow* aWindow) override { Node::OnRender(aWindow); };
 	void SetPosition(const sf::Vector2f& aPosition);

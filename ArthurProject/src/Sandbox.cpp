@@ -71,7 +71,8 @@ public:
 
 		tempFileDropDown = new UIWindowsDropDown("File", { 0, 0 }, "FileDD");
 		myUiScene->AddChild(tempFileDropDown);
-
+		myScene->OnStart();
+		myUiScene->OnStart();
 		//	myAudioSource = AudioSource(sf::Vector2f(0, 0), "AudioSource");
 	}
 

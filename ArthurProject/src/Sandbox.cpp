@@ -57,6 +57,10 @@ public:
 		myScene = new Scene();
 		myUiScene = new Scene();
 
+
+		myScene->AddChild(new PolygonCollider(sf::Vector2f(0, 0), "testCol", 4, 25));
+		myScene->AddChild(new PolygonCollider(sf::Vector2f(0, 100), "testCol", 4, 25));
+
 		//myScene->AddChild(new SpriteRenderer(sf::Vector2f(0, 0), "aaa", AssetManager::GetTexture("TempAssets/ENEMIES8bit_Blob Death")));
 
 		myScene->AddChild(new Camera(sf::Vector2f(-200, 0), "MainCamera"));

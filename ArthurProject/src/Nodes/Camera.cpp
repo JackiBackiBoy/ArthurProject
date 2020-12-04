@@ -7,13 +7,14 @@ Camera::Camera(const sf::Vector2f& aPosition, std::string aName) : Node(aPositio
 {
 
 	myView = sf::View(aPosition, (sf::Vector2f)Window::CurrentWindow->GetRawWindow()->getSize());
-	Window::CurrentWindow->GetRawWindow()->setView(myView);
 	myZoom = 1;
 }
 
 void Camera::OnUpdate()
 {
 	Node::OnUpdate();
+	((Scene*)myParent)->SetView(myView);
+
 }
 
 void Camera::SetPosition(const sf::Vector2f& aPosition)

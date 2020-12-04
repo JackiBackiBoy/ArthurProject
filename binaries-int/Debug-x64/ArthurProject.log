@@ -1,25 +1,2 @@
-﻿  Sandbox.cpp
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-  Window.cpp
-  UIWindowsDropDown.cpp
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-  Generating Code...
+﻿  Camera.cpp
   ArthurProject.vcxproj -> F:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe

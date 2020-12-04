@@ -3,6 +3,12 @@
 #include "core/Window.h"
 #include "core/Body.h"
 #include "Nodes/PolygonCollider.h"
+
+#ifndef NODE_H
+#define NODE_H
+
+class Node;
+
 class Scene : public Node
 {
 public:
@@ -24,3 +30,4 @@ private:
 
 };
 
+#endif

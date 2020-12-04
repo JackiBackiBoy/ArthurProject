@@ -3,6 +3,12 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <vector>
+
+#ifndef SCENE_H 
+#define SCENE_H
+
+class Scene;
+
 class Node
 {
 public:
@@ -18,6 +24,7 @@ public:
 	bool GetActive();
 	void AddChild(Node* aChild);
 	void OrphanChild(Node* aChild);
+	Scene* GetActiveScene();
 
 	template <typename T>
 	T* GetChild(const std::string& aName)
@@ -39,3 +46,4 @@ protected:
 	sf::Vector2f myPosition;
 	std::string myName;
 };
+#endif 

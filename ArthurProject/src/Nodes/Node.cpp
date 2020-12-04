@@ -21,6 +21,15 @@ Node::~Node()
 	}
 }
 
+Scene* Node::GetActiveScene() 
+{
+	if (myParent == nullptr) 
+	{
+		return (Scene*)this;
+	}
+	return myParent->GetActiveScene();
+}
+
 void Node::OrphanChild(Node* aChild) 
 {
 	myChildren.erase(std::find(myChildren.begin(), myChildren.end(), aChild));

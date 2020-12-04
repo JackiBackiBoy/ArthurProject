@@ -1,6 +1,12 @@
 #pragma once
 #include "Nodes\Node.h"
 #include "core/Window.h"
+
+#ifndef NODE_H
+#define NODE_H
+
+class Node;
+
 class Scene : public Node
 {
 public:
@@ -12,3 +18,4 @@ private:
 	sf::View myView;
 };
 
+#endif

@@ -21,7 +21,7 @@ public:
 
 	std::vector<Body*> myBodies;
 	std::vector<Manifold> myContacts;
-	int myIterations;
+	int myIterations = 1;
 
 	AudioSource myAudioSource;
 	float myTimer = 0;
@@ -57,7 +57,7 @@ public:
 		myScene = new Scene();
 		myUiScene = new Scene();
 
-		myScene->AddChild(new SpriteRenderer(sf::Vector2f(0, 0), "aaa", AssetManager::GetTexture("TempAssets/ENEMIES8bit_Blob Death")));
+		//myScene->AddChild(new SpriteRenderer(sf::Vector2f(0, 0), "aaa", AssetManager::GetTexture("TempAssets/ENEMIES8bit_Blob Death")));
 
 		myScene->AddChild(new Camera(sf::Vector2f(-200, 0), "MainCamera"));
 		myUiScene->AddChild(new UIText(sf::Vector2f(0, 0), "FPStext", "Fps:", sf::Color::White, "Fonts/segoeui", 64));
@@ -85,9 +85,9 @@ public:
 		PolygonShape tempPoly = PolygonShape();
 		Vec2* tempVecArr = new Vec2[4];
 		tempVecArr[0].Set(0, 0);
-		tempVecArr[1].Set(100, 0);
-		tempVecArr[2].Set(0, 100);
-		tempVecArr[3].Set(100, 100);
+		tempVecArr[1].Set(50, 0);
+		tempVecArr[2].Set(50, 50);
+		tempVecArr[3].Set(0, 50);
 		tempPoly.Set(tempVecArr, 4);
 		delete[] tempVecArr;
 		Body* A = new Body(&tempPoly, 0, 0);
@@ -95,22 +95,25 @@ public:
 		A->restitution = 0.2f;
 		A->dynamicFriction = 0.2f;
 		A->staticFriction = 0.4f;
+		A->position = Vec2(50, 100);
+		A->SetOrient(PI / 8);
 
 		PolygonShape tempPoly1 = PolygonShape();
-		Vec2* tempVecArr1 = new Vec2[4];
+		Vec2* tempVecArr1 = new Vec2[6];
 		tempVecArr1[0].Set(0, 0);
-		tempVecArr1[1].Set(100, 0);
-		tempVecArr1[2].Set(0, 100);
-		tempVecArr1[3].Set(100, 100);
-		tempPoly1.Set(tempVecArr1, 4);
+		tempVecArr1[1].Set(25, -10);
+		tempVecArr1[2].Set(50, 0);
+		tempVecArr1[3].Set(50, 50);
+		tempVecArr1[4].Set(0, 50);
+		tempVecArr1[5].Set(-25, 25);
+		tempPoly1.Set(tempVecArr1, 6);
 		delete[] tempVecArr1;
 		Body* B = new Body(&tempPoly1, 0, 0);
-		B->position = Vec2(0, 50);
-
-		B->restitution = 0.2f;
+		B->position = Vec2(50, -100);
+		B->SetOrient(PI *1.5f);
+		B->restitution = 0.1f;
 		B->dynamicFriction = 0.2f;
 		B->staticFriction = 0.4f;
-
 		myBodies.push_back(A);
 		myBodies.push_back(B);
 
@@ -243,13 +246,22 @@ public:
 		}
 		myScene->OnRender(myRawWindow);
 
+		int iteration = 0;
 		for (Body* body : myBodies)
 		{
-			sf::VertexBuffer tempVBuff;
-			tempVBuff.create(((PolygonShape*)body->shape)->m_vertexCount);
-			sf::Vertex tempVArr[((PolygonShape*)body->shape)->m_vertexCount];
-			myRawWindow->draw(tempVBuff);
+			int vCount = ((PolygonShape*)body->shape)->m_vertexCount + 1;
+			sf::VertexArray tempVBuff(sf::PrimitiveType::TrianglesFan, vCount);
+			for (int i = 0; i < vCount; i++)
+			{
+				Vec2 tempPos = ((PolygonShape*)body->shape)->m_vertices[i % (vCount - 1)];
 
+				tempPos = Vec2(tempPos.x * cos(body->orient) - tempPos.y * sin(body->orient), tempPos.x * sin(body->orient) + tempPos.y * cos(body->orient));
+				tempVBuff[i].position = sf::Vector2f(tempPos.x + body->position.x, tempPos.y + body->position.y);
+				tempVBuff[i].color = sf::Color::Color(128 * iteration + 127, 128 * iteration + 127, 128 * iteration + 127, 255);
+
+			}
+			myRawWindow->draw(tempVBuff);
+			iteration++;
 		}
 		myUiScene->OnRender(myRawWindow);
 		//tempFileButton->OnRender(myRawWindow);

@@ -113,7 +113,7 @@ public:
 		myUiScene->OnUpdate();
 	}
 
-	void OnRender(bool aUiDrawFlag) override
+	void OnRender() override
 	{
 		//myRawWindow->draw(*tempText->GetRawText());
 		//tempButton->OnRender(myRawWindow);

@@ -52,6 +52,14 @@ sf::Vector2f Node::GetPosition() const
 	return myPosition + myParent->GetPosition();
 }
 
+void Node::OnStart() 
+{
+	for (int i = 0; i < myChildren.size(); i++) 
+	{
+		myChildren.at(i)->OnStart();
+	}
+}
+
 void Node::OnUpdate()
 {
 	for (int i = 0; i < myChildren.size(); i++)

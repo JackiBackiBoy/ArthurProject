@@ -22,6 +22,10 @@
     <ClCompile Include="src\data\Options.cpp" />
     <ClCompile Include="src\data\SaveLoad.cpp" />
     <ClCompile Include="src\Managers\InputManager.cpp" />
+    <ClCompile Include="src\core\Manifold.cpp" />
+    <ClCompile Include="src\core\Body.cpp" />
+    <ClCompile Include="src\core\Precompiled.cpp" />
+    <ClCompile Include="src\core\Collision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
@@ -43,6 +47,12 @@
     <ClInclude Include="src\data\Options.h" />
     <ClInclude Include="src\data\SaveLoad.h" />
     <ClInclude Include="src\Managers\InputManager.h" />
+    <ClInclude Include="src\core\Manifold.h" />
+    <ClInclude Include="src\core\Shape.h" />
+    <ClInclude Include="src\core\Math.h" />
+    <ClInclude Include="src\core\Body.h" />
+    <ClInclude Include="src\core\Precompiled.h" />
+    <ClInclude Include="src\core\Collision.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

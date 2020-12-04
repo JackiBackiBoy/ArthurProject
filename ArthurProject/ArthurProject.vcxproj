@@ -163,6 +163,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\Collision.cpp" />
+    <ClCompile Include="src\core\Precompiled.cpp" />
+    <ClCompile Include="src\core\Body.cpp" />
+    <ClCompile Include="src\core\Manifold.cpp" />
     <ClCompile Include="src\Managers\InputManager.cpp" />
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="src\Managers\NodeManager.cpp" />
@@ -186,6 +190,12 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\Collision.h" />
+    <ClInclude Include="src\core\Precompiled.h" />
+    <ClInclude Include="src\core\Body.h" />
+    <ClInclude Include="src\core\Manifold.h" />
+    <ClInclude Include="src\core\Math.h" />
+    <ClInclude Include="src\core\Shape.h" />
     <ClInclude Include="src\Managers\InputManager.h" />
     <ClInclude Include="src\Nodes\Camera.h" />
     <ClInclude Include="src\Managers\NodeManager.h" />

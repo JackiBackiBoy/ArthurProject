@@ -12,12 +12,15 @@ UIText::UIText(const sf::Vector2f& aPosition, const std::string& aName, const st
 	myRawText->setCharacterSize(myFontSize);
 	myRawText->setFillColor(aColor);
 
+	myRawText->setPosition(GetPosition());
+
 	// Position the text correctly
 	//myRawText->setPosition(sf::Vector2f(GetPosition().x, GetPosition().y - myRawText->getGlobalBounds().top));
 }
 
 void UIText::OnUpdate()
 {
+	myRawText->setPosition(GetPosition());
 	//SetFontPosition(GetPosition());
 	//myRawText->setPosition(sf::Vector2f(GetPosition().x - GetTextWidth(), GetPosition().y));
 	//SetFontPosition({ GetPosition().x, GetPosition().y });
@@ -28,4 +31,10 @@ void UIText::OnRender(sf::RenderWindow* aWindow)
 {
 	aWindow->draw(*myRawText);
 	UIElement::OnRender(aWindow);
+}
+
+void UIText::SetPosition(const sf::Vector2f& aPosition)
+{
+	Node::SetPosition(aPosition);
+	myRawText->setPosition(myPosition);
 }

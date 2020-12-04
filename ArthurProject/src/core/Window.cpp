@@ -1,5 +1,7 @@
 #include "Window.h"
 #include "Managers/MusicManager.h"
+#include <iostream>
+#include "Managers/InputManager.h"
 Window::~Window()
 {
 	delete myRawWindow;
@@ -15,7 +17,7 @@ void Window::Run()
 
 	// Call OnStart once
 	OnStart();
-
+	myRawWindow->setFramerateLimit(500);
 	while (myRawWindow->isOpen())
 	{
 		sf::Event event;
@@ -25,9 +27,9 @@ void Window::Run()
 				myRawWindow->close();
 		}
 
-
 		myRawWindow->clear();
 
+		InputManager::OnUpdate();
 		// Call base functions and overriden versions of OnUpdate and OnRender
 		OnUpdate();
 		Window::OnUpdate();

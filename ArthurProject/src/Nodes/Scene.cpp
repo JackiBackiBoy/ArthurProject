@@ -1,9 +1,15 @@
 #include "Scene.h"
-void Scene::OnUpdate() 
+void Scene::OnUpdate()
 {
 	Node::OnUpdate();
 }
 void Scene::OnRender(sf::RenderWindow* aWindow)
 {
+	aWindow->setView(myView);
 	Node::OnRender(aWindow);
+}
+
+void Scene::SetView(sf::View aView)
+{
+	myView = aView;
 }

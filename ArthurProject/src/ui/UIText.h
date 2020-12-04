@@ -11,12 +11,14 @@ public:
 
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;
+	void SetPosition(const sf::Vector2f& aPosition) override;
 
 	inline int GetTextWidth() const { return myRawText->getGlobalBounds().width; }
 	inline int GetTextHeight() const { return myRawText->getGlobalBounds().height; }
 	inline int GetFontSize() const { return myFontSize; }
 	inline void SetFontSize(const int& aFontSize) const { myRawText->setCharacterSize(aFontSize); }
 	inline void SetFontPosition(const sf::Vector2f& aPosition) { myRawText->setPosition({ aPosition.x, aPosition.y }); };
+	inline void SetText(std::string aString) { myText = aString; myRawText->setString(aString); };
 
 private:
 	std::string myText;

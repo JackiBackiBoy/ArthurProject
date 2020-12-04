@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Managers\InputManager.cpp" />
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="src\Managers\NodeManager.cpp" />
     <ClCompile Include="src\Nodes\Camera.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Managers\InputManager.h" />
     <ClInclude Include="src\Nodes\Camera.h" />
     <ClInclude Include="src\Managers\NodeManager.h" />
     <ClInclude Include="src\data\Options.h" />
@@ -213,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Fonts\ArialCE.ttf" />
+    <Font Include="Assets\Fonts\segoeui.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Bush.png" />

@@ -7,6 +7,9 @@
 #include "Nodes/AudioSource.h"
 #include "TimeTracker.h"
 #include "Nodes\Scene.h"
+#include "Managers/InputManager.h"
+#include "Nodes/Camera.h"
+#include "Nodes/SpriteRenderer.h"
 
 class Sandbox : public Window
 {
@@ -18,71 +21,99 @@ public:
 	float myTimer = 0;
 
 	Scene* myScene;
+	Scene* myUiScene;
 	Node* anItem;
+	Camera* myMainCamera;
+	float myCameraMoveSpeed = 200;
 	bool isPressed = false;
+
+	float myPastDeltaTime[200];
+	int myCurrentPastDeltaTimeIndex;
+	float GetAverageDeltaTime()
+	{
+		myCurrentPastDeltaTimeIndex++;
+		if (myCurrentPastDeltaTimeIndex == 200)
+		{
+			myCurrentPastDeltaTimeIndex = 0;
+		}
+		myPastDeltaTime[myCurrentPastDeltaTimeIndex] = TimeTracker::GetDeltaTime();
+		float tempFloat = 0;
+		for (float f : myPastDeltaTime)
+		{
+			tempFloat += f;
+		}
+		return (tempFloat / 200);
+	}
 
 	void OnStart() override
 	{
 		AssetManager::Init();
 		myScene = new Scene();
+		myUiScene = new Scene();
+
+		myScene->AddChild(new SpriteRenderer(sf::Vector2f(0, 0), "aaa", AssetManager::GetTexture("TempAssets/ENEMIES8bit_Blob Death")));
+
+		myScene->AddChild(new Camera(sf::Vector2f(-200, 0), "MainCamera"));
+		myUiScene->AddChild(new UIText(sf::Vector2f(0,0), "FPStext", "Fps:", sf::Color::White, "Fonts/segoeui", 64));
+		myMainCamera = myScene->GetChild<Camera>("MainCamera");
+
+
 		tempText = new UIText(sf::Vector2f(0, 0), "text", "File", sf::Color::Black, "Fonts/segoeui", 64);
 		//tempButton = new UIButton(sf::Vector2f(0, 0), myScene, tempText, 41, 19, sf::Color::White, K);
 		tempFileButton = new UIWindowsButton("File", { 41 * 4, 0 }, "FileBtn");
 		tempEditButton = new UIWindowsButton("Edit", { 82 * 4, 0 }, "EditBtn");
 		//tempFileButton->AddChild(tempEditButton);
-		myScene->AddChild(tempFileButton);
-		myScene->AddChild(tempEditButton);
+		myUiScene->AddChild(tempFileButton);
+		myUiScene->AddChild(tempEditButton);
 
-		std::function<void()> tempFunction = [this]() { std::cout << "bruh" << std::endl; };
-		tempFileButton->SetOnClick(tempFunction);
+		//std::function<void()> tempFunction = [this]() { std::cout << "bruh" << std::endl; };
+		//tempFileButton->SetOnClick(tempFunction);
 
 		tempFileDropDown = new UIWindowsDropDown("File", { 0, 0 }, "FileDD");
-		myScene->AddChild(tempFileDropDown);
+		myUiScene->AddChild(tempFileDropDown);
 
-	//	myAudioSource = AudioSource(sf::Vector2f(0, 0), "AudioSource");
+		//	myAudioSource = AudioSource(sf::Vector2f(0, 0), "AudioSource");
 	}
 
 	void OnUpdate() override
 	{
 		TimeTracker::Update();
+		myUiScene->GetChild<UIText>("FPStext")->SetText("Fps:" + std::to_string((int)(1 / GetAverageDeltaTime())));
+
+		//Camera Movement (debug)
+		if (InputManager::GetKey(sf::Keyboard::W))
+		{
+			myMainCamera->SetPosition(myMainCamera->GetPosition() - sf::Vector2f(0, TimeTracker::GetDeltaTime() * myCameraMoveSpeed));
+		}
+		if (InputManager::GetKey(sf::Keyboard::A))
+		{
+			myMainCamera->SetPosition(myMainCamera->GetPosition() - sf::Vector2f(TimeTracker::GetDeltaTime() * myCameraMoveSpeed, 0));
+		}
+		if (InputManager::GetKey(sf::Keyboard::S))
+		{
+			myMainCamera->SetPosition(myMainCamera->GetPosition() + sf::Vector2f(0, TimeTracker::GetDeltaTime() * myCameraMoveSpeed));
+		}
+		if (InputManager::GetKey(sf::Keyboard::D))
+		{
+			myMainCamera->SetPosition(myMainCamera->GetPosition() + sf::Vector2f(TimeTracker::GetDeltaTime() * myCameraMoveSpeed, 0));
+		}
+		if (InputManager::GetKey(sf::Keyboard::P))
+		{
+			myMainCamera->Zoom(TimeTracker::GetDeltaTime());
+		}
+		if (InputManager::GetKey(sf::Keyboard::O))
+		{
+			myMainCamera->Zoom(-TimeTracker::GetDeltaTime());
+		}
 
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::G) && myTimer > 1)
-		{
-			myAudioSource.Play("TempAssets/Arrow Flying Past 1");
-			myTimer = 0;
-		}
-		else if (myTimer < 1)
-		{
-			myTimer += TimeTracker::GetDeltaTime();
 
-		}
 
-	
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && !isPressed)
-		{
-			//anItem = new Bush(sf::Vector2f(0, 0));
-			//anItem->AddChild(new UIButton());
-			isPressed = true;
-		}
-		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && isPressed)
-		{
-			isPressed = false;
-			myScene->AddChild(anItem);
-			anItem = nullptr;
-		}
-		if (anItem != nullptr)
-		{
-			sf::Vector2i tempVector = sf::Mouse::getPosition(*myRawWindow);
-			anItem->SetPosition(sf::Vector2f(tempVector.x, tempVector.y));
-			anItem->OnUpdate();
-		}
 		myScene->OnUpdate();
-
-		//tempFileButton->OnUpdate();
+		myUiScene->OnUpdate();
 	}
 
-	void OnRender() override
+	void OnRender(bool aUiDrawFlag) override
 	{
 		//myRawWindow->draw(*tempText->GetRawText());
 		//tempButton->OnRender(myRawWindow);
@@ -92,7 +123,7 @@ public:
 			anItem->OnRender(myRawWindow);
 		}
 		myScene->OnRender(myRawWindow);
-
+		myUiScene->OnRender(myRawWindow);
 		//tempFileButton->OnRender(myRawWindow);
 	}
 

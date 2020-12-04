@@ -10,12 +10,16 @@ public:
 
 	void OnUpdate() override;
 	inline void OnRender(sf::RenderWindow* aWindow) override { Node::OnRender(aWindow); };
+	void SetPosition(const sf::Vector2f& aPosition);
+	void Zoom(float aValue);
+	float GetZoom();
 	sf::Vector2f ScreenToWorldPoint(sf::Vector2f aPosition);
 	sf::Vector2f ScreenToWorldPoint(sf::Vector2i aPosition);
 	sf::Vector2i WorldToScreenPoint(sf::Vector2f aPosition);
 
 private:
 	 sf::View myView;
+	 float myZoom;
 
 };
 

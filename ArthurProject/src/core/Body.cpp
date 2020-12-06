@@ -22,7 +22,7 @@ Body::Body(Shape* shape_, unsigned int x, unsigned int y)
     : shape(shape_->Clone())
 {
     shape->body = this;
-    position.Set((float)x, (float)y);
+    SetPosition(Vec2(x, y));
     velocity.Set(0, 0);
     angularVelocity = 0;
     torque = 0;

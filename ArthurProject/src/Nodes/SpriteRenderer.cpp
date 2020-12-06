@@ -7,6 +7,7 @@ SpriteRenderer::SpriteRenderer(const sf::Vector2f& aPosition, const std::string&
 
 void SpriteRenderer::OnRender(sf::RenderWindow* aWindow)
 {
+	aSprite->setPosition(GetPosition());
 	aWindow->draw(*aSprite);
 	Node::OnRender(aWindow);
 }

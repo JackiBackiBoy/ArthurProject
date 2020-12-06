@@ -295,7 +295,7 @@ inline bool BiasGreaterThan(float a, float b)
     return a >= b * k_biasRelative + a * k_biasAbsolute;
 }
 
-const float gravityScale = 5.0f;
+const float gravityScale = 20.0f;
 const Vec2 gravity(0, 10.0f * gravityScale);
 const float dt = 1.0f / 60.0f;
 

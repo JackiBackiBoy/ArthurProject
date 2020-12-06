@@ -125,8 +125,8 @@ void Manifold::PositionalCorrection(void)
     const float k_slop = 0.05f; // Penetration allowance
     const float percent = 0.4f; // Penetration percentage to correct
     Vec2 correction = (std::max(penetration - k_slop, 0.0f) / (A->im + B->im)) * normal * percent;
-    A->position -= correction * A->im;
-    B->position += correction * B->im;
+    A->SetPosition(A->position - correction * A->im);
+    B->SetPosition(B->position + correction * B->im);
 }
 
 void Manifold::InfiniteMassCorrection(void)

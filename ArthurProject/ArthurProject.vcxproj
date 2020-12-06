@@ -163,13 +163,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Nodes\PlayerController.cpp" />
+    <ClCompile Include="src\Nodes\BoxCollider.cpp" />
     <ClCompile Include="src\Nodes\PolygonCollider.cpp" />
     <ClCompile Include="src\core\Collision.cpp" />
     <ClCompile Include="src\core\Precompiled.cpp" />
     <ClCompile Include="src\core\Body.cpp" />
     <ClCompile Include="src\core\Manifold.cpp" />
     <ClCompile Include="src\Managers\InputManager.cpp" />
-    <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="src\Managers\NodeManager.cpp" />
     <ClCompile Include="src\Nodes\Camera.cpp" />
     <ClCompile Include="src\data\Options.cpp" />
@@ -191,6 +192,8 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Nodes\PlayerController.h" />
+    <ClInclude Include="src\Nodes\BoxCollider.h" />
     <ClInclude Include="src\Nodes\PolygonCollider.h" />
     <ClInclude Include="src\core\Collision.h" />
     <ClInclude Include="src\core\Precompiled.h" />
@@ -231,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Bush.png" />
+    <Image Include="Assets\Player\Temp.png" />
     <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png" />
     <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Hurt.png" />
     <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Idle.png" />

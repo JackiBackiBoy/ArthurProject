@@ -7,13 +7,13 @@ void Scene::OnUpdate()
 
 	// Generate new collision info
 	myContacts.clear();
-	for (unsigned int i = 0; i < myBodies.size(); ++i)
+	for (unsigned int i = 0; i < myColliders.size(); ++i)
 	{
-		Body* A = myBodies[i];
+		Body* A = myColliders[i]->GetBody();
 
-		for (unsigned int j = i + 1; j < myBodies.size(); ++j)
+		for (unsigned int j = i + 1; j < myColliders.size(); ++j)
 		{
-			Body* B = myBodies[j];
+			Body* B = myColliders[j]->GetBody();
 			if (A->im == 0 && B->im == 0)
 				continue;
 			Manifold m(A, B);
@@ -24,29 +24,29 @@ void Scene::OnUpdate()
 	}
 
 	// Integrate forces
-	for (unsigned int i = 0; i < myBodies.size(); ++i)
-		IntegrateForces(myBodies[i], TimeTracker::GetDeltaTime());
+	for (unsigned int i = 0; i < myColliders.size(); ++i)
+		IntegrateForces(myColliders[i]->GetBody(), TimeTracker::GetDeltaTime());
 
 	// Initialize collision
 	for (unsigned int i = 0; i < myContacts.size(); ++i)
 		myContacts[i].Initialize();
 
 	// Solve collisions
-	for (unsigned int i = 0; i < myContacts.size(); ++i)
-		myContacts[i].ApplyImpulse();
+		for (unsigned int i = 0; i < myContacts.size(); ++i)
+			myContacts[i].ApplyImpulse();
 
 	// Integrate velocities
-	for (unsigned int i = 0; i < myBodies.size(); ++i)
-		IntegrateVelocity(myBodies[i], TimeTracker::GetDeltaTime());
+	for (unsigned int i = 0; i < myColliders.size(); ++i)
+		IntegrateVelocity(myColliders[i]->GetBody(), TimeTracker::GetDeltaTime());
 
 	// Correct positions
 	for (unsigned int i = 0; i < myContacts.size(); ++i)
 		myContacts[i].PositionalCorrection();
 
 	// Clear all forces
-	for (unsigned int i = 0; i < myBodies.size(); ++i)
+	for (unsigned int i = 0; i < myColliders.size(); ++i)
 	{
-		Body* b = myBodies[i];
+		Body* b = myColliders[i]->GetBody();
 		b->force.Set(0, 0);
 		b->torque = 0;
 	}
@@ -62,13 +62,13 @@ void Scene::SetView(sf::View aView)
 	myView = aView;
 }
 
-void Scene::AddBody(Body* aBody)
+void Scene::AddCollider(PolygonCollider* aCollider)
 {
-	myBodies.push_back(aBody);
+	myColliders.push_back(aCollider);
 }
-void Scene::RemoveBody(Body* aBody)
+void Scene::RemoveCollider(PolygonCollider* aCollider)
 {
-	myBodies.erase(std::find(myBodies.begin(), myBodies.end(), aBody));
+	myColliders.erase(std::find(myColliders.begin(), myColliders.end(), aCollider));
 }
 
 // see http://www.niksula.hut.fi/~hkankaan/Homepages/gravity.html
@@ -86,7 +86,7 @@ void Scene::IntegrateVelocity(Body* b, float dt)
 	if (b->im == 0.0f)
 		return;
 
-	b->position += b->velocity * dt;
+	b->SetPosition(Vec2(b->position + b->velocity * dt));
 	b->orient += b->angularVelocity * dt;
 	b->SetOrient(b->orient);
 	IntegrateForces(b, dt);

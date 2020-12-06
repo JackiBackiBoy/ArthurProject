@@ -1,9 +1,9 @@
 #include "PolygonCollider.h"
 #include "core/Math.h"
+#include "Nodes/Scene.h"
 
-PolygonCollider::PolygonCollider(sf::Vector2f aPosition, std::string aName, int aVertexCount, sf::Vector2f* someVertices, ColliderMaterial aColMat) : Node(aPosition, aName), myVertexCount(aVertexCount)
+PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, int aVertexCount, sf::Vector2f* someVertices, const ColliderMaterial& aColMat) : Node(aPosition, aName), myVertexCount(aVertexCount)
 {
-
 	myRotationFrozenFlag = false;
 	Vec2* tempVecArr = new Vec2[myVertexCount];
 	for (int i = 0; i < aVertexCount; i++)
@@ -20,8 +20,9 @@ PolygonCollider::PolygonCollider(sf::Vector2f aPosition, std::string aName, int 
 	SetColMat(aColMat);
 }
 
-PolygonCollider::PolygonCollider(sf::Vector2f aPosition, std::string aName, int aVertexCount, float aRadius, ColliderMaterial aColMat ) : Node(aPosition, aName), myVertexCount(aVertexCount)
+PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, int aVertexCount, float aRadius, const ColliderMaterial& aColMat ) : Node(aPosition, aName), myVertexCount(aVertexCount)
 {
+
 	myRotationFrozenFlag = false;
 	Vec2* tempVecArr = new Vec2[myVertexCount];
 
@@ -42,16 +43,29 @@ PolygonCollider::PolygonCollider(sf::Vector2f aPosition, std::string aName, int 
 
 void PolygonCollider::OnStart()
 {
-	myBody->position = Vec2(GetPosition().x, GetPosition().y);
+	Node::OnStart();
+	myBody->SetPosition(Vec2(GetPosition().x, GetPosition().y));
+	GetActiveScene()->AddCollider(this);
 }
 
 void PolygonCollider::OnUpdate()
 {
 	Node::OnUpdate();
+	if (myBody->MovedFlag)
+	{
+		SetPosition(sf::Vector2f(myBody->position.x, myBody->position.y));
+	}
+}
+
+void PolygonCollider::SetPosition(const sf::Vector2f& aPos)
+{
+	Node::SetPosition(aPos);
+	myBody->SetPosition(Vec2(GetPosition().x, GetPosition().y));
 }
 
 void PolygonCollider::OnRender(sf::RenderWindow* aWindow)
 {
+	Node::OnRender(aWindow);
 	int iteration = 0;
 	int vCount = ((PolygonShape*)myBody->shape)->m_vertexCount + 1;
 	sf::VertexArray tempVBuff(sf::PrimitiveType::LineStrip, vCount);
@@ -66,7 +80,6 @@ void PolygonCollider::OnRender(sf::RenderWindow* aWindow)
 	}
 	aWindow->draw(tempVBuff);
 	iteration++;
-
 }
 
 void PolygonCollider::SetStatic(bool aFlag)
@@ -110,6 +123,36 @@ void PolygonCollider::FreezeRotation(bool aFlag)
 			SetColMat(myColMat);
 		}
 	}
+}
+
+void PolygonCollider::SetRotation(float aValue)
+{
+	myBody->SetOrient(aValue);
+}
+
+float PolygonCollider::GetRotation()
+{
+	return myBody->orient;
+}
+
+void PolygonCollider::AddVelocity(const sf::Vector2f& aVal)
+{
+	myBody->velocity += Vec2(aVal.x, aVal.y);
+}
+
+sf::Vector2f PolygonCollider::GetVelocity()
+{
+	return sf::Vector2f(myBody->velocity.x, myBody->velocity.y);
+}
+
+void PolygonCollider::SetVelocity(const sf::Vector2f& aVal)
+{
+	myBody->velocity = Vec2(aVal.x, aVal.y);
+}
+
+Body* PolygonCollider::GetBody()
+{
+	return myBody;
 }
 
 

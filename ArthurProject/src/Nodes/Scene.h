@@ -16,11 +16,11 @@ public:
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;
 	void SetView(sf::View aView);
-	void AddBody(Body* aBody);
-	void RemoveBody(Body* aBody);
+	void AddCollider(PolygonCollider* aCollider);
+	void RemoveCollider(PolygonCollider* aCollider);
 private:
 	sf::View myView;
-	std::vector<Body*> myBodies;
+	std::vector<PolygonCollider*> myColliders;
 	std::vector<Manifold> myContacts;
 	void IntegrateForces(Body* b, float dt);
 	void IntegrateVelocity(Body* b, float dt);

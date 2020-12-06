@@ -29,7 +29,7 @@ void Camera::SetPosition(const sf::Vector2f& aPosition)
 
 void Camera::Zoom(float aValue)
 {
-	float tempMultiplier = (myZoom + aValue) / myZoom;
+	float tempMultiplier = (myZoom + -aValue) / myZoom;
 
 	myView.zoom(tempMultiplier);
 

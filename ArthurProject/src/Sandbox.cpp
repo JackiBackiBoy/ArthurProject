@@ -59,7 +59,7 @@ public:
 		myScene = new Scene();
 		myUiScene = new Scene();
 
-		myScene->AddChild(new BoxCollider(sf::Vector2f(10, -300), "Player",8,18, ColliderMaterial(1,0,0,0)));
+		myScene->AddChild(new BoxCollider(sf::Vector2f(10, -300), "Player",8,18, ColliderMaterial(1,0,0.4f,0.6f)));
 		myScene->GetChild<BoxCollider>("Player")->FreezeRotation(true);
 		myScene->GetChild<BoxCollider>("Player")->AddChild(new PlayerController(sf::Vector2f(0,0), "PlayerController", 100,600, 500, 120,0.1f, 0.1f, 0.25f, 300.f ));
 		myScene->GetChild<BoxCollider>("Player")->AddChild(new SpriteRenderer(sf::Vector2f(-10,-15),"Sprite",AssetManager::GetTexture("Player/Temp")));
@@ -73,6 +73,11 @@ public:
 				sf::Vector2f(-300,20),
 			}));
 		myScene->GetChild<PolygonCollider>("tempGroundCol")->SetStatic(true);
+
+		myScene->AddChild(new BoxCollider(sf::Vector2f(50, 0), "tempGroundCol1", 500, 20));
+		myScene->GetChild<PolygonCollider>("tempGroundCol1")->SetStatic(true);
+		myScene->GetChild<PolygonCollider>("tempGroundCol1")->SetRotation(PI / 8);
+
 
 		myScene->AddChild(new Camera(sf::Vector2f(0, -50), "MainCamera"));
 		myScene->GetChild<Camera>("MainCamera")->Zoom(0.7f);

@@ -42,14 +42,14 @@ void PlayerController::Movement()
 
 	if (std::abs(myCollider->GetVelocity().x) < myMaxSpeed || (tempX < 0 && myCollider->GetVelocity().x >0) || (tempX > 0 && myCollider->GetVelocity().x < 0))
 	{
-		myCollider->AddVelocity(sf::Vector2f(tempX * myAcceleration * TimeTracker::GetDeltaTime(), 0));
+		myCollider->SetVelocity(sf::Vector2f(tempX * myMaxSpeed /*myAcceleration * TimeTracker::GetDeltaTime()*/, myCollider->GetVelocity().y));
 	}
 
 
 	//If no movement input
 	if (tempX == 0)
 	{
-		if (std::abs(myCollider->GetVelocity().x) > 0.01f)
+		/*if (std::abs(myCollider->GetVelocity().x) > 0.01f)
 		{
 			if (myCollider->GetVelocity().x > 0)
 			{
@@ -63,7 +63,8 @@ void PlayerController::Movement()
 		else
 		{
 			myCollider->SetVelocity(sf::Vector2f(0, myCollider->GetVelocity().y));
-		}
+		}*/
+		myCollider->SetVelocity(sf::Vector2f(0, myCollider->GetVelocity().y));
 
 	}
 }

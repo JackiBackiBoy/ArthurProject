@@ -17,7 +17,7 @@ void Window::Run()
 
 	// Call OnStart once
 	OnStart();
-	myRawWindow->setFramerateLimit(500);
+	//myRawWindow->setFramerateLimit(500);
 	while (myRawWindow->isOpen())
 	{
 		sf::Event event;

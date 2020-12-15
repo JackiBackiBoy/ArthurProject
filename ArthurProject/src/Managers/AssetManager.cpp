@@ -5,6 +5,7 @@
 std::map<std::string, sf::Texture> AssetManager::myTextures = std::map<std::string, sf::Texture>();
 std::map<std::string, sf::Font> AssetManager::myFonts = std::map<std::string, sf::Font>();
 std::map<std::string, sf::SoundBuffer> AssetManager::mySoundBuffers = std::map<std::string, sf::SoundBuffer>();
+std::map<std::string, Animation> AssetManager::myAnimations = std::map<std::string, Animation>();
 
 std::string myPathOrigin = "Assets";
 AssetManager::~AssetManager()
@@ -60,6 +61,17 @@ void AssetManager::Init()
 			mySoundBuffers.emplace(s, sf::SoundBuffer());
 			//Set SoundBuffer in map
 			mySoundBuffers[s].loadFromFile(myPathOrigin + "/" + s + ".wav");
+		}
+		//If File is a .anim file
+		else if (s.find(".anim") != std::string::npos)
+		{
+			//Remove ".anim"
+			s.erase(s.length() - 5, 5);
+
+			//add a spot with the index [filename]
+			myAnimations.emplace(s,Animation());
+			//Set SoundBuffer in map
+			myAnimations[s].LoadFromFile(myPathOrigin + "/" + s + ".anim");
 		}
 
 
@@ -117,4 +129,9 @@ sf::Font& AssetManager::GetFont(std::string aString)
 sf::SoundBuffer& AssetManager::GetSoundBuffer(std::string aString)
 {
 	return mySoundBuffers[aString];
+}
+
+Animation& AssetManager::GetAnimation(std::string aString)
+{
+	return myAnimations[aString];
 }

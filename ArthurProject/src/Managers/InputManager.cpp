@@ -1,15 +1,21 @@
 #include "InputManager.h"
+#include "core/Window.h"
 
 std::vector < sf::Keyboard::Key> InputManager::myPrevKeyBuffer = std::vector<sf::Keyboard::Key>();
 std::vector < sf::Keyboard::Key> InputManager::myKeyBuffer = std::vector<sf::Keyboard::Key>();
 
 bool InputManager::GetKey(sf::Keyboard::Key aKey)
 {
+	if (!Window::CurrentWindow->GetRawWindow()->hasFocus())
+	{
+		return false;
+	}
 	return sf::Keyboard::isKeyPressed(aKey);
 }
 
 bool InputManager::GetKeyDown(sf::Keyboard::Key aKey)
 {
+
 	//if key is down
 	if (GetKey(aKey))
 	{

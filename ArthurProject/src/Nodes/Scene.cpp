@@ -10,7 +10,6 @@ void Scene::OnUpdate()
 	for (unsigned int i = 0; i < myColliders.size(); ++i)
 	{
 		Body* A = myColliders[i]->GetBody();
-
 		for (unsigned int j = i + 1; j < myColliders.size(); ++j)
 		{
 			Body* B = myColliders[j]->GetBody();

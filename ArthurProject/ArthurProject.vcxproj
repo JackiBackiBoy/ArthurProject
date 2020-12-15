@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\Ray.cpp" />
     <ClCompile Include="src\Nodes\PlayerController.cpp" />
     <ClCompile Include="src\Nodes\BoxCollider.cpp" />
     <ClCompile Include="src\Nodes\PolygonCollider.cpp" />
@@ -192,6 +193,8 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\Ray.h" />
+    <ClInclude Include="src\data\Animation.h" />
     <ClInclude Include="src\Nodes\PlayerController.h" />
     <ClInclude Include="src\Nodes\BoxCollider.h" />
     <ClInclude Include="src\Nodes\PolygonCollider.h" />
@@ -222,47 +225,7 @@
     <ClInclude Include="src\ui\windows\UIWindowsDropDown.h" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Assets\DPL Music\New Hope.wav" />
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />
-    <Media Include="Assets\DPL Music\See The Light.wav" />
-    <Media Include="Assets\TempAssets\Arrow Flying Past 1.wav" />
-    <Media Include="Assets\TempAssets\Dirt footstep 1.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="Assets\Fonts\ArialCE.ttf" />
-    <Font Include="Assets\Fonts\segoeui.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\Bush.png" />
-    <Image Include="Assets\Player\Temp.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Death.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Hurt.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Idle.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Blob Walk.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Death.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Hurt.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Idle.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_NegaBlob Walk.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Death.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Idle U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Snake Walk U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Attack U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Death D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Hurt U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Idle U.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk D.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk R.png" />
-    <Image Include="Assets\TempAssets\ENEMIES8bit_Sorcerer Walk U.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

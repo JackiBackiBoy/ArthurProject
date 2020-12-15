@@ -12,7 +12,7 @@
 #include "Nodes/SpriteRenderer.h"
 #include "Nodes/BoxCollider.h"
 #include "Nodes/PlayerController.h"
-
+#include "Nodes/Animator.h"
 #include "core/Precompiled.h"
 
 class Sandbox : public Window
@@ -59,12 +59,12 @@ public:
 		myScene = new Scene();
 		myUiScene = new Scene();
 
-		myScene->AddChild(new BoxCollider(sf::Vector2f(10, -300), "Player",8,18, ColliderMaterial(1,0,0.4f,0.6f)));
+		myScene->AddChild(new BoxCollider(sf::Vector2f(10, -20), "Player", 16, 16, ColliderMaterial(1, 0, 0, 0)));
 		myScene->GetChild<BoxCollider>("Player")->FreezeRotation(true);
-		myScene->GetChild<BoxCollider>("Player")->AddChild(new PlayerController(sf::Vector2f(0,0), "PlayerController", 100,600, 500, 120,0.1f, 0.1f, 0.25f, 300.f ));
-		myScene->GetChild<BoxCollider>("Player")->AddChild(new SpriteRenderer(sf::Vector2f(-10,-15),"Sprite",AssetManager::GetTexture("Player/Temp")));
+		myScene->GetChild<BoxCollider>("Player")->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 100,200, 120, 0.1f, 0.1f, 0.25f, 300.f));
+		myScene->GetChild<BoxCollider>("Player")->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", &AssetManager::GetAnimation("Animations/Blob")} },"Blob" ) );
 
-		myScene->AddChild(new PolygonCollider(sf::Vector2f(0, 0), "tempGroundCol", 4, 
+		myScene->AddChild(new PolygonCollider(sf::Vector2f(0, 0), "tempGroundCol", 4,
 			new sf::Vector2f[]
 			{
 				sf::Vector2f(-300,0),
@@ -74,9 +74,9 @@ public:
 			}));
 		myScene->GetChild<PolygonCollider>("tempGroundCol")->SetStatic(true);
 
-		myScene->AddChild(new BoxCollider(sf::Vector2f(50, 0), "tempGroundCol1", 500, 20));
+		myScene->AddChild(new BoxCollider(sf::Vector2f(0, 0), "tempGroundCol1", 500, 20));
 		myScene->GetChild<PolygonCollider>("tempGroundCol1")->SetStatic(true);
-		myScene->GetChild<PolygonCollider>("tempGroundCol1")->SetRotation(PI / 8);
+		myScene->GetChild<PolygonCollider>("tempGroundCol1")->SetRotation(PI / 4);
 
 
 		myScene->AddChild(new Camera(sf::Vector2f(0, -50), "MainCamera"));
@@ -101,11 +101,11 @@ public:
 		myScene->OnStart();
 		myUiScene->OnStart();
 		//	myAudioSource = AudioSource(sf::Vector2f(0, 0), "AudioSource");
+		TimeTracker::Update();
 	}
 	void OnUpdate() override
 	{
 		TimeTracker::Update();
-
 
 
 
@@ -146,6 +146,9 @@ public:
 
 		myScene->OnUpdate();
 		myUiScene->OnUpdate();
+
+
+
 	}
 
 	void OnRender() override

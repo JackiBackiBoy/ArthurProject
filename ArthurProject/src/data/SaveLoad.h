@@ -14,5 +14,6 @@ public:
 	static void Save(std::string aKey, std::string aValue);
 	static std::string Load(std::string aKey);
 	static void SaveArr(std::string aPath,std::vector<std::string> aList);
+	static std::string LoadFile(const std::string& aString);
 };
 

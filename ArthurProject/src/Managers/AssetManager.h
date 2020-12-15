@@ -2,7 +2,7 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
-#include <vector>
+#include "data/Animation.h"
 
 
 class AssetManager
@@ -12,6 +12,7 @@ private:
 	static std::map<std::string, sf::Texture> myTextures;
 	static std::map<std::string, sf::Font> myFonts;
 	static std::map<std::string, sf::SoundBuffer> mySoundBuffers;
+	static std::map<std::string, Animation> myAnimations;
 	static std::vector<std::string> GetAllFilesInDirectory(std::string aString);
 	static void ReplaceAll(std::string& aStringToReplaceIn, std::string aStringToReplace, std::string aStringToReplaceWith);
 public:
@@ -21,5 +22,6 @@ public:
 	static sf::Texture& GetTexture(std::string aString);
 	static sf::Font& GetFont(std::string aString);
 	static sf::SoundBuffer& GetSoundBuffer(std::string aString);
+	static Animation& GetAnimation(std::string aString);
 };
 

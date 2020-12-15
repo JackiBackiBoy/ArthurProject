@@ -5,9 +5,8 @@ class PlayerController :
 	public Node
 {
 public:
-	PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aMaxSpeed, float anAcceleration,
-		float aDeceleration, float aJumpHeight, float aGroundedTimerValue, float aJumpBufferTimerValue,
-		float aJumpTimerValue, float aFasterFallValue);
+	PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed, float aRunningSpeed, float aJumpHeight,
+		float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue);
 	void OnStart() override;
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;
@@ -15,9 +14,8 @@ private:
 	void Movement();
 	void GroundCheck();
 	void Jump();
-	float myMaxSpeed;
-	float myAcceleration;
-	float myDeceleration;
+	float mySpeed;
+	float myRunningSpeed;
 	float myJumpHeight; 
 	float myFasterFallValue;
 

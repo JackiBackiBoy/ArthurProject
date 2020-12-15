@@ -2,10 +2,10 @@
 #include "Managers/InputManager.h"
 #include "TimeTracker.h"
 
-PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aMaxSpeed, float anAcceleration,
-	float aDeceleration, float aJumpHeight, float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue)
-	: Node(aPosition, aName), myMaxSpeed(aMaxSpeed), myJumpHeight(aJumpHeight), myAcceleration(anAcceleration), myDeceleration(aDeceleration),
-	myGroundedTimerValue(aGroundedTimerValue), myJumpBufferTimerValue(aJumpBufferTimerValue), myJumpTimerValue(aJumpTimerValue), myFasterFallValue(aFasterFallValue)
+PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed,float aRunningSpeed, float aJumpHeight,
+	float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue)
+	: Node(aPosition, aName), mySpeed(aSpeed), myRunningSpeed(aRunningSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
+	myJumpBufferTimerValue(aJumpBufferTimerValue), myJumpTimerValue(aJumpTimerValue), myFasterFallValue(aFasterFallValue)
 {
 }
 
@@ -40,33 +40,18 @@ void PlayerController::Movement()
 		tempX += 1;
 	}
 
-	if (std::abs(myCollider->GetVelocity().x) < myMaxSpeed || (tempX < 0 && myCollider->GetVelocity().x >0) || (tempX > 0 && myCollider->GetVelocity().x < 0))
+	float tempSpeed = 0;
+
+	if (InputManager::GetKey(sf::Keyboard::LShift))
 	{
-		myCollider->SetVelocity(sf::Vector2f(tempX * myMaxSpeed /*myAcceleration * TimeTracker::GetDeltaTime()*/, myCollider->GetVelocity().y));
+		tempSpeed = myRunningSpeed;
+	}
+	else
+	{
+		tempSpeed = mySpeed;
 	}
 
-
-	//If no movement input
-	if (tempX == 0)
-	{
-		/*if (std::abs(myCollider->GetVelocity().x) > 0.01f)
-		{
-			if (myCollider->GetVelocity().x > 0)
-			{
-				myCollider->AddVelocity(sf::Vector2f(-myDeceleration * TimeTracker::GetDeltaTime(), 0));
-			}
-			else if (myCollider->GetVelocity().x < 0)
-			{
-				myCollider->AddVelocity(sf::Vector2f(myDeceleration * TimeTracker::GetDeltaTime(), 0));
-			}
-		}
-		else
-		{
-			myCollider->SetVelocity(sf::Vector2f(0, myCollider->GetVelocity().y));
-		}*/
-		myCollider->SetVelocity(sf::Vector2f(0, myCollider->GetVelocity().y));
-
-	}
+	myCollider->SetVelocity(sf::Vector2f(tempX * tempSpeed, myCollider->GetVelocity().y));
 }
 
 void PlayerController::GroundCheck()

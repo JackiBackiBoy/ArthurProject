@@ -1,6 +1,6 @@
 #pragma once
 #include "Node.h"
-#include "Nodes/BoxCollider.h"
+
 class PlayerController :
 	public Node
 {
@@ -27,8 +27,5 @@ private:
 
 	float myJumpBufferTimerValue;
 	float myJumpBufferTimer;
-
-
-	BoxCollider* myCollider;
 };
 

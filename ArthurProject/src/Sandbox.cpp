@@ -10,19 +10,15 @@
 #include "Managers/InputManager.h"
 #include "Nodes/Camera.h"
 #include "Nodes/SpriteRenderer.h"
-#include "Nodes/BoxCollider.h"
 #include "Nodes/PlayerController.h"
 #include "Nodes/Animator.h"
-#include "core/Precompiled.h"
+#include "core/Ray.h"
 
 class Sandbox : public Window
 {
 public:
 	Sandbox(const std::string& aTitle, const int& aWidth, const int& aHeight) : Window(aTitle, aWidth, aHeight) {};
 
-
-	std::vector<Body*> myBodies;
-	std::vector<Manifold> myContacts;
 	int myIterations = 1;
 
 	AudioSource myAudioSource;
@@ -58,26 +54,9 @@ public:
 		AssetManager::Init();
 		myScene = new Scene();
 		myUiScene = new Scene();
-
-		myScene->AddChild(new BoxCollider(sf::Vector2f(10, -20), "Player", 16, 16, ColliderMaterial(1, 0, 0, 0)));
-		myScene->GetChild<BoxCollider>("Player")->FreezeRotation(true);
-		myScene->GetChild<BoxCollider>("Player")->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 100,200, 120, 0.1f, 0.1f, 0.25f, 300.f));
-		myScene->GetChild<BoxCollider>("Player")->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", &AssetManager::GetAnimation("Animations/Blob")} },"Blob" ) );
-
-		myScene->AddChild(new PolygonCollider(sf::Vector2f(0, 0), "tempGroundCol", 4,
-			new sf::Vector2f[]
-			{
-				sf::Vector2f(-300,0),
-				sf::Vector2f(300,0),
-				sf::Vector2f(300,20),
-				sf::Vector2f(-300,20),
-			}));
-		myScene->GetChild<PolygonCollider>("tempGroundCol")->SetStatic(true);
-
-		myScene->AddChild(new BoxCollider(sf::Vector2f(0, 0), "tempGroundCol1", 500, 20));
-		myScene->GetChild<PolygonCollider>("tempGroundCol1")->SetStatic(true);
-		myScene->GetChild<PolygonCollider>("tempGroundCol1")->SetRotation(PI / 4);
-
+		myScene->AddChild(new AudioSource(sf::Vector2f(0, 0), "asd"));
+		myScene->GetChild<AudioSource>("asd")->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 100,200, 120, 0.1f, 0.1f, 0.25f, 300.f));
+		myScene->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", &AssetManager::GetAnimation("Animations/Blob")} },"Blob" ) );
 
 		myScene->AddChild(new Camera(sf::Vector2f(0, -50), "MainCamera"));
 		myScene->GetChild<Camera>("MainCamera")->Zoom(0.7f);
@@ -156,13 +135,11 @@ public:
 		//myRawWindow->draw(*tempText->GetRawText());
 		//tempButton->OnRender(myRawWindow);
 
-
 		if (anItem != nullptr)
 		{
 			anItem->OnRender(myRawWindow);
 		}
-		myScene->OnRender(myRawWindow);
-
+		myScene->OnRender(myRawWindow); 
 
 		myUiScene->OnRender(myRawWindow);
 		//tempFileButton->OnRender(myRawWindow);

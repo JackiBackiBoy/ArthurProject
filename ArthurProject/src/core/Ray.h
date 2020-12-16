@@ -1,13 +1,16 @@
 #pragma once
-#include "core/Shape.h"
 #include "SFML/System.hpp"
+#include <Graphics.hpp>
 struct RaycastHit
 {
-
+	sf::Vector2f IntersectPoint;
+	float Dist;
+	sf::Vector2f Normal;
 };
 class Ray
 {
 public:
-	RaycastHit Cast(Ray A, const PolygonShape* B, const sf::Vector2f* bx_ptr);
+	static bool Cast();
+	static void DrawRay(const sf::Vector2f& anOrigin, const sf::Vector2f& aDirection, float aDistance, const sf::Color&, sf::RenderWindow* aWindow);
 };
 

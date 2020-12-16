@@ -1,8 +1,9 @@
 #include "PlayerController.h"
 #include "Managers/InputManager.h"
 #include "TimeTracker.h"
+#include "Nodes/Scene.h"
 
-PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed,float aRunningSpeed, float aJumpHeight,
+PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed, float aRunningSpeed, float aJumpHeight,
 	float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue)
 	: Node(aPosition, aName), mySpeed(aSpeed), myRunningSpeed(aRunningSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
 	myJumpBufferTimerValue(aJumpBufferTimerValue), myJumpTimerValue(aJumpTimerValue), myFasterFallValue(aFasterFallValue)
@@ -12,14 +13,13 @@ PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::str
 void PlayerController::OnStart()
 {
 	Node::OnStart();
-	myCollider = ((BoxCollider*)myParent);
 }
 
 void PlayerController::OnUpdate()
 {
 	Node::OnUpdate();
-	Movement();
 	GroundCheck();
+	Movement();
 	Jump();
 }
 
@@ -51,13 +51,14 @@ void PlayerController::Movement()
 		tempSpeed = mySpeed;
 	}
 
-	myCollider->SetVelocity(sf::Vector2f(tempX * tempSpeed, myCollider->GetVelocity().y));
+	//myCollider->SetVelocity(tempSurfaceMultiplier);
 }
 
 void PlayerController::GroundCheck()
 {
 	myGroundedTimer = myGroundedTimerValue;
 	myGroundedTimer -= TimeTracker::GetDeltaTime();
+
 }
 
 void PlayerController::Jump()
@@ -81,7 +82,7 @@ void PlayerController::Jump()
 	{
 		if (InputManager::GetKey(sf::Keyboard::Space))
 		{
-			myCollider->SetVelocity(sf::Vector2f(myCollider->GetVelocity().x, -myJumpHeight));
+			//myCollider->SetVelocity(sf::Vector2f(myCollider->GetVelocity().x, -myJumpHeight));
 			myJumpTimer -= TimeTracker::GetDeltaTime();
 		}
 		if (InputManager::GetKeyUp(sf::Keyboard::Space))
@@ -92,7 +93,7 @@ void PlayerController::Jump()
 
 	if (myJumpTimer <= 0)
 	{
-		myCollider->AddVelocity(sf::Vector2f(0, myFasterFallValue * TimeTracker::GetDeltaTime()));
+		//myCollider->AddVelocity(sf::Vector2f(0, myFasterFallValue * TimeTracker::GetDeltaTime()));
 	}
 }
 

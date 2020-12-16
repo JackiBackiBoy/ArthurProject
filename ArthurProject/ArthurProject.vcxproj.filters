@@ -21,14 +21,8 @@
     <ClCompile Include="src\data\Options.cpp" />
     <ClCompile Include="src\data\SaveLoad.cpp" />
     <ClCompile Include="src\Managers\InputManager.cpp" />
-    <ClCompile Include="src\core\Manifold.cpp" />
-    <ClCompile Include="src\core\Body.cpp" />
-    <ClCompile Include="src\core\Precompiled.cpp" />
-    <ClCompile Include="src\core\Collision.cpp" />
-    <ClCompile Include="src\Nodes\PolygonCollider.cpp" />
-    <ClCompile Include="src\Nodes\BoxCollider.cpp" />
-    <ClCompile Include="src\Nodes\PlayerController.cpp" />
     <ClCompile Include="src\core\Ray.cpp" />
+    <ClCompile Include="src\Nodes\PlayerController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
@@ -50,14 +44,6 @@
     <ClInclude Include="src\data\Options.h" />
     <ClInclude Include="src\data\SaveLoad.h" />
     <ClInclude Include="src\Managers\InputManager.h" />
-    <ClInclude Include="src\core\Manifold.h" />
-    <ClInclude Include="src\core\Shape.h" />
-    <ClInclude Include="src\core\Math.h" />
-    <ClInclude Include="src\core\Body.h" />
-    <ClInclude Include="src\core\Precompiled.h" />
-    <ClInclude Include="src\core\Collision.h" />
-    <ClInclude Include="src\Nodes\PolygonCollider.h" />
-    <ClInclude Include="src\Nodes\BoxCollider.h" />
     <ClInclude Include="src\Nodes\PlayerController.h" />
     <ClInclude Include="src\core\Ray.h" />
     <ClInclude Include="src\data\Animation.h" />

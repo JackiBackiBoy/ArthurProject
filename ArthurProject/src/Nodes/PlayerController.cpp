@@ -8,8 +8,8 @@ PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::str
 	: Node(aPosition, aName), mySpeed(aSpeed), myRunningSpeed(aRunningSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
 	myJumpBufferTimerValue(aJumpBufferTimerValue), myJumpTimerValue(aJumpTimerValue), myFasterFallValue(aFasterFallValue)
 {
+	SetPosition(sf::Vector2f(25, -100));
 }
-
 void PlayerController::OnStart()
 {
 	Node::OnStart();
@@ -19,13 +19,14 @@ void PlayerController::OnUpdate()
 {
 	Node::OnUpdate();
 	GroundCheck();
-	Movement();
 	Jump();
+	Movement();
 }
 
 void PlayerController::OnRender(sf::RenderWindow* aWindow)
 {
 	Node::OnRender(aWindow);
+	sf::Vector2f tempPosition = GetPosition();
 }
 
 void PlayerController::Movement()
@@ -50,8 +51,6 @@ void PlayerController::Movement()
 	{
 		tempSpeed = mySpeed;
 	}
-
-	//myCollider->SetVelocity(tempSurfaceMultiplier);
 }
 
 void PlayerController::GroundCheck()

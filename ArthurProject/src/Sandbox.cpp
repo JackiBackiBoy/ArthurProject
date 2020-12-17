@@ -13,6 +13,7 @@
 #include "Nodes/PlayerController.h"
 #include "Nodes/Animator.h"
 #include "core/Ray.h"
+#include <box2d\box2d.h>
 
 class Sandbox : public Window
 {
@@ -30,6 +31,17 @@ public:
 	Camera* myMainCamera;
 	float myCameraMoveSpeed = 200;
 	bool isPressed = false;
+
+	b2World world = b2World(b2Vec2(0.0f, 10.0f));
+	b2Body* bodyA = nullptr;
+	b2Body* bodyB = nullptr;
+	sf::CircleShape circleA;
+	sf::CircleShape circleB;
+
+
+	const float timeStep = 1.f / 600.f;
+	const int32 velocityIterations = 6;
+	const int32 positionIterations = 2;
 
 	float myPastDeltaTime[200];
 	int myCurrentPastDeltaTimeIndex;
@@ -51,12 +63,32 @@ public:
 
 	void OnStart() override
 	{
+
+		b2CircleShape circle;
+		circle.m_radius = 5.f;
+
+		circleA = sf::CircleShape(5.f);
+		circleB = sf::CircleShape(5.f);
+
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+
+		bodyA = world.CreateBody(&bodyDef);
+		bodyB = world.CreateBody(&bodyDef);
+		bodyA->CreateFixture(&circle, 1.0f);
+		bodyB->CreateFixture(&circle, 0.0f);
+
+		bodyA->SetTransform(b2Vec2(105.f, -30.f), 0.f);
+		bodyB->SetTransform(b2Vec2(100.f, 0.f), 0.f);
+
+
+
 		AssetManager::Init();
 		myScene = new Scene();
 		myUiScene = new Scene();
+		myScene->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", &AssetManager::GetAnimation("Animations/Blob")} },"Blob" ) );
 		myScene->AddChild(new AudioSource(sf::Vector2f(0, 0), "asd"));
 		myScene->GetChild<AudioSource>("asd")->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 100,200, 120, 0.1f, 0.1f, 0.25f, 300.f));
-		myScene->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", &AssetManager::GetAnimation("Animations/Blob")} },"Blob" ) );
 
 		myScene->AddChild(new Camera(sf::Vector2f(0, -50), "MainCamera"));
 		myScene->GetChild<Camera>("MainCamera")->Zoom(0.7f);
@@ -86,12 +118,6 @@ public:
 	{
 		TimeTracker::Update();
 
-
-
-
-
-
-
 		myUiScene->GetChild<UIText>("FPStext")->SetText("Fps:" + std::to_string((int)(1 / GetAverageDeltaTime())));
 
 		//Camera Movement (debug)
@@ -120,14 +146,11 @@ public:
 			myMainCamera->Zoom(-TimeTracker::GetDeltaTime());
 		}
 
-
-
-
 		myScene->OnUpdate();
 		myUiScene->OnUpdate();
-
-
-
+		circleA.setPosition(sf::Vector2f(bodyA->GetWorldPoint(b2Vec2(0, 0)).x, bodyA->GetWorldPoint(b2Vec2(0, 0)).y));
+		circleB.setPosition(sf::Vector2f(bodyB->GetWorldPoint(b2Vec2(0, 0)).x, bodyB->GetWorldPoint(b2Vec2(0, 0)).y));
+		world.Step(TimeTracker::GetDeltaTime(), velocityIterations, positionIterations);
 	}
 
 	void OnRender() override
@@ -140,7 +163,8 @@ public:
 			anItem->OnRender(myRawWindow);
 		}
 		myScene->OnRender(myRawWindow); 
-
+		myRawWindow->draw(circleA);
+		myRawWindow->draw(circleB);
 		myUiScene->OnRender(myRawWindow);
 		//tempFileButton->OnRender(myRawWindow);
 	}

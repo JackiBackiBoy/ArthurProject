@@ -1,6 +1,6 @@
 #pragma once
 #include "Node.h"
-
+#include "core\Ray.h"
 class PlayerController :
 	public Node
 {

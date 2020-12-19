@@ -7,7 +7,6 @@ Animator::Animator(const sf::Vector2f& aPosition, const std::string& aName, std:
 {
 	myCurrentAnimation = aStartAnim;
 	SetFrame(0);
-	CenterOrigin();
 
 }
 
@@ -57,10 +56,4 @@ void Animator::SetAnimation(std::string aString)
 {
 	myCurrentAnimation = aString;
 	mySprite->setTexture(AssetManager::GetTexture(myAnimations[aString]->TexturePath));
-	CenterOrigin();
-}
-
-void Animator::CenterOrigin()
-{
-	mySprite->setOrigin((sf::Vector2f)(myAnimations[myCurrentAnimation]->Frames[0].Size) / 2.f);
 }

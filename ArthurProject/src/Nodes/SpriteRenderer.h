@@ -9,6 +9,5 @@ public:
 	void OnRender(sf::RenderWindow* aWindow) override;
 	void SetPosition(const sf::Vector2f& aPosition) override;
 protected:
-	virtual void CenterOrigin();
 	sf::Sprite* mySprite;
 };

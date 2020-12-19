@@ -68,6 +68,7 @@
     <ClCompile Include="src\box2d\dynamics\b2_world.cpp" />
     <ClCompile Include="src\box2d\dynamics\b2_world_callbacks.cpp" />
     <ClCompile Include="src\box2d\rope\b2_rope.cpp" />
+    <ClCompile Include="src\Nodes\PolygonCollider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="src\box2d\dynamics\b2_island.h" />
     <ClInclude Include="src\box2d\dynamics\b2_polygon_circle_contact.h" />
     <ClInclude Include="src\box2d\dynamics\b2_polygon_contact.h" />
+    <ClInclude Include="src\Nodes\PolygonCollider.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

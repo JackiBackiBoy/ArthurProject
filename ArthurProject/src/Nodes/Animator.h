@@ -12,8 +12,6 @@ public:
 	void OnRender(sf::RenderWindow* aWindow) override;
 	void SetFrame(int aFrame);
 	void SetAnimation(std::string aString);
-protected:
-	void CenterOrigin() override;
 private:
 	void NextFrame();
 	std::map<std::string, Animation*> myAnimations;

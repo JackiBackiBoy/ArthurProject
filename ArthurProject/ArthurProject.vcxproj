@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Nodes\PolygonCollider.cpp" />
     <ClCompile Include="src\box2d\collision\b2_broad_phase.cpp" />
     <ClCompile Include="src\box2d\collision\b2_chain_shape.cpp" />
     <ClCompile Include="src\box2d\collision\b2_circle_shape.cpp" />
@@ -232,6 +233,7 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Nodes\PolygonCollider.h" />
     <ClInclude Include="src\box2d\b2_api.h" />
     <ClInclude Include="src\box2d\b2_block_allocator.h" />
     <ClInclude Include="src\box2d\b2_body.h" />

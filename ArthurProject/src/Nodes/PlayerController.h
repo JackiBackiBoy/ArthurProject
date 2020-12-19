@@ -1,6 +1,7 @@
 #pragma once
 #include "Node.h"
 #include "core\Ray.h"
+#include "Nodes/PolygonCollider.h"
 class PlayerController :
 	public Node
 {
@@ -27,5 +28,7 @@ private:
 
 	float myJumpBufferTimerValue;
 	float myJumpBufferTimer;
+
+	PolygonCollider* myCollider;
 };
 

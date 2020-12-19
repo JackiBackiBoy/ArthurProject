@@ -8,10 +8,10 @@ PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::str
 	: Node(aPosition, aName), mySpeed(aSpeed), myRunningSpeed(aRunningSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
 	myJumpBufferTimerValue(aJumpBufferTimerValue), myJumpTimerValue(aJumpTimerValue), myFasterFallValue(aFasterFallValue)
 {
-	SetPosition(sf::Vector2f(25, -100));
 }
 void PlayerController::OnStart()
 {
+	myCollider = (PolygonCollider*)myParent;
 	Node::OnStart();
 }
 
@@ -51,6 +51,8 @@ void PlayerController::Movement()
 	{
 		tempSpeed = mySpeed;
 	}
+
+	myCollider->SetVelocity(sf::Vector2f(tempX * tempSpeed, myCollider->GetVelocity().y));
 }
 
 void PlayerController::GroundCheck()
@@ -81,7 +83,7 @@ void PlayerController::Jump()
 	{
 		if (InputManager::GetKey(sf::Keyboard::Space))
 		{
-			//myCollider->SetVelocity(sf::Vector2f(myCollider->GetVelocity().x, -myJumpHeight));
+			myCollider->SetVelocity(sf::Vector2f(myCollider->GetVelocity().x, -myJumpHeight));
 			myJumpTimer -= TimeTracker::GetDeltaTime();
 		}
 		if (InputManager::GetKeyUp(sf::Keyboard::Space))
@@ -92,7 +94,7 @@ void PlayerController::Jump()
 
 	if (myJumpTimer <= 0)
 	{
-		//myCollider->AddVelocity(sf::Vector2f(0, myFasterFallValue * TimeTracker::GetDeltaTime()));
+		myCollider->AddVelocity(sf::Vector2f(0, myFasterFallValue * TimeTracker::GetDeltaTime()));
 	}
 }
 

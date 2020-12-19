@@ -4,7 +4,6 @@ SpriteRenderer::SpriteRenderer(const sf::Vector2f& aPosition, const std::string&
 
 	mySprite = new sf::Sprite(aTexture);
 	mySprite->setPosition(GetPosition());
-	CenterOrigin();
 }
 
 void SpriteRenderer::OnRender(sf::RenderWindow* aWindow)
@@ -20,7 +19,3 @@ void SpriteRenderer::SetPosition(const sf::Vector2f& aPosition)
 	mySprite->setPosition(GetPosition());
 }
 
-void SpriteRenderer::CenterOrigin()
-{
-	mySprite->setOrigin((sf::Vector2f)(mySprite->getTexture()->getSize()) / 2.f);
-}

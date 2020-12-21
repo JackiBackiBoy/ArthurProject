@@ -19,8 +19,8 @@ void PlayerController::OnUpdate()
 {
 	Node::OnUpdate();
 	GroundCheck();
-	Jump();
 	Movement();
+	Jump();
 }
 
 void PlayerController::OnRender(sf::RenderWindow* aWindow)
@@ -51,8 +51,15 @@ void PlayerController::Movement()
 	{
 		tempSpeed = mySpeed;
 	}
-
-	myCollider->SetVelocity(sf::Vector2f(tempX * tempSpeed, myCollider->GetVelocity().y));
+	if (myCollider->IsColliding())
+	{
+		sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
+		myCollider->SetVelocity(tempSurfaceVector * tempX * tempSpeed);	
+	}
+	else 
+	{
+		myCollider->SetVelocity(sf::Vector2f(tempX * tempSpeed, myCollider->GetVelocity().y));
+	}
 }
 
 void PlayerController::GroundCheck()
@@ -92,7 +99,7 @@ void PlayerController::Jump()
 		}
 	}
 
-	if (myJumpTimer <= 0)
+	if (myJumpTimer <= 0 && !myCollider->IsColliding())
 	{
 		myCollider->AddVelocity(sf::Vector2f(0, myFasterFallValue * TimeTracker::GetDeltaTime()));
 	}

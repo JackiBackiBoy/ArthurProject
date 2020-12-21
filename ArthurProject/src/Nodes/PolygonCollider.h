@@ -17,6 +17,9 @@ public:
     void SetVelocity(const sf::Vector2f& aVelocity);
     void AddVelocity(const sf::Vector2f aValue);
     sf::Vector2f GetVelocity();
+    sf::Vector2f GetGroundVector();
+    b2ContactEdge* GetCollidedContact();
+    bool IsColliding();
 private:
     b2Body* myBody;
 

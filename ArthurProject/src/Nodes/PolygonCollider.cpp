@@ -36,6 +36,8 @@ b2PolygonShape PolygonCollider::VerticesToShape(const std::vector<sf::Vector2f>&
 	return tempShape;
 }
 
+
+
 void PolygonCollider::SetVelocity(const sf::Vector2f& aVelocity)
 {
 	myBody->SetLinearVelocity(b2Vec2(aVelocity.x, aVelocity.y));
@@ -90,4 +92,55 @@ void PolygonCollider::OnRender(sf::RenderWindow* aWindow)
 sf::Vector2f PolygonCollider::b2VecToSfVec(const b2Vec2& aVec)
 {
 	return sf::Vector2f(aVec.x, aVec.y);
+}
+
+b2ContactEdge* PolygonCollider::GetCollidedContact()
+{
+	b2ContactEdge* tempContact = myBody->GetContactList();
+
+	while (tempContact)
+	{
+		if (tempContact->contact->IsTouching()) {
+			return tempContact;
+		}
+		tempContact = tempContact->next;
+	}
+	return nullptr;
+}
+
+bool PolygonCollider::IsColliding() 
+{
+	b2ContactEdge* tempContact = myBody->GetContactList();
+	while (tempContact)
+	{
+		if (tempContact->contact->IsTouching()) 
+		{
+			return true;
+		}
+		tempContact = tempContact->next;
+	}
+	return false;
+}
+
+sf::Vector2f PolygonCollider::GetGroundVector() 
+{
+	if (IsColliding())
+	{
+		b2ContactEdge* tempContact = myBody->GetContactList();
+
+		while (tempContact)
+		{
+			if (tempContact->contact->IsTouching()) 
+			{
+				b2Vec2 n = tempContact->contact->GetManifold()->localNormal;
+				if (n.x == 0) 
+				{
+					n.y = -1;
+				}
+				return sf::Vector2f(-n.y, n.x);
+			}
+			tempContact = tempContact->next;
+		}
+	}
+	return sf::Vector2f(1, 0);
 }

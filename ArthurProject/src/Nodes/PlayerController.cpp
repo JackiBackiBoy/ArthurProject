@@ -3,9 +3,9 @@
 #include "TimeTracker.h"
 #include "Nodes/Scene.h"
 
-PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed, float aRunningSpeed, float aJumpHeight,
+PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName,int aMaxHealth, float aSpeed, float aRunningSpeed, float aJumpHeight,
 	float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue)
-	: Node(aPosition, aName), mySpeed(aSpeed), myRunningSpeed(aRunningSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
+	: Node(aPosition, aName),myMaxHealth(aMaxHealth), mySpeed(aSpeed), myRunningSpeed(aRunningSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
 	myJumpBufferTimerValue(aJumpBufferTimerValue), myJumpTimerValue(aJumpTimerValue), myFasterFallValue(aFasterFallValue)
 {
 }

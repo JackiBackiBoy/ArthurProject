@@ -143,6 +143,7 @@
     <ClInclude Include="src\box2d\dynamics\b2_polygon_circle_contact.h" />
     <ClInclude Include="src\box2d\dynamics\b2_polygon_contact.h" />
     <ClInclude Include="src\Nodes\PolygonCollider.h" />
+    <ClInclude Include="src\data\EntityDatabase.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

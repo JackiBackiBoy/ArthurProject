@@ -16,6 +16,8 @@ void Scene::OnRender(sf::RenderWindow* aWindow)
 {
 	aWindow->setView(myView);
 	Node::OnRender(aWindow);
+
+	sf::Vector2f temp = myVerts[0];
 }
 
 void Scene::SetView(sf::View aView)
@@ -25,6 +27,7 @@ void Scene::SetView(sf::View aView)
 
 b2Body* Scene::AddPolygon(const b2PolygonShape aShape, const float& aDensity)
 {
+	myVerts.push_back(sf::Vector2f(10, 29));
 	b2BodyDef tempDef;
 	tempDef.type = b2_dynamicBody;
 	tempDef.fixedRotation = true;

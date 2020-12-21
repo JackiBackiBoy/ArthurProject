@@ -233,6 +233,7 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\data\EntityDatabase.h" />
     <ClInclude Include="src\Nodes\PolygonCollider.h" />
     <ClInclude Include="src\box2d\b2_api.h" />
     <ClInclude Include="src\box2d\b2_block_allocator.h" />

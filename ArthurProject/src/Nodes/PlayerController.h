@@ -6,7 +6,7 @@ class PlayerController :
 	public Node
 {
 public:
-	PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed, float aRunningSpeed, float aJumpHeight,
+	PlayerController(const sf::Vector2f& aPosition, const std::string& aName,int aMaxHealth, float aSpeed, float aRunningSpeed, float aJumpHeight,
 		float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue);
 	void OnStart() override;
 	void OnUpdate() override;
@@ -15,6 +15,8 @@ private:
 	void Movement();
 	void GroundCheck();
 	void Jump();
+	int myMaxHealth;
+
 	float mySpeed;
 	float myRunningSpeed;
 	float myJumpHeight; 

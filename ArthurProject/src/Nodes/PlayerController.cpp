@@ -83,6 +83,7 @@ void PlayerController::Jump()
 		{
 			myJumpBufferTimer = 0;
 			myJumpTimer = myJumpTimerValue;
+			myCollider->SetGravityScale(1);
 		}
 	}
 
@@ -101,7 +102,7 @@ void PlayerController::Jump()
 
 	if (myJumpTimer <= 0 && !myCollider->IsColliding())
 	{
-		myCollider->AddVelocity(sf::Vector2f(0, myFasterFallValue * TimeTracker::GetDeltaTime()));
+		myCollider->SetGravityScale(myFasterFallValue);
 	}
 }
 

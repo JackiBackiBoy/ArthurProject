@@ -13,7 +13,7 @@ Node::~Node()
 		delete myChildren.at(i);
 		myChildren.at(i) = nullptr;
 	}
-	if (myParent != nullptr) 
+	if (myParent != nullptr)
 	{
 		myParent->OrphanChild(this);
 		delete myParent;
@@ -21,16 +21,21 @@ Node::~Node()
 	}
 }
 
-Scene* Node::GetActiveScene() 
+Scene* Node::GetActiveScene()
 {
-	if (myParent == nullptr) 
+	if (myParent == nullptr)
 	{
 		return (Scene*)this;
 	}
 	return myParent->GetActiveScene();
 }
 
-void Node::OrphanChild(Node* aChild) 
+Node* Node::GetParent()
+{
+	return myParent;
+}
+
+void Node::OrphanChild(Node* aChild)
 {
 	myChildren.erase(std::find(myChildren.begin(), myChildren.end(), aChild));
 }
@@ -61,11 +66,14 @@ sf::Vector2f Node::GetPosition() const
 	return myPosition + myParent->GetPosition();
 }
 
-void Node::OnStart() 
+void Node::OnStart()
 {
-	for (int i = 0; i < myChildren.size(); i++) 
+	for (int i = 0; i < myChildren.size(); i++)
 	{
-		myChildren.at(i)->OnStart();
+		if (myChildren[i]->myActive)
+		{
+			myChildren.at(i)->OnStart();
+		}
 	}
 }
 
@@ -73,7 +81,10 @@ void Node::OnUpdate()
 {
 	for (int i = 0; i < myChildren.size(); i++)
 	{
+		if (myChildren[i]->myActive)
+		{
 		myChildren.at(i)->OnUpdate();
+		}
 	}
 }
 
@@ -81,7 +92,10 @@ void Node::OnRender(sf::RenderWindow* aWindow)
 {
 	for (int i = 0; i < myChildren.size(); i++)
 	{
+		if (myChildren[i]->myActive)
+		{
 		myChildren.at(i)->OnRender(aWindow);
+		}
 	}
 }
 

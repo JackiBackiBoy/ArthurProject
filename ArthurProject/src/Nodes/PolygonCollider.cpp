@@ -75,7 +75,9 @@ void PolygonCollider::OnRender(sf::RenderWindow* aWindow)
 	Node::OnRender(aWindow);
 
 
+	return;
 
+	//Debug
 	int vCount = myVertices.size() + 1;
 	sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, vCount);
 	for (int i = 0; i < vCount; i++)
@@ -120,6 +122,11 @@ bool PolygonCollider::IsColliding()
 		tempContact = tempContact->next;
 	}
 	return false;
+}
+
+void PolygonCollider::SetGravityScale(float aValue)
+{
+	myBody->SetGravityScale(aValue);
 }
 
 sf::Vector2f PolygonCollider::GetGroundVector() 

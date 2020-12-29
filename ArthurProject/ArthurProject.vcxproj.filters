@@ -69,6 +69,9 @@
     <ClCompile Include="src\box2d\dynamics\b2_world_callbacks.cpp" />
     <ClCompile Include="src\box2d\rope\b2_rope.cpp" />
     <ClCompile Include="src\Nodes\PolygonCollider.cpp" />
+    <ClCompile Include="src\Nodes\Behaviours\BushSpawnBehaviour.cpp" />
+    <ClCompile Include="src\Nodes\AABB.cpp" />
+    <ClCompile Include="NodeTemplate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
@@ -144,6 +147,10 @@
     <ClInclude Include="src\box2d\dynamics\b2_polygon_contact.h" />
     <ClInclude Include="src\Nodes\PolygonCollider.h" />
     <ClInclude Include="src\data\EntityDatabase.h" />
+    <ClInclude Include="src\Nodes\Behaviours\BushSpawnBehaviour.h" />
+    <ClInclude Include="src\Nodes\AABB.h" />
+    <ClInclude Include="NodeTemplate.h" />
+    <ClInclude Include="src\Random.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

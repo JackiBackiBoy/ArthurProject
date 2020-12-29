@@ -19,3 +19,8 @@ void SpriteRenderer::SetPosition(const sf::Vector2f& aPosition)
 	mySprite->setPosition(GetPosition());
 }
 
+void SpriteRenderer::SetScale(sf::Vector2f aValue)
+{
+	mySprite->setScale(aValue);
+}
+

@@ -25,6 +25,7 @@ public:
 	void AddChild(Node* aChild);
 	void OrphanChild(Node* aChild);
 	Scene* GetActiveScene();
+	Node* GetParent();
 
 	template <typename T>
 	T* GetChild(const std::string& aName)

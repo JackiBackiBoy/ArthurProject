@@ -16,16 +16,20 @@ void Scene::OnRender(sf::RenderWindow* aWindow)
 {
 	aWindow->setView(myView);
 	Node::OnRender(aWindow);
-	myGroundVerts.resize(7);
-	int vCount = myGroundVerts.size() + 1;
-	sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, vCount);
-	for (int i = 0; i < vCount; i++)
+
+	if (myGroundVerts.size() != 0)
 	{
-		sf::Vector2f tempPos = myGroundVerts[i % (vCount - 1)];
-		tempVArr[i].position = tempPos;
-		tempVArr[i].color = sf::Color::White;
+		myGroundVerts.resize(myGroundVerts.size());
+		int vCount = myGroundVerts.size() + 1;
+		sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, vCount);
+		for (int i = 0; i < vCount; i++)
+		{
+			sf::Vector2f tempPos = myGroundVerts[i % (vCount - 1)];
+			tempVArr[i].position = tempPos;
+			tempVArr[i].color = sf::Color::White;
+		}
+		aWindow->draw(tempVArr);
 	}
-	aWindow->draw(tempVArr);
 }
 
 void Scene::SetView(sf::View aView)
@@ -36,7 +40,7 @@ void Scene::SetView(sf::View aView)
 b2Body* Scene::AddPolygon(const b2PolygonShape aShape, const float& aDensity)
 {
 	b2BodyDef tempDef;
-	tempDef.type = aDensity == 0 ? b2_dynamicBody : b2_kinematicBody;
+	tempDef.type = b2_dynamicBody;
 	tempDef.fixedRotation = true;
 
 	b2Body* tempBody = myB2World.CreateBody(&tempDef);
@@ -56,10 +60,10 @@ void Scene::AddGround(const std::vector<sf::Vector2f>& someVertices, const int& 
 		b2Vec2 tempA;
 		b2Vec2 tempB;
 		int tempVIndex;
-		do 
+		do
 		{
-			tempVIndex = tempVertexGroupLength+++ i;
-			if (tempVIndex == aCount - 1) 
+			tempVIndex = tempVertexGroupLength++ + i;
+			if (tempVIndex == aCount - 1)
 			{
 				break;
 			}
@@ -67,7 +71,7 @@ void Scene::AddGround(const std::vector<sf::Vector2f>& someVertices, const int& 
 			tempB = b2Vec2((someVertices[tempVIndex + 1] - someVertices[tempVIndex]).x, (someVertices[tempVIndex + 1] - someVertices[tempVIndex]).y);
 		} while (atan2(-tempA.y, tempA.x) >= atan2(-tempB.y, tempB.x));
 		b2Vec2* tempPolygonVertices = new b2Vec2[tempVertexGroupLength];
-		for (int j = 0; j < tempVertexGroupLength; j++) 
+		for (int j = 0; j < tempVertexGroupLength; j++)
 		{
 			tempPolygonVertices[j] = b2Vec2(someVertices[i + j].x, someVertices[i + j].y);
 		}

@@ -14,6 +14,7 @@
 #include "Nodes/Animator.h"
 #include "core/Ray.h"
 #include <box2d\box2d.h>
+#include "data/EntityDatabase.h"
 
 class Sandbox : public Window
 {
@@ -62,18 +63,16 @@ public:
 		myScene = new Scene();
 		myUiScene = new Scene();
 		myScene->AddGround(std::vector<sf::Vector2f>
-			{
-				sf::Vector2f(-100, 0),
-				sf::Vector2f(0, -20),
-				sf::Vector2f(100, 0),
-				sf::Vector2f(200, -100),
-				sf::Vector2f(250, -120),
-				sf::Vector2f(300, -100),
-				sf::Vector2f(400, 0)
-			}, 7);
-		myScene->AddChild(new PolygonCollider(sf::Vector2f(-30, -100), "player", std::vector<sf::Vector2f>{sf::Vector2f(0, 0), sf::Vector2f(16, 0), sf::Vector2f(16, 16), sf::Vector2f(0, 16)}, 1.f));
-		myScene->GetChild<PolygonCollider>("player")->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", &AssetManager::GetAnimation("Animations/Blob")} },"Blob" ) );
-		myScene->GetChild<PolygonCollider>("player")->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController",6, 40,60, 70, 0.1f, 0.1f, 0.25f, 300.f));
+		{
+			sf::Vector2f(-200, 0),
+			sf::Vector2f(100, 0),
+			sf::Vector2f(100, 20),
+			sf::Vector2f(-200, 20),
+			sf::Vector2f(200, -20),
+			sf::Vector2f(-200, 20)
+		}, 6);
+		myScene->AddChild(EntityDatabase::CreateEntity(sf::Vector2f(0, 0), "Player"));
+		myScene->AddChild(EntityDatabase::CreateEntity(sf::Vector2f(100, -100), "BushSpawn", 0));
 
 		//myScene->AddChild(new PolygonCollider(sf::Vector2f(-50, 0), "ground", std::vector<sf::Vector2f>{sf::Vector2f(0, 0), sf::Vector2f(100, 0), sf::Vector2f(100, 10), sf::Vector2f(0, 10)}, 0.f));
 		//myScene->AddChild(new PolygonCollider(sf::Vector2f(-70, -60), "ground1", 100,10, 0.f));
@@ -147,7 +146,7 @@ public:
 		{
 			anItem->OnRender(myRawWindow);
 		}
-		myScene->OnRender(myRawWindow); 
+		myScene->OnRender(myRawWindow);
 		myUiScene->OnRender(myRawWindow);
 		//tempFileButton->OnRender(myRawWindow);
 	}

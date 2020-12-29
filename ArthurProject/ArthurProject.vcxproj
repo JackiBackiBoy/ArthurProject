@@ -163,6 +163,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="NodeTemplate.cpp" />
+    <ClCompile Include="src\Nodes\AABB.cpp" />
+    <ClCompile Include="src\Nodes\Behaviours\BushSpawnBehaviour.cpp" />
     <ClCompile Include="src\Nodes\PolygonCollider.cpp" />
     <ClCompile Include="src\box2d\collision\b2_broad_phase.cpp" />
     <ClCompile Include="src\box2d\collision\b2_chain_shape.cpp" />
@@ -233,6 +236,9 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NodeTemplate.h" />
+    <ClInclude Include="src\Nodes\AABB.h" />
+    <ClInclude Include="src\Nodes\Behaviours\BushSpawnBehaviour.h" />
     <ClInclude Include="src\data\EntityDatabase.h" />
     <ClInclude Include="src\Nodes\PolygonCollider.h" />
     <ClInclude Include="src\box2d\b2_api.h" />
@@ -300,6 +306,7 @@
     <ClInclude Include="src\Nodes\SpriteRenderer.h" />
     <ClInclude Include="src\Nodes\Node.h" />
     <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\Random.hpp" />
     <ClInclude Include="src\TimeTracker.h" />
     <ClInclude Include="src\ui\UIButton.h" />
     <ClInclude Include="src\ui\UIElement.h" />

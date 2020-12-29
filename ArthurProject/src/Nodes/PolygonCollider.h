@@ -20,6 +20,7 @@ public:
     sf::Vector2f GetGroundVector();
     b2ContactEdge* GetCollidedContact();
     bool IsColliding();
+    void SetGravityScale(float aValue);
 private:
     b2Body* myBody;
 

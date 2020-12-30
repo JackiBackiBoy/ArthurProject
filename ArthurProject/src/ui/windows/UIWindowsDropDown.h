@@ -17,5 +17,6 @@ public:
 private:
 	UIWindowsButton* myHeaderButton;
 	std::vector<UIWindowsButton*> myButtons;
+	bool myShowMenuFlag;
 };
 #endif

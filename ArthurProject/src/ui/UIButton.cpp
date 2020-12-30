@@ -5,6 +5,7 @@
 UIButton::UIButton(const sf::Vector2f& aPosition, const std::string& aName, UIText* aText, const int& aWidth, const int& aHeight, const sf::Color& aButtonColor, void(*anOnClick)())
 	: myWidth(aWidth), myHeight(aHeight), myButtonColor(aButtonColor), myOnClick(anOnClick), UIElement(aPosition, aName)
 {
+	myTextPointer = aText;
 	myRectangle = sf::IntRect((int)myPosition.x, (int)myPosition.y, myWidth, myHeight);
 	myButtonShape = sf::RectangleShape(sf::Vector2f((float)myWidth, (float)myHeight));
 	myButtonShape.setFillColor(myButtonColor);
@@ -39,6 +40,11 @@ void UIButton::OnUpdate()
 	sf::Vector2f tempNewPosition = { tempButtonCenter.x - tempTextCenter.x, tempButtonCenter.y - tempTextCenter.y };
 
 	tempChild.SetFontPosition(GetPosition() + tempNewPosition);*/
+	sf::Color tempButtonColor = myButtonShape.getFillColor();
+	myButtonShape.setFillColor({ tempButtonColor.r, tempButtonColor.g, tempButtonColor.b, (sf::Uint8)myAlpha });
+	myHoverColor.a = myAlpha;
+	myButtonColor.a = myAlpha;
+	myTextPointer->SetAlpha(myAlpha);
 
 	myLambda();
 	myButtonShape.setPosition(GetPosition());

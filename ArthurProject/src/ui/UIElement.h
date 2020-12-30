@@ -11,5 +11,12 @@ public:
 
 	inline void OnUpdate() override { Node::OnUpdate(); };
 	inline void OnRender(sf::RenderWindow* aWindow) override { Node::OnRender(aWindow); };
+
+	inline float GetAlpha() const { return myAlpha; }
+	inline void SetAlpha(const float& anAlpha) { myAlpha = anAlpha; }
+	inline float& Alpha() { return myAlpha; }
+
+protected:
+	float myAlpha = 255;
 };
 #endif

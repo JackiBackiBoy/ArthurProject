@@ -72,6 +72,7 @@
     <ClCompile Include="src\Nodes\Behaviours\BushSpawnBehaviour.cpp" />
     <ClCompile Include="src\Nodes\AABB.cpp" />
     <ClCompile Include="NodeTemplate.cpp" />
+    <ClCompile Include="src\math\MathFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="src\Nodes\AABB.h" />
     <ClInclude Include="NodeTemplate.h" />
     <ClInclude Include="src\Random.hpp" />
+    <ClInclude Include="src\math\MathFunctions.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

@@ -24,6 +24,7 @@ protected:
 	void(*myOnClick)();
 	std::function<void()> myLambda = []() {};
 
+	UIText* myTextPointer;
 	sf::IntRect myRectangle;
 	sf::Color myBaseButtonColor;
 	sf::Color myButtonColor;

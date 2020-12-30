@@ -21,6 +21,10 @@ UIText::UIText(const sf::Vector2f& aPosition, const std::string& aName, const st
 void UIText::OnUpdate()
 {
 	myRawText->setPosition(GetPosition());
+
+	sf::Color tempTextColor = myRawText->getFillColor();
+	myRawText->setFillColor({ tempTextColor.r, tempTextColor.g, tempTextColor.b, (sf::Uint8)myAlpha });
+
 	//SetFontPosition(GetPosition());
 	//myRawText->setPosition(sf::Vector2f(GetPosition().x - GetTextWidth(), GetPosition().y));
 	//SetFontPosition({ GetPosition().x, GetPosition().y });

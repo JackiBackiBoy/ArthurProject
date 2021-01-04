@@ -40,6 +40,22 @@ public:
 		return nullptr;
 	}
 
+	template <typename T>
+	std::vector<T*> GetChildrenOfType()
+	{
+		std::vector<T*> tempChildren;
+
+		for (size_t i = 0; i < myChildren.size(); i++)
+		{
+			if (typeid(*myChildren[i]) == typeid(T))
+			{
+				tempChildren.push_back((T*)myChildren[i]);
+			}
+		}
+
+		return tempChildren;
+	}
+
 protected:
 	bool myActive = true;
 	Node* myParent;

@@ -87,7 +87,7 @@ public:
 		//myScene->GetChild<PolygonCollider>("ground1")->SetRotation(3.1415f/4.f);
 		myScene->AddChild(new Camera(sf::Vector2f(0, -50), "MainCamera"));
 		myScene->GetChild<Camera>("MainCamera")->Zoom(0.7f);
-		myUiScene->AddChild(new UIText(sf::Vector2f(0, 0), "FPStext", "Fps:", sf::Color::White, "Fonts/segoeui", 64));
+		//myUiScene->AddChild(new UIText(sf::Vector2f(0, 0), "FPStext", "Fps:", sf::Color::White, "Fonts/segoeui", 64));
 		myMainCamera = myScene->GetChild<Camera>("MainCamera");
 
 
@@ -113,7 +113,7 @@ public:
 	{
 		TimeTracker::Update();
 
-		myUiScene->GetChild<UIText>("FPStext")->SetText("Fps:" + std::to_string((int)(1 / GetAverageDeltaTime())));
+		//myUiScene->GetChild<UIText>("FPStext")->SetText("Fps:" + std::to_string((int)(1 / GetAverageDeltaTime())));
 
 		//Camera Movement (debug)
 		if (InputManager::GetKey(sf::Keyboard::Up))

@@ -169,6 +169,7 @@
     <ClCompile Include="src\core\Window.cpp" />
     <ClCompile Include="src\Nodes\Health.cpp" />
     <ClCompile Include="NodeTemplate.cpp" />
+    <ClCompile Include="src\math\MathFunctions.cpp" />
     <ClCompile Include="src\Nodes\AABB.cpp" />
     <ClCompile Include="src\Nodes\Behaviours\BushSpawnBehaviour.cpp" />
     <ClCompile Include="src\Nodes\PolygonCollider.cpp" />
@@ -245,6 +246,7 @@
     <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\Nodes\Health.h" />
     <ClInclude Include="NodeTemplate.h" />
+    <ClInclude Include="src\math\MathFunctions.h" />
     <ClInclude Include="src\Nodes\AABB.h" />
     <ClInclude Include="src\Nodes\Behaviours\BushSpawnBehaviour.h" />
     <ClInclude Include="src\data\EntityDatabase.h" />

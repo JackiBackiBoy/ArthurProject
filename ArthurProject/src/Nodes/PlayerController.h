@@ -2,11 +2,12 @@
 #include "Node.h"
 #include "core\Ray.h"
 #include "Nodes/PolygonCollider.h"
+#include "Nodes/Health.h"
 class PlayerController :
 	public Node
 {
 public:
-	PlayerController(const sf::Vector2f& aPosition, const std::string& aName,int aMaxHealth, float aSpeed, float aRunningSpeed, float aJumpHeight,
+	PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed, float aJumpHeight,
 		float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue);
 	void OnStart() override;
 	void OnUpdate() override;
@@ -15,10 +16,9 @@ private:
 	void Movement();
 	void GroundCheck();
 	void Jump();
-	int myMaxHealth;
+	void OnTakeDamage();
 
 	float mySpeed;
-	float myRunningSpeed;
 	float myJumpHeight; 
 	float myFasterFallValue;
 
@@ -31,6 +31,10 @@ private:
 	float myJumpBufferTimerValue;
 	float myJumpBufferTimer;
 
+	float myInvulnurableTimerValue = 1.f;
+	float myInvulnurableTimer;
+
 	PolygonCollider* myCollider;
+	Health* myHealth;
 };
 

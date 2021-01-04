@@ -1,16 +1,18 @@
 #include "PolygonCollider.h"
 #include "Nodes/Scene.h"
 
-PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const std::vector<sf::Vector2f>& someVertices , const float& aDensity): Node(aPosition, aName)
+PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const std::vector<sf::Vector2f>& someVertices , const float& aDensity, int16 aGroup, int16 aMask)
+	: Node(aPosition, aName)
 {
 	myVertices = someVertices;
 	b2PolygonShape tempShape = VerticesToShape(someVertices);
 
-	myBody = GetActiveScene()->AddPolygon(tempShape, aDensity);
+	myBody = GetActiveScene()->AddPolygon(tempShape, aDensity, aGroup, aMask );
 	SetPosition(aPosition);
 }
 
-PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const float& aWidth, const float& aHeight, const float& aDensity) : Node(aPosition, aName)
+PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const float& aWidth, const float& aHeight, const float& aDensity, int16 aGroup, int16 aMask) 
+	: Node(aPosition, aName)
 {
 	myVertices.push_back(sf::Vector2f(0, 0));
 	myVertices.push_back(sf::Vector2f(aWidth, 0));
@@ -18,7 +20,7 @@ PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::strin
 	myVertices.push_back(sf::Vector2f(0, aHeight));
 	b2PolygonShape tempShape = VerticesToShape(myVertices);
 
-	myBody = GetActiveScene()->AddPolygon(tempShape, aDensity);
+	myBody = GetActiveScene()->AddPolygon(tempShape, aDensity, aGroup, aMask);
 	SetPosition(aPosition);
 }
 

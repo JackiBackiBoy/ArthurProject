@@ -6,8 +6,8 @@ class PolygonCollider :
     public Node
 {
 public:
-    PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const std::vector<sf::Vector2f>& someVertices, const float& aDensity);
-    PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const float& aWidth, const float & aHeight, const float& aDensity);
+    PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const std::vector<sf::Vector2f>& someVertices, const float& aDensity, int16 aGroup, int16 aMask);
+    PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const float& aWidth, const float & aHeight, const float& aDensity, int16 aGroup, int16 aMask);
     void SetPosition(const sf::Vector2f& aPosition) override;
     void SetRotation(const float& anAngle);
     void OnUpdate() override;

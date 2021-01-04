@@ -163,6 +163,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Nodes\ResourceBar.cpp" />
+    <ClCompile Include="src\core\Event.cpp" />
+    <ClCompile Include="src\core\Ray.cpp" />
+    <ClCompile Include="src\core\Window.cpp" />
+    <ClCompile Include="src\Nodes\Health.cpp" />
     <ClCompile Include="NodeTemplate.cpp" />
     <ClCompile Include="src\Nodes\AABB.cpp" />
     <ClCompile Include="src\Nodes\Behaviours\BushSpawnBehaviour.cpp" />
@@ -212,7 +217,6 @@
     <ClCompile Include="src\box2d\dynamics\b2_world.cpp" />
     <ClCompile Include="src\box2d\dynamics\b2_world_callbacks.cpp" />
     <ClCompile Include="src\box2d\rope\b2_rope.cpp" />
-    <ClCompile Include="src\core\Ray.cpp" />
     <ClCompile Include="src\Managers\InputManager.cpp" />
     <ClCompile Include="src\Managers\NodeManager.cpp" />
     <ClCompile Include="src\Nodes\Camera.cpp" />
@@ -227,7 +231,6 @@
     <ClCompile Include="src\Nodes\SpriteRenderer.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
     <ClCompile Include="src\Sandbox.cpp" />
-    <ClCompile Include="src\core\Window.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\TimeTracker.cpp" />
     <ClCompile Include="src\ui\UIButton.cpp" />
@@ -236,6 +239,11 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Nodes\ResourceBar.h" />
+    <ClInclude Include="src\core\Event.h" />
+    <ClInclude Include="src\core\Ray.h" />
+    <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\Nodes\Health.h" />
     <ClInclude Include="NodeTemplate.h" />
     <ClInclude Include="src\Nodes\AABB.h" />
     <ClInclude Include="src\Nodes\Behaviours\BushSpawnBehaviour.h" />
@@ -290,7 +298,6 @@
     <ClInclude Include="src\box2d\dynamics\b2_island.h" />
     <ClInclude Include="src\box2d\dynamics\b2_polygon_circle_contact.h" />
     <ClInclude Include="src\box2d\dynamics\b2_polygon_contact.h" />
-    <ClInclude Include="src\core\Ray.h" />
     <ClInclude Include="src\data\Animation.h" />
     <ClInclude Include="src\Nodes\PlayerController.h" />
     <ClInclude Include="src\Managers\InputManager.h" />
@@ -305,7 +312,6 @@
     <ClInclude Include="src\Nodes\Animator.h" />
     <ClInclude Include="src\Nodes\SpriteRenderer.h" />
     <ClInclude Include="src\Nodes\Node.h" />
-    <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\Random.hpp" />
     <ClInclude Include="src\TimeTracker.h" />
     <ClInclude Include="src\ui\UIButton.h" />

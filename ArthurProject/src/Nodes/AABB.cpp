@@ -16,7 +16,7 @@ void AABB::OnRender(sf::RenderWindow* aWindow)
 {
 	Node::OnRender(aWindow);
 
-	return;
+	/*return;*/
 
 	//Debug
 	sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, 5);

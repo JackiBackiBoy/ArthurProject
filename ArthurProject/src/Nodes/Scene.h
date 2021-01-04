@@ -9,6 +9,14 @@
 
 class Node;
 
+enum CollisionMask
+{
+	None = 0x0000,
+	Ground = 0x0001,
+	Player = 0x0002,
+	Enemy = 0x0004
+
+};
 class Scene : public Node
 {
 public:
@@ -16,8 +24,9 @@ public:
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;
 	void SetView(sf::View aView);
-	b2Body* AddPolygon(const b2PolygonShape aShape,const float& aDensity);
+	b2Body* AddPolygon(const b2PolygonShape aShape,const float& aDensity,int16 aGroup, int16 aMask);
 	void AddGround(const std::vector<sf::Vector2f>& someVertices, const int& aCount);
+	static Scene* UiScene;
 private:
 
 	sf::View myView;

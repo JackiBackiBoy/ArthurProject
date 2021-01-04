@@ -39,12 +39,13 @@ private:
     int myExhaustedTimes = 4;
 
     float myDashDirection;
-    float myDashSpeed = 25;
+    float myDashSpeed = 35;
 
     PolygonCollider* myCollider;
     Animator* myAnimator;
     AABB* myPlayerDetectionBox;
     Node* myPlayerNode;
+    AABB* myHitbox;
     AttackState myAttackState = AttackState::ChargeUp;
 };
 

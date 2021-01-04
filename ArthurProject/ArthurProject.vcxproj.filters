@@ -5,7 +5,6 @@
     <ClCompile Include="src\Nodes\SpriteRenderer.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
     <ClCompile Include="src\Sandbox.cpp" />
-    <ClCompile Include="src\core\Window.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\ui\UIButton.cpp" />
     <ClCompile Include="src\ui\UIText.cpp" />
@@ -21,7 +20,6 @@
     <ClCompile Include="src\data\Options.cpp" />
     <ClCompile Include="src\data\SaveLoad.cpp" />
     <ClCompile Include="src\Managers\InputManager.cpp" />
-    <ClCompile Include="src\core\Ray.cpp" />
     <ClCompile Include="src\Nodes\PlayerController.cpp" />
     <ClCompile Include="src\box2d\collision\b2_broad_phase.cpp" />
     <ClCompile Include="src\box2d\collision\b2_chain_shape.cpp" />
@@ -72,12 +70,16 @@
     <ClCompile Include="src\Nodes\Behaviours\BushSpawnBehaviour.cpp" />
     <ClCompile Include="src\Nodes\AABB.cpp" />
     <ClCompile Include="NodeTemplate.cpp" />
+    <ClCompile Include="src\Nodes\Health.cpp" />
+    <ClCompile Include="src\core\Ray.cpp" />
+    <ClCompile Include="src\core\Window.cpp" />
+    <ClCompile Include="src\core\Event.cpp" />
+    <ClCompile Include="src\Nodes\ResourceBar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
     <ClInclude Include="src\Nodes\SpriteRenderer.h" />
     <ClInclude Include="src\Nodes\Node.h" />
-    <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\ui\UIButton.h" />
     <ClInclude Include="src\ui\UIElement.h" />
     <ClInclude Include="src\ui\UIText.h" />
@@ -94,7 +96,6 @@
     <ClInclude Include="src\data\SaveLoad.h" />
     <ClInclude Include="src\Managers\InputManager.h" />
     <ClInclude Include="src\Nodes\PlayerController.h" />
-    <ClInclude Include="src\core\Ray.h" />
     <ClInclude Include="src\data\Animation.h" />
     <ClInclude Include="src\box2d\b2_api.h" />
     <ClInclude Include="src\box2d\b2_block_allocator.h" />
@@ -151,6 +152,11 @@
     <ClInclude Include="src\Nodes\AABB.h" />
     <ClInclude Include="NodeTemplate.h" />
     <ClInclude Include="src\Random.hpp" />
+    <ClInclude Include="src\Nodes\Health.h" />
+    <ClInclude Include="src\core\Ray.h" />
+    <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\core\Event.h" />
+    <ClInclude Include="src\Nodes\ResourceBar.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

@@ -1,11 +1,13 @@
 #include "BushSpawnBehaviour.h"
 #include "Random.hpp"
 #include <TimeTracker.h>
+#include <Nodes\Health.h>
 void BushSpawnBehaviour::OnStart()
 {
 	myCollider = (PolygonCollider*)myParent;
 	myAnimator = myParent->GetChild<Animator>("Animator");
 	myPlayerDetectionBox = myParent->GetChild<AABB>("PlayerDetectingCol");
+	myHitbox = myParent->GetChild<AABB>("Hitbox");
 }
 void BushSpawnBehaviour::OnUpdate()
 {
@@ -104,6 +106,11 @@ void BushSpawnBehaviour::WakeUp()
 
 void BushSpawnBehaviour::AwakeUpdate()
 {
+	if (myHitbox->Intersects("PlayerCollisionBox"))
+	{
+		myHitbox->GetIntersecting("PlayerCollisionBox")[0]->GetParent()->GetChild<Health>("Health")->Damage(10);
+	}
+
 	if (myAttackState == AttackState::ChargeUp)
 	{
 		if (!myAnimator->GetPlayingFlag())

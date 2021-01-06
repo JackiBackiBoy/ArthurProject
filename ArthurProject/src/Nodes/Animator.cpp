@@ -13,20 +13,24 @@ Animator::Animator(const sf::Vector2f& aPosition, const std::string& aName, std:
 void Animator::OnUpdate()
 {
 	SpriteRenderer::OnUpdate();
+	if (myPlayingFlag)
+	{
+		if (myCurrentFrameTimer <= 0)
+		{
+			NextFrame();
+		}
+		else
+		{
+			myCurrentFrameTimer -= TimeTracker::GetDeltaTime();
+		}
+	}
 }
 
 void Animator::OnRender(sf::RenderWindow* aWindow)
 {
 	SpriteRenderer::OnRender(aWindow);
 
-	if (myCurrentFrameTimer <= 0)
-	{
-		NextFrame();
-	}
-	else
-	{
-		myCurrentFrameTimer -= TimeTracker::GetDeltaTime();
-	}
+
 }
 
 void Animator::SetFrame(int aFrame)
@@ -46,7 +50,16 @@ void Animator::NextFrame()
 
 	if (myCurrentFrame >= myAnimations[myCurrentAnimation]->FrameCount)
 	{
-		myCurrentFrame = 0;
+		if (myLoopFlag)
+		{
+			myCurrentFrame = 0;
+		}
+		else
+		{
+			myCurrentFrame--;
+			myPlayingFlag = false;
+			return;
+		}
 	}
 
 	SetFrame(myCurrentFrame);
@@ -56,4 +69,26 @@ void Animator::SetAnimation(std::string aString)
 {
 	myCurrentAnimation = aString;
 	mySprite->setTexture(AssetManager::GetTexture(myAnimations[aString]->TexturePath));
+	SetFrame(0);
+	myPlayingFlag = true;
+}
+
+void Animator::SetLoopFlag(bool aFlag)
+{
+	myLoopFlag = aFlag;
+}
+
+void Animator::SetPlayingFlag(bool aFlag)
+{
+	myPlayingFlag = aFlag;
+}
+
+bool Animator::GetPlayingFlag()
+{
+	return myPlayingFlag;
+}
+
+std::string Animator::GetCurrentAnimation()
+{
+	return myCurrentAnimation;
 }

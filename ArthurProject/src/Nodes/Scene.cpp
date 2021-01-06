@@ -2,6 +2,7 @@
 #include "TimeTracker.h"
 
 b2World Scene::myB2World = b2World(b2Vec2(0.0f, 10.0f));
+Scene* Scene::UiScene = nullptr;
 
 Scene::Scene() : Node(sf::Vector2f(0, 0), "Scene")
 {
@@ -38,14 +39,20 @@ void Scene::SetView(sf::View aView)
 	myView = aView;
 }
 
-b2Body* Scene::AddPolygon(const b2PolygonShape aShape, const float& aDensity)
+b2Body* Scene::AddPolygon(const b2PolygonShape aShape, const float& aDensity,int16 aGroup, int16 aMask)
 {
 	b2BodyDef tempDef;
 	tempDef.type = b2_dynamicBody;
 	tempDef.fixedRotation = true;
 
 	b2Body* tempBody = myB2World.CreateBody(&tempDef);
-	tempBody->CreateFixture(&aShape, aDensity);
+
+	b2FixtureDef* tempFixDef = new b2FixtureDef();
+	tempFixDef->density = aDensity;
+	tempFixDef->shape = &aShape;
+	tempFixDef->filter.categoryBits = aGroup;
+	tempFixDef->filter.maskBits = aMask;
+	tempBody->CreateFixture(tempFixDef);
 
 	return tempBody;
 }

@@ -12,11 +12,18 @@ public:
 	void OnRender(sf::RenderWindow* aWindow) override;
 	void SetFrame(int aFrame);
 	void SetAnimation(std::string aString);
+	void SetLoopFlag(bool aFlag);
+	void SetPlayingFlag(bool aFlag);
+	bool GetPlayingFlag();
+	std::string GetCurrentAnimation();
+
 private:
 	void NextFrame();
 	std::map<std::string, Animation*> myAnimations;
 	std::string myCurrentAnimation;
 	int myCurrentFrame;
 	float myCurrentFrameTimer;
+	bool myLoopFlag = true;
+	bool myPlayingFlag = true;
 };
 

@@ -14,7 +14,8 @@
 #include "Nodes/Animator.h"
 #include "core/Ray.h"
 #include <box2d\box2d.h>
-
+#include "data/EntityDatabase.h"
+#include "Nodes/ResourceBar.h"
 class Sandbox : public Window
 {
 public:
@@ -54,6 +55,13 @@ public:
 		return (tempFloat / 200);
 	}
 
+	void CreateUi()
+	{
+		//Player Health Bar
+		myUiScene->AddChild(new ResourceBar(sf::Vector2f(500, 0), "HealthBar", 1.f, AssetManager::GetTexture("UI/HealthBar")));
+		myUiScene->GetChild<ResourceBar>("HealthBar")->AddChild(new SpriteRenderer(sf::Vector2f(0, 0), "HealthBarBackground", AssetManager::GetTexture("UI/HealthBarBackground")));
+	}
+
 	void OnStart() override
 	{
 
@@ -61,6 +69,9 @@ public:
 		AssetManager::Init();
 		myScene = new Scene();
 		myUiScene = new Scene();
+		Scene::UiScene = myUiScene;
+
+		CreateUi();
 		myScene->AddGround(std::vector<sf::Vector2f>
 			{
 				sf::Vector2f(-1000, -200),
@@ -81,7 +92,7 @@ public:
 		//myScene->GetChild<PolygonCollider>("ground1")->SetRotation(3.1415f/4.f);
 		myScene->AddChild(new Camera(sf::Vector2f(0, -50), "MainCamera"));
 		myScene->GetChild<Camera>("MainCamera")->Zoom(0.7f);
-		myUiScene->AddChild(new UIText(sf::Vector2f(0, 0), "FPStext", "Fps:", sf::Color::White, "Fonts/segoeui", 64));
+		//myUiScene->AddChild(new UIText(sf::Vector2f(0, 0), "FPStext", "Fps:", sf::Color::White, "Fonts/segoeui", 64));
 		myMainCamera = myScene->GetChild<Camera>("MainCamera");
 
 
@@ -107,7 +118,7 @@ public:
 	{
 		TimeTracker::Update();
 
-		myUiScene->GetChild<UIText>("FPStext")->SetText("Fps:" + std::to_string((int)(1 / GetAverageDeltaTime())));
+		//myUiScene->GetChild<UIText>("FPStext")->SetText("Fps:" + std::to_string((int)(1 / GetAverageDeltaTime())));
 
 		//Camera Movement (debug)
 		if (InputManager::GetKey(sf::Keyboard::Up))
@@ -148,7 +159,7 @@ public:
 		{
 			anItem->OnRender(myRawWindow);
 		}
-		myScene->OnRender(myRawWindow); 
+		myScene->OnRender(myRawWindow);
 		myUiScene->OnRender(myRawWindow);
 		//tempFileButton->OnRender(myRawWindow);
 	}

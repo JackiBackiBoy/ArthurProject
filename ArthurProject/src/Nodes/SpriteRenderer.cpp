@@ -19,3 +19,18 @@ void SpriteRenderer::SetPosition(const sf::Vector2f& aPosition)
 	mySprite->setPosition(GetPosition());
 }
 
+void SpriteRenderer::SetScale(sf::Vector2f aValue)
+{
+	mySprite->setScale(aValue);
+}
+
+void SpriteRenderer::SetTextureRect(const sf::IntRect& aRect)
+{
+	mySprite->setTextureRect(aRect);
+}
+
+sf::Vector2i SpriteRenderer::GetTextureSize()
+{
+	return (sf::Vector2i)(mySprite->getTexture()->getSize());
+}
+

@@ -25,6 +25,7 @@ public:
 	void AddChild(Node* aChild);
 	void OrphanChild(Node* aChild);
 	Scene* GetActiveScene();
+	Node* GetParent();
 
 	template <typename T>
 	T* GetChild(const std::string& aName)
@@ -37,6 +38,22 @@ public:
 			}
 		}
 		return nullptr;
+	}
+
+	template <typename T>
+	std::vector<T*> GetChildrenOfType()
+	{
+		std::vector<T*> tempChildren;
+
+		for (size_t i = 0; i < myChildren.size(); i++)
+		{
+			if (typeid(*myChildren[i]) == typeid(T))
+			{
+				tempChildren.push_back((T*)myChildren[i]);
+			}
+		}
+
+		return tempChildren;
 	}
 
 protected:

@@ -25,7 +25,6 @@ private:
 	sf::Text* myRawText;
 	sf::Font* myFont;
 	sf::Color myColor;
-	sf::Color myHoverColor;
 
 	int myFontSize;
 };

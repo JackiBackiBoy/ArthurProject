@@ -8,6 +8,9 @@ public:
 	inline void OnUpdate() override { Node::OnUpdate(); }
 	void OnRender(sf::RenderWindow* aWindow) override;
 	void SetPosition(const sf::Vector2f& aPosition) override;
+	void SetScale(sf::Vector2f aValue);
+	void SetTextureRect(const sf::IntRect& aRect);
+	sf::Vector2i GetTextureSize();
 protected:
 	sf::Sprite* mySprite;
 };

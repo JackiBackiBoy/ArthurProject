@@ -2,16 +2,20 @@
 #include "Managers/InputManager.h"
 #include "TimeTracker.h"
 #include "Nodes/Scene.h"
+#include "Nodes\Health.h"
+#include "Nodes\ResourceBar.h"
 
-PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed, float aRunningSpeed, float aJumpHeight,
+PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed, float aJumpHeight,
 	float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue)
-	: Node(aPosition, aName), mySpeed(aSpeed), myRunningSpeed(aRunningSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
+	: Node(aPosition, aName), mySpeed(aSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
 	myJumpBufferTimerValue(aJumpBufferTimerValue), myJumpTimerValue(aJumpTimerValue), myFasterFallValue(aFasterFallValue)
 {
 }
 void PlayerController::OnStart()
 {
 	myCollider = (PolygonCollider*)myParent;
+	myHealth = myParent->GetChild<Health>("Health");
+	myHealth->OnTakeDamage.AddListener([&]() { OnTakeDamage(); });
 	Node::OnStart();
 }
 
@@ -21,6 +25,22 @@ void PlayerController::OnUpdate()
 	GroundCheck();
 	Movement();
 	Jump();
+
+	if (myInvulnurableTimer <= 0)
+	{
+		myHealth->SetInvulnurableFlag(false);
+	}
+	else
+	{
+		myInvulnurableTimer -= TimeTracker::GetDeltaTime();
+	}
+}
+
+void PlayerController::OnTakeDamage()
+{
+	Scene::UiScene->GetChild<ResourceBar>("HealthBar")->SetValue(myHealth->GetHealthPercent());
+	myHealth->SetInvulnurableFlag(true);
+	myInvulnurableTimer = myInvulnurableTimerValue;
 }
 
 void PlayerController::OnRender(sf::RenderWindow* aWindow)
@@ -41,17 +61,7 @@ void PlayerController::Movement()
 		tempX += 1;
 	}
 
-	float tempSpeed = 0;
-
-	if (InputManager::GetKey(sf::Keyboard::LShift))
-	{
-		tempSpeed = myRunningSpeed;
-	}
-	else
-	{
-		tempSpeed = mySpeed;
-	}
-	if (myCollider->IsTouchingGround() && !myCollider->IsTouchingWall())
+	if (myCollider->IsColliding())
 	{
 		LeftGround = false;
      	sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
@@ -94,6 +104,7 @@ void PlayerController::Jump()
 		{
 			myJumpBufferTimer = 0;
 			myJumpTimer = myJumpTimerValue;
+			myCollider->SetGravityScale(1);
 		}
 	}
 
@@ -112,7 +123,7 @@ void PlayerController::Jump()
 
 	if (myJumpTimer <= 0 && !myCollider->IsTouchingGround())
 	{
-		myCollider->AddVelocity(sf::Vector2f(0, myFasterFallValue * TimeTracker::GetDeltaTime()));
+		myCollider->SetGravityScale(myFasterFallValue);
 	}
 }
 

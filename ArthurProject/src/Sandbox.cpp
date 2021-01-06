@@ -63,14 +63,15 @@ public:
 		myUiScene = new Scene();
 		myScene->AddGround(std::vector<sf::Vector2f>
 			{
-				sf::Vector2f(-100, 0),
-				sf::Vector2f(0, -20),
-				sf::Vector2f(100, 0),
+				sf::Vector2f(-1000, -200),
+				sf::Vector2f(-90, -150),
+				sf::Vector2f(-100, -100),
+				sf::Vector2f(50, 0),
 				sf::Vector2f(200, -100),
-				sf::Vector2f(250, -120),
+				sf::Vector2f(190, -150),
 				sf::Vector2f(300, -100),
 				sf::Vector2f(400, 0)
-			}, 7);
+			});
 		myScene->AddChild(new PolygonCollider(sf::Vector2f(-30, -100), "player", std::vector<sf::Vector2f>{sf::Vector2f(0, 0), sf::Vector2f(16, 0), sf::Vector2f(16, 16), sf::Vector2f(0, 16)}, 1.f));
 		myScene->GetChild<PolygonCollider>("player")->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", &AssetManager::GetAnimation("Animations/Blob")} },"Blob" ) );
 		myScene->GetChild<PolygonCollider>("player")->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 40, 60, 70, 0.1f, 0.1f, 0.25f, 300.f));

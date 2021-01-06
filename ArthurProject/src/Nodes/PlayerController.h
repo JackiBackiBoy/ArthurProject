@@ -29,6 +29,8 @@ private:
 	float myJumpBufferTimerValue;
 	float myJumpBufferTimer;
 
+	bool LeftGround;
+
 	PolygonCollider* myCollider;
 };
 

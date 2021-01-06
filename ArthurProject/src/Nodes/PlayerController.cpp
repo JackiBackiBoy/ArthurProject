@@ -51,14 +51,25 @@ void PlayerController::Movement()
 	{
 		tempSpeed = mySpeed;
 	}
-	if (myCollider->IsColliding())
+	if (myCollider->IsTouchingGround() && !myCollider->IsTouchingWall())
 	{
-		sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
+		LeftGround = false;
+     	sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
 		myCollider->SetVelocity(tempSurfaceVector * tempX * tempSpeed);	
 	}
 	else 
 	{
-		myCollider->SetVelocity(sf::Vector2f(tempX * tempSpeed, myCollider->GetVelocity().y));
+		if (myCollider->IsTouchingWall()) 
+		{
+			if (myCollider->GetCollidedContact()->contact->GetManifold()->localNormal.x * tempX > 0)
+			{
+				myCollider->SetVelocity(sf::Vector2f(tempX * tempSpeed, myCollider->GetVelocity().y));
+			}
+		}
+		else 
+		{
+			myCollider->SetVelocity(sf::Vector2f(tempX * tempSpeed, myCollider->GetVelocity().y));
+		}
 	}
 }
 
@@ -99,7 +110,7 @@ void PlayerController::Jump()
 		}
 	}
 
-	if (myJumpTimer <= 0 && !myCollider->IsColliding())
+	if (myJumpTimer <= 0 && !myCollider->IsTouchingGround())
 	{
 		myCollider->AddVelocity(sf::Vector2f(0, myFasterFallValue * TimeTracker::GetDeltaTime()));
 	}

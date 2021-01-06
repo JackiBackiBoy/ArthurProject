@@ -21,7 +21,6 @@ public:
     b2ContactEdge* GetCollidedContact();
     bool IsTouchingGround();
     bool IsTouchingWall();
-    bool IsColliding();
     void SetGravityScale(float aValue);
 private:
     b2Body* myBody;

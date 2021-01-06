@@ -529,7 +529,7 @@ void Scene::AddGround(const std::vector<sf::Vector2f>& someVertices)
         }
 		b2PolygonShape tempShape;
 		tempShape.Set(tempTriangleVertices, 3);
-		AddPolygon(tempShape, 0);
+		AddPolygon(tempShape, 0, CollisionMask::Ground, 0xFFFF);
 	}
 }
 

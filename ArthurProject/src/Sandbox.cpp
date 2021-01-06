@@ -83,9 +83,9 @@ public:
 				sf::Vector2f(300, -100),
 				sf::Vector2f(400, 0)
 			});
-		myScene->AddChild(new PolygonCollider(sf::Vector2f(-30, -100), "player", std::vector<sf::Vector2f>{sf::Vector2f(0, 0), sf::Vector2f(16, 0), sf::Vector2f(16, 16), sf::Vector2f(0, 16)}, 1.f));
+		myScene->AddChild(new PolygonCollider(sf::Vector2f(-30, -100), "player", std::vector<sf::Vector2f>{sf::Vector2f(0, 0), sf::Vector2f(16, 0), sf::Vector2f(16, 16), sf::Vector2f(0, 16)}, 1.f, CollisionMask::Enemy, CollisionMask::Ground));
 		myScene->GetChild<PolygonCollider>("player")->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", &AssetManager::GetAnimation("Animations/Blob")} },"Blob" ) );
-		myScene->GetChild<PolygonCollider>("player")->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 40, 60, 70, 0.1f, 0.1f, 0.25f, 300.f));
+		myScene->GetChild<PolygonCollider>("player")->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 40, 70, 0.1f, 0.1f, 0.25f, 300.f));
 
 		//myScene->AddChild(new PolygonCollider(sf::Vector2f(-50, 0), "ground", std::vector<sf::Vector2f>{sf::Vector2f(0, 0), sf::Vector2f(100, 0), sf::Vector2f(100, 10), sf::Vector2f(0, 10)}, 0.f));
 		//myScene->AddChild(new PolygonCollider(sf::Vector2f(-70, -60), "ground1", 100,10, 0.f));

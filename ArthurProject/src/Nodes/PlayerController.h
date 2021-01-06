@@ -31,6 +31,8 @@ private:
 	float myJumpBufferTimerValue;
 	float myJumpBufferTimer;
 
+	bool LeftGround;
+
 	float myInvulnurableTimerValue = 1.f;
 	float myInvulnurableTimer;
 

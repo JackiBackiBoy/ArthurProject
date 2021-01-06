@@ -25,7 +25,7 @@ public:
 	void OnRender(sf::RenderWindow* aWindow) override;
 	void SetView(sf::View aView);
 	b2Body* AddPolygon(const b2PolygonShape aShape,const float& aDensity,int16 aGroup, int16 aMask);
-	void AddGround(const std::vector<sf::Vector2f>& someVertices, const int& aCount);
+	void AddGround(const std::vector<sf::Vector2f>& someVertices);
 	static Scene* UiScene;
 private:
 
@@ -35,7 +35,7 @@ private:
 	const int32 velocityIterations = 1;
 	const int32 positionIterations = 1;
 
-	std::vector<sf::Vector2f> myGroundVerts;
+	std::vector<std::vector<sf::Vector2f>> myGroundVerts;
 
 
 };

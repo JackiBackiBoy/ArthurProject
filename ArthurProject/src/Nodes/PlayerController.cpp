@@ -61,14 +61,25 @@ void PlayerController::Movement()
 		tempX += 1;
 	}
 
-	if (myCollider->IsColliding())
+	if (myCollider->IsTouchingGround())
 	{
-		sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
+		LeftGround = false;
+     	sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
 		myCollider->SetVelocity(tempSurfaceVector * tempX * mySpeed);	
 	}
 	else 
 	{
-		myCollider->SetVelocity(sf::Vector2f(tempX * mySpeed, myCollider->GetVelocity().y));
+		if (myCollider->IsTouchingWall()) 
+		{
+			if (myCollider->GetCollidedContact()->contact->GetManifold()->localNormal.x * tempX > 0)
+			{
+				myCollider->SetVelocity(sf::Vector2f(tempX * mySpeed, myCollider->GetVelocity().y));
+			}
+		}
+		else 
+		{
+			myCollider->SetVelocity(sf::Vector2f(tempX * mySpeed, myCollider->GetVelocity().y));
+		}
 	}
 }
 
@@ -110,7 +121,7 @@ void PlayerController::Jump()
 		}
 	}
 
-	if (myJumpTimer <= 0 && !myCollider->IsColliding())
+	if (myJumpTimer <= 0 && !myCollider->IsTouchingGround())
 	{
 		myCollider->SetGravityScale(myFasterFallValue);
 	}

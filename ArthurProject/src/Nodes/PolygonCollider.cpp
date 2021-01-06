@@ -112,14 +112,34 @@ b2ContactEdge* PolygonCollider::GetCollidedContact()
 	return nullptr;
 }
 
-bool PolygonCollider::IsColliding() 
+bool PolygonCollider::IsTouchingGround() 
 {
 	b2ContactEdge* tempContact = myBody->GetContactList();
 	while (tempContact)
 	{
 		if (tempContact->contact->IsTouching()) 
+		{ 
+			if (abs(tempContact->contact->GetManifold()->localNormal.x) < 0.8f) //if less than 0.8f (temp value), the collided surface is a slope and can therefore be walked across by the player 
+			{
+				return true;
+			}
+		}
+		tempContact = tempContact->next;
+	}
+	return false;
+}
+
+bool PolygonCollider::IsTouchingWall()
+{
+	b2ContactEdge* tempContact = myBody->GetContactList();
+	while (tempContact)
+	{
+		if (tempContact->contact->IsTouching())
 		{
-			return true;
+			if (abs(tempContact->contact->GetManifold()->localNormal.x) >= 0.8f) //value must be equal to the above function's value (should have made a variable pls no hate) 
+			{
+				return true;
+			}
 		}
 		tempContact = tempContact->next;
 	}
@@ -133,10 +153,10 @@ void PolygonCollider::SetGravityScale(float aValue)
 
 sf::Vector2f PolygonCollider::GetGroundVector() 
 {
-	if (IsColliding())
+	if (IsTouchingGround())
 	{
 		b2ContactEdge* tempContact = myBody->GetContactList();
-
+		sf::Vector2f tempSurface;
 		while (tempContact)
 		{
 			if (tempContact->contact->IsTouching()) 

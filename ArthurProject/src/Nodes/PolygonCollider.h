@@ -19,7 +19,8 @@ public:
     sf::Vector2f GetVelocity();
     sf::Vector2f GetGroundVector();
     b2ContactEdge* GetCollidedContact();
-    bool IsColliding();
+    bool IsTouchingGround();
+    bool IsTouchingWall();
     void SetGravityScale(float aValue);
 private:
     b2Body* myBody;

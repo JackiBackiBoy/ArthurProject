@@ -153,7 +153,7 @@ void BushSpawnBehaviour::AwakeUpdate()
 		}
 		else
 		{
-			if (myCollider->IsColliding())
+			if (myCollider->IsTouchingGround())
 			{
 				sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
 				myCollider->SetVelocity(tempSurfaceVector * myDashDirection * myDashSpeed);

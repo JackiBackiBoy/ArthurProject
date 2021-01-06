@@ -76,6 +76,7 @@
     <ClCompile Include="src\core\Event.cpp" />
     <ClCompile Include="src\Nodes\ResourceBar.cpp" />
     <ClCompile Include="src\math\MathFunctions.cpp" />
+    <ClCompile Include="src\Spells\Spell.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="src\core\Event.h" />
     <ClInclude Include="src\Nodes\ResourceBar.h" />
     <ClInclude Include="src\math\MathFunctions.h" />
+    <ClInclude Include="src\Spells\Spell.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

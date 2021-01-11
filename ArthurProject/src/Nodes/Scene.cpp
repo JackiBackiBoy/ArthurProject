@@ -7,6 +7,7 @@ Scene* Scene::UiScene = nullptr;
 Scene::Scene() : Node(sf::Vector2f(0, 0), "Scene")
 {
 	myView = Window::CurrentWindow->GetRawWindow()->getDefaultView();
+    myB2World.SetGravity(b2Vec2(0,100));
 }
 void Scene::OnUpdate()
 {

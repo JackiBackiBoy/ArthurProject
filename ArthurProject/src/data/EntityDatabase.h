@@ -16,7 +16,7 @@ public:
 
 		if (anEntity == "BushSpawn")
 		{
-			tempNode = new PolygonCollider(aPosition,"BushSpawn", 20,10, 1,CollisionMask::Enemy, CollisionMask::Ground );
+			tempNode = new PolygonCollider(aPosition,"BushSpawn", 20,10, 1.f,CollisionMask::Enemy, CollisionMask::Ground );
 			tempNode->AddChild(new BushSpawnBehaviour());
 			tempNode->AddChild(new Animator(sf::Vector2f(-77*0.125f, -10), "Animator", std::map<std::string, Animation*>
 			{
@@ -41,7 +41,7 @@ public:
 		{
 			tempNode = new PolygonCollider(sf::Vector2f(-30, -100), "Player", 16,16, 1.f, CollisionMask::Player, CollisionMask::Ground);
 			tempNode->AddChild(new Animator(sf::Vector2f(0, 0), "Animator", std::map<std::string, Animation*>{ {"Blob", & AssetManager::GetAnimation("Animations/Blob")} }, "Blob"));
-			tempNode->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 70, 90, 0.1f, 0.1f, 0.25f, 20.f));
+			tempNode->AddChild(new PlayerController(sf::Vector2f(0, 0), "PlayerController", 70, 130, 0.1f, 0.1f, 0.25f, 2));
 			tempNode->AddChild(new AABB(sf::Vector2f(0, 0), "PlayerCollisionBox", sf::Vector2f(16, 16)));
 			tempNode->AddChild(new Health("Health", 100));
 

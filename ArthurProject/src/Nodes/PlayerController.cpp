@@ -4,7 +4,7 @@
 #include "Nodes/Scene.h"
 #include "Nodes\Health.h"
 #include "Nodes\ResourceBar.h"
-
+#include "data/PlayerInfo.h"
 PlayerController::PlayerController(const sf::Vector2f& aPosition, const std::string& aName, float aSpeed, float aJumpHeight,
 	float aGroundedTimerValue, float aJumpBufferTimerValue, float aJumpTimerValue, float aFasterFallValue)
 	: Node(aPosition, aName), mySpeed(aSpeed), myJumpHeight(aJumpHeight), myGroundedTimerValue(aGroundedTimerValue),
@@ -17,6 +17,8 @@ void PlayerController::OnStart()
 	myHealth = myParent->GetChild<Health>("Health");
 	myHealth->OnTakeDamage.AddListener([&]() { OnTakeDamage(); });
 	Node::OnStart();
+
+	PlayerInfo::GetSpells()[0][0]->Activate();
 }
 
 void PlayerController::OnUpdate()
@@ -65,7 +67,7 @@ void PlayerController::Movement()
 	{
 		LeftGround = false;
      	sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
-		myCollider->SetVelocity(tempSurfaceVector * tempX * mySpeed);	
+		myCollider->SetVelocity(tempSurfaceVector * tempX * mySpeed);
 	}
 	else 
 	{

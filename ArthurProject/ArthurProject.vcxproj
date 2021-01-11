@@ -163,6 +163,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\data\PlayerInfo.cpp" />
+    <ClCompile Include="src\Spells\PastTime.cpp" />
     <ClCompile Include="src\Spells\Spell.cpp" />
     <ClCompile Include="src\Nodes\ResourceBar.cpp" />
     <ClCompile Include="src\core\Event.cpp" />
@@ -241,6 +243,8 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Spells\PastTime.h" />
+    <ClInclude Include="src\data\PlayerInfo.h" />
     <ClInclude Include="src\Spells\Spell.h" />
     <ClInclude Include="src\Nodes\ResourceBar.h" />
     <ClInclude Include="src\core\Event.h" />

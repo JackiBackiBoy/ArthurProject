@@ -149,10 +149,17 @@ void BushSpawnBehaviour::AwakeUpdate()
 			myAnimator->SetAnimation("Exhausted");
 			myAnimator->SetLoopFlag(false);
 			myCounter = 0;
-			myCollider->SetVelocity(sf::Vector2f(0, 0));
+
+			if (myCollider->IsTouchingGround())
+			{
+				myCollider->SetVelocity(sf::Vector2f(0, 0));
+			}
 		}
 		else
 		{
+
+
+
 			if (myCollider->IsTouchingGround())
 			{
 				sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
@@ -160,8 +167,19 @@ void BushSpawnBehaviour::AwakeUpdate()
 			}
 			else
 			{
-				myCollider->SetVelocity(sf::Vector2f(myDashDirection * myDashSpeed, myCollider->GetVelocity().y));
+				if (myCollider->IsTouchingWall())
+				{
+					if (myCollider->GetCollidedContact()->contact->GetManifold()->localNormal.x * myDashDirection > 0)
+					{
+						myCollider->SetVelocity(sf::Vector2f(myDashDirection * myDashSpeed, myCollider->GetVelocity().y));
+					}
+				}
+				else
+				{
+					myCollider->SetVelocity(sf::Vector2f(myDashDirection * myDashSpeed, myCollider->GetVelocity().y));
+				}
 			}
+
 		}
 
 

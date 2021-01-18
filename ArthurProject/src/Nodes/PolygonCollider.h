@@ -6,6 +6,7 @@ class PolygonCollider :
     public Node
 {
 public:
+    PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, float aRadius, const float& aDensity, int16 aGroup, int16 aMask);
     PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const std::vector<sf::Vector2f>& someVertices, const float& aDensity, int16 aGroup, int16 aMask);
     PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const float& aWidth, const float & aHeight, const float& aDensity, int16 aGroup, int16 aMask);
     void SetPosition(const sf::Vector2f& aPosition) override;
@@ -19,12 +20,13 @@ public:
     sf::Vector2f GetVelocity();
     sf::Vector2f GetGroundVector();
     b2ContactEdge* GetCollidedContact();
+    bool IsTouching(); 
     bool IsTouchingGround();
-    bool IsTouchingWall();
+    bool IsTouchingWall(); 
     void SetGravityScale(float aValue);
 private:
     b2Body* myBody;
-
+    float myRadius;
     sf::Vector2f b2VecToSfVec(const b2Vec2& aVec);
     std::vector<sf::Vector2f> myVertices;
 };

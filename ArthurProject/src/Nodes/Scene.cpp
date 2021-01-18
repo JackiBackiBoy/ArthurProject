@@ -8,9 +8,34 @@ Scene::Scene() : Node(sf::Vector2f(0, 0), "Scene")
 {
 	myView = Window::CurrentWindow->GetRawWindow()->getDefaultView();
     myB2World.SetGravity(b2Vec2(0,100));
+    myDynamicBodies = std::vector<b2Body*>();
 }
+
+void Scene::OnStart() 
+{
+    Node::OnStart();
+}
+
 void Scene::OnUpdate()
 {
+    //for (int j = 0; j < myDynamicBodies.size(); j++) 
+    //{
+    //    b2Vec2 tempTarget = myDynamicBodies[j]->GetPosition();
+    //    for (int i = 0; i < myGround.size(); i++)
+    //    {
+    //        if (myGround[i]->IsEnabled())
+    //        {
+    //            b2PolygonShape* tempPS = ((b2PolygonShape*)(myGround[i]->GetFixtureList()->GetShape()));
+    //            float tempDistance = FLT_MAX;
+    //            for (int j = 0; j < tempPS->m_count; j++)
+    //            {
+    //                tempDistance = std::min<float>(tempDistance, (myGround[i]->GetPosition() + tempPS->m_vertices[j] - tempTarget).x);
+    //            }
+    //            myGround[i]->SetEnabled(tempDistance < 20);
+    //        }  
+    //    }
+    //}
+
 	myB2World.Step(TimeTracker::GetDeltaTime(), velocityIterations, positionIterations);
 	Node::OnUpdate();
 }
@@ -18,21 +43,28 @@ void Scene::OnRender(sf::RenderWindow* aWindow)
 {
 	aWindow->setView(myView);
 	Node::OnRender(aWindow);
-	if (myGroundVerts.size() != 0) 
-	{
-		for (int j = 0; j < myGroundVerts.size(); j++) 
-		{
-			int vCount = myGroundVerts[j].size() + 1;
-			sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, vCount);
-			for (int i = 0; i < vCount; i++)
-			{
-				sf::Vector2f tempPos = myGroundVerts[j][i % (vCount - 1)];
-				tempVArr[i].position = tempPos;
-				tempVArr[i].color = sf::Color::White;
-			}
-			aWindow->draw(tempVArr);
-		}
-	}
+    if (myGroundVerts.size() != 0) 
+    {
+    	for (int j = 0; j < myGroundVerts.size(); j++) 
+    	{      
+            int vCount = myGroundVerts[j].size() + 1;
+            sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, vCount);
+            for (int i = 0; i < vCount; i++)
+            {
+                sf::Vector2f tempPos = myGroundVerts[j][i % (vCount - 1)];
+                tempVArr[i].position = tempPos;
+                if (myGround[j]->IsEnabled()) 
+                {
+                    tempVArr[i].color = sf::Color::Green;
+                }
+                else
+                {
+                    tempVArr[i].color = sf::Color::Red;
+                }
+            }
+            aWindow->draw(tempVArr);          
+    	}
+    }
 }
 
 void Scene::SetView(sf::View aView)
@@ -40,7 +72,7 @@ void Scene::SetView(sf::View aView)
 	myView = aView;
 }
 
-b2Body* Scene::AddPolygon(const b2PolygonShape aShape, const float& aDensity,int16 aGroup, int16 aMask)
+b2Body* Scene::AddPolygon(const b2PolygonShape aShape, const float& aDensity, int16 aGroup, int16 aMask)
 {
 	b2BodyDef tempDef;
 	tempDef.type = b2_dynamicBody;
@@ -48,7 +80,12 @@ b2Body* Scene::AddPolygon(const b2PolygonShape aShape, const float& aDensity,int
 
 	b2Body* tempBody = myB2World.CreateBody(&tempDef);
 
-	b2FixtureDef* tempFixDef = new b2FixtureDef();
+    //if (aDensity != 0) 
+    //{
+    //    myDynamicBodies.push_back(tempBody);
+    //}
+
+    b2FixtureDef* tempFixDef = new b2FixtureDef();
 	tempFixDef->density = aDensity;
 	tempFixDef->shape = &aShape;
 	tempFixDef->filter.categoryBits = aGroup;
@@ -56,6 +93,29 @@ b2Body* Scene::AddPolygon(const b2PolygonShape aShape, const float& aDensity,int
 	tempBody->CreateFixture(tempFixDef);
 
 	return tempBody;
+}
+
+b2Body* Scene::AddCircle(const b2CircleShape aCircle, const float& aDensity, int16 aGroup, int16 aMask)
+{
+    b2BodyDef tempDef;
+    tempDef.type = b2_dynamicBody;
+    tempDef.fixedRotation = true;
+
+    b2Body* tempBody = myB2World.CreateBody(&tempDef);
+
+    //if (aDensity != 0)
+    //{
+    //    myDynamicBodies.push_back(tempBody);
+    //}
+
+    b2FixtureDef* tempFixDef = new b2FixtureDef();
+    tempFixDef->density = aDensity;
+    tempFixDef->shape = &aCircle;
+    tempFixDef->filter.categoryBits = aGroup;
+    tempFixDef->filter.maskBits = aMask;
+    tempBody->CreateFixture(tempFixDef);
+
+    return tempBody;
 }
 
 double perpDot(sf::Vector2f A, sf::Vector2f B)
@@ -105,7 +165,7 @@ void Scene::AddGround(const std::vector<sf::Vector2f>& someVertices)
             tempVArr[2] = b2Vec2(tempNewVert.x, tempNewVert.y);
 
             tempShape.Set(tempVArr, 3);
-            AddPolygon(tempShape, 0, CollisionMask::Ground, 0xFFFF);
+            myGround.push_back(AddPolygon(tempShape, 0, CollisionMask::Ground, CollisionMask::All));
         }
         else
         {
@@ -116,7 +176,7 @@ void Scene::AddGround(const std::vector<sf::Vector2f>& someVertices)
                 tempVArr[i] = b2Vec2(someVertices[tempLastEndVert + i].x, someVertices[tempLastEndVert + i].y);
             }
             tempShape.Set(tempVArr, tempVertCount);
-            AddPolygon(tempShape, 0, CollisionMask::Ground, 0xFFFF);
+            myGround.push_back(AddPolygon(tempShape, 0, CollisionMask::Ground, CollisionMask::All));
         }
         tempLastEndVert += tempVertCount - 1;
     }

@@ -1,13 +1,24 @@
 #include "PolygonCollider.h"
 #include "Nodes/Scene.h"
 
+PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, float aRadius, const float& aDensity, int16 aGroup, int16 aMask)
+	: Node(aPosition, aName)
+{
+	myRadius = aRadius;
+	b2CircleShape tempCS = b2CircleShape();
+	tempCS.m_radius = myRadius;
+	myBody = GetActiveScene()->AddCircle(tempCS, aDensity, aGroup, aMask);
+	SetPosition(aPosition);
+}
+
 PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::string& aName, const std::vector<sf::Vector2f>& someVertices , const float& aDensity, int16 aGroup, int16 aMask)
 	: Node(aPosition, aName)
 {
 	myVertices = someVertices;
 	b2PolygonShape tempShape = VerticesToShape(someVertices);
 
-	myBody = GetActiveScene()->AddPolygon(tempShape, aDensity, aGroup, aMask );
+	myBody = GetActiveScene()->AddPolygon(tempShape, aDensity, aGroup, aMask);
+	myRadius = myBody->GetFixtureList()->GetShape()->m_radius;
 	SetPosition(aPosition);
 }
 
@@ -21,6 +32,7 @@ PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::strin
 	b2PolygonShape tempShape = VerticesToShape(myVertices);
 
 	myBody = GetActiveScene()->AddPolygon(tempShape, aDensity, aGroup, aMask);
+	myRadius = myBody->GetFixtureList()->GetShape()->m_radius;
 	SetPosition(aPosition);
 }
 
@@ -77,20 +89,31 @@ void PolygonCollider::OnRender(sf::RenderWindow* aWindow)
 	Node::OnRender(aWindow);
 
 
-	return;
+	//return;
 
 	//Debug
-	int vCount = myVertices.size() + 1;
-	sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, vCount);
-	for (int i = 0; i < vCount; i++)
-	{
-		sf::Vector2f tempPos = myVertices[i % (vCount - 1)];
-		tempPos = sf::Vector2f(tempPos.x * cos(myBody->GetAngle()) - tempPos.y * sin(myBody->GetAngle()), tempPos.x * sin(myBody->GetAngle()) + tempPos.y * cos(myBody->GetAngle()));
-		tempVArr[i].position = sf::Vector2f(tempPos.x + myBody->GetPosition().x, tempPos.y + myBody->GetPosition().y);
-		tempVArr[i].color = sf::Color::White;
+	if (myVertices.size() != 0) {
+		int vCount = myVertices.size() + 1;
+		sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, vCount);
+		for (int i = 0; i < vCount; i++)
+		{
+			sf::Vector2f tempPos = myVertices[i % (vCount - 1)];
+			tempPos = sf::Vector2f(tempPos.x * cos(myBody->GetAngle()) - tempPos.y * sin(myBody->GetAngle()), tempPos.x * sin(myBody->GetAngle()) + tempPos.y * cos(myBody->GetAngle()));
+			tempVArr[i].position = sf::Vector2f(tempPos.x + myBody->GetPosition().x, tempPos.y + myBody->GetPosition().y);
+			tempVArr[i].color = sf::Color::White;
 
+		}
+		aWindow->draw(tempVArr);
 	}
-	aWindow->draw(tempVArr);
+	else 
+	{
+		sf::CircleShape cs = sf::CircleShape(myRadius);
+		cs.setPosition(GetPosition());
+		cs.setFillColor(sf::Color::Transparent);
+		cs.setOutlineColor(sf::Color::White);
+		cs.setOutlineThickness(0.5f);
+		aWindow->draw(cs);
+	}
 }
 
 sf::Vector2f PolygonCollider::b2VecToSfVec(const b2Vec2& aVec)
@@ -110,6 +133,21 @@ b2ContactEdge* PolygonCollider::GetCollidedContact()
 		tempContact = tempContact->next;
 	}
 	return nullptr;
+}
+
+bool PolygonCollider::IsTouching()
+{
+	b2ContactEdge* tempContact = myBody->GetContactList();
+
+	while (tempContact)
+	{
+		if (tempContact->contact->IsTouching()) 
+		{
+			return true;
+		}
+		tempContact = tempContact->next;
+	}
+	return false;
 }
 
 bool PolygonCollider::IsTouchingGround() 

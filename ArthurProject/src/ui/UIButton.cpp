@@ -46,7 +46,6 @@ void UIButton::OnUpdate()
 	myButtonColor.a = myAlpha;
 	myTextPointer->SetAlpha(myAlpha);
 
-	myLambda();
 	myButtonShape.setPosition(GetPosition());
 
 	myRectangle = sf::IntRect((int)GetPosition().x, (int)GetPosition().y, myWidth, myHeight);
@@ -54,6 +53,23 @@ void UIButton::OnUpdate()
 	// Hovering detection
 	if (myRectangle.contains(sf::Mouse::getPosition(*Window::CurrentWindow->GetRawWindow())))
 	{
+		// Call OnClick function if clicked
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			myWasPressed = true;
+		}
+		else
+		{
+			if (myWasPressed)
+			{
+				myLambda();
+
+				myWasPressed = false;
+			}
+		}
+
+
+
 		// Make the color darker if hovered
 		if (!myIsHovered)
 		{

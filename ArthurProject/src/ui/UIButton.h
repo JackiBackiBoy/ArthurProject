@@ -14,7 +14,7 @@ public:
 	virtual void OnRender(sf::RenderWindow* aWindow) override;
 
 	inline bool GetIsHovered() const { return myIsHovered; }
-	inline void SetOnClick(std::function<void()>& aLambda) { myLambda = aLambda; }
+	inline void SetOnClick(std::function<void()> aLambda) { myLambda = aLambda; }
 
 	inline int GetWidth() const { return myWidth; }
 	inline int GetHeight() const { return myHeight; }
@@ -37,5 +37,6 @@ protected:
 	sf::Color myHoverColor;
 
 	bool myIsHovered;
+	bool myWasPressed;
 };
 #endif

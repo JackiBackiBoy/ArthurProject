@@ -1,17 +1,14 @@
-﻿  EntityDatabase.cpp
-  Window.cpp
-F:\Development\ArthurProject\ArthurProject\src\core\Window.cpp(22,18): error C2039: 'Init': is not a member of 'EntityDatabase'
-F:\Development\ArthurProject\ArthurProject\src\data\EntityDatabase.h(14): message : see declaration of 'EntityDatabase'
-F:\Development\ArthurProject\ArthurProject\src\core\Window.cpp(22,22): error C3861: 'Init': identifier not found
-  Sandbox.cpp
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+﻿  UIButton.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-F:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-  Generating Code...
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(45,19): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(46,20): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
+  ArthurProject.vcxproj -> C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe

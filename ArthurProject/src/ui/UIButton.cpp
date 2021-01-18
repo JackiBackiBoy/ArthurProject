@@ -17,14 +17,14 @@ UIButton::UIButton(const sf::Vector2f& aPosition, const std::string& aName, UITe
 	float tempTextScaleY = (float)(myHeight * 0.5f) / aText->GetTextHeight();
 	float tempHeaviestScale = tempTextScaleX < tempTextScaleY ? tempTextScaleX : tempTextScaleY;
 
-	aText->SetFontSize(tempHeaviestScale * aText->GetFontSize());
+	//aText->SetFontSize(tempHeaviestScale * aText->GetFontSize());
 
 
 	sf::Vector2f tempButtonCenter = { (float)(myWidth / 2), (float)(myHeight / 2) };
 	sf::Vector2f tempTextCenter = { (float)(aText->GetTextWidth() / 2), (float)(aText->GetTextHeight() / 2) };
 	sf::Vector2f tempNewPosition = { tempButtonCenter.x - tempTextCenter.x, tempButtonCenter.y - tempTextCenter.y };
 
-	aText->SetFontPosition(GetPosition() + tempNewPosition);
+	//aText->SetFontPosition(GetPosition() + tempNewPosition);
 	AddChild(aText);
 }
 
@@ -93,4 +93,12 @@ void UIButton::OnRender(sf::RenderWindow* aWindow)
 
 	// Draw the text on the button
 	UIElement::OnRender(aWindow);
+}
+
+void UIButton::SetWidth(const int& aWidth)
+{
+	myWidth = aWidth;
+
+	myRectangle.width = aWidth;
+	myButtonShape.setSize({ (float)aWidth, myButtonShape.getSize().y });
 }

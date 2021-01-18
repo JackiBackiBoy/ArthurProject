@@ -61,7 +61,8 @@ void UIWindowsDropDown::OnUpdate()
 		{
 			for (size_t i = 0; i < tempAllButtons.size(); i++)
 			{
-				tempAllButtons[i]->SetPosition({ MathFunctions::Lerp(tempAllButtons[i]->GetPosition().x, 30, 0.03f / (i + 1)), tempAllButtons[i]->GetPosition().y });
+				tempAllButtons[i]->SetActive(true);
+				tempAllButtons[i]->SetPosition({ MathFunctions::Lerp(tempAllButtons[i]->GetPosition().x, 15, 0.03f / (i + 1)), tempAllButtons[i]->GetPosition().y });
 				tempAllButtons[i]->SetAlpha(MathFunctions::Lerp(tempAllButtons[i]->GetAlpha(), 255, 0.003f));
 			}
 		}
@@ -72,6 +73,11 @@ void UIWindowsDropDown::OnUpdate()
 		{
 			tempAllButtons[i]->SetPosition({ MathFunctions::Lerp(tempAllButtons[i]->GetPosition().x, 0, 0.03f / (i + 1)), tempAllButtons[i]->GetPosition().y });
 			tempAllButtons[i]->SetAlpha(MathFunctions::Lerp(tempAllButtons[i]->GetAlpha(), 0, 0.003f));
+
+			if ((int)tempAllButtons[tempAllButtons.size() - 1]->GetPosition().x == 0)
+			{
+				tempAllButtons[i]->SetActive(false);
+			}
 		}
 	}
 

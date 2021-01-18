@@ -16,6 +16,10 @@ public:
 	inline bool GetIsHovered() const { return myIsHovered; }
 	inline void SetOnClick(std::function<void()>& aLambda) { myLambda = aLambda; }
 
+	inline int GetWidth() const { return myWidth; }
+	inline int GetHeight() const { return myHeight; }
+	void SetWidth(const int& aWidth);
+
 protected:
 	//virtual void OnHover();
 

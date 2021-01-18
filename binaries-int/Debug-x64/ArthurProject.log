@@ -1,4 +1,4 @@
-﻿  UIWindowsButton.cpp
+﻿  UIButton.cpp
 C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
@@ -9,5 +9,6 @@ C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244
           [
               T=float
           ]
-C:\Development\ArthurProject\ArthurProject\src\ui\windows\UIWindowsButton.cpp(40,48): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(45,19): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(46,20): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
   ArthurProject.vcxproj -> C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe

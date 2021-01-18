@@ -5,8 +5,10 @@ class TimeTracker
 private:
 	static sf::Clock myClock;
 	static sf::Time myTime;
+	static float myTimeScale;
 public:
 	static void Update();
 	static sf::Time GetTime();
 	static float GetDeltaTime();
+	static void SetTimeScale(float aValue);
 };

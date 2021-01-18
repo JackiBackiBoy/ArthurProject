@@ -25,6 +25,7 @@ bool Ray::Cast()
 	return true;
 }
 
+
 void Ray::DrawRay(const sf::Vector2f& anOrigin, const sf::Vector2f& anEndpoint, const sf::Color& aColor, sf::RenderWindow* aWindow)
 {
 	sf::VertexArray tempArr = sf::VertexArray(sf::PrimitiveType::LineStrip, 2);

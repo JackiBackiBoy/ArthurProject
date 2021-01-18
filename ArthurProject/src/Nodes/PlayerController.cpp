@@ -18,12 +18,22 @@ void PlayerController::OnStart()
 	myHealth->OnTakeDamage.AddListener([&]() { OnTakeDamage(); });
 	Node::OnStart();
 
-	PlayerInfo::GetSpells()[0][0]->Activate();
+	for (int i = 0; i < PlayerInfo::GetSpells().size(); i++)
+	{
+		for (int j = 0; j < PlayerInfo::GetSpells()[i].size(); j++)
+		{
+			PlayerInfo::GetSpells()[i][j]->OnStart();
+		}
+	}
+
 }
 
 void PlayerController::OnUpdate()
 {
 	Node::OnUpdate();
+
+	MagicUpdate();
+
 	GroundCheck();
 	Movement();
 	Jump();
@@ -45,9 +55,34 @@ void PlayerController::OnTakeDamage()
 	myInvulnurableTimer = myInvulnurableTimerValue;
 }
 
+void PlayerController::MagicUpdate()
+{
+	for (int i = 0; i < PlayerInfo::GetSpells().size(); i++)
+	{
+		for (int j = 0; j < PlayerInfo::GetSpells()[i].size(); j++)
+		{
+			PlayerInfo::GetSpells()[i][j]->OnUpdate();
+		}
+	}
+
+	if (InputManager::GetKeyDown(sf::Keyboard::Q))
+	{
+		PlayerInfo::GetSpells()[myCurrentSpellType][0]->Activate();
+	}
+}
+
 void PlayerController::OnRender(sf::RenderWindow* aWindow)
 {
 	Node::OnRender(aWindow);
+
+	for (int i = 0; i < PlayerInfo::GetSpells().size(); i++)
+	{
+		for (int j = 0; j < PlayerInfo::GetSpells()[i].size(); j++)
+		{
+			PlayerInfo::GetSpells()[i][j]->OnRender(aWindow);
+		}
+	}
+
 	sf::Vector2f tempPosition = GetPosition();
 }
 

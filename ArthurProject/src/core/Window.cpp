@@ -2,6 +2,7 @@
 #include "Managers/MusicManager.h"
 #include <iostream>
 #include "Managers/InputManager.h"
+#include "data/EntityDatabase.h"
 Window::~Window()
 {
 	delete myRawWindow;
@@ -18,6 +19,7 @@ void Window::Run()
 	// Call OnStart once
 	OnStart();
 	//myRawWindow->setFramerateLimit(500);
+	EntityDatabase::Init();
 	while (myRawWindow->isOpen())
 	{
 		sf::Event event;

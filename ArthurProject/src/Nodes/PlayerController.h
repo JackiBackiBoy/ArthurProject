@@ -17,6 +17,10 @@ private:
 	void GroundCheck();
 	void Jump();
 	void OnTakeDamage();
+	void MagicUpdate();
+
+	int myCurrentSpellType = 0;
+
 
 	float mySpeed;
 	float myJumpHeight; 

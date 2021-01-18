@@ -2,6 +2,7 @@
 
 sf::Clock TimeTracker::myClock = sf::Clock();
 sf::Time TimeTracker::myTime = sf::Time::Zero;
+float TimeTracker::myTimeScale = 1.f;
 
 void TimeTracker::Update()
 {
@@ -15,5 +16,10 @@ sf::Time TimeTracker::GetTime()
 
 float TimeTracker::GetDeltaTime()
 {
-	return myTime.asSeconds();
+	return myTime.asSeconds() * myTimeScale;
+}
+
+void TimeTracker::SetTimeScale(float aValue)
+{
+	myTimeScale = aValue;
 }

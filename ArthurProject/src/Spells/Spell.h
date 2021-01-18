@@ -4,6 +4,7 @@ class Spell
 {
 public: 
 	Spell(const std::string& aName, const std::string& aDescription, const int& aManaCost, const float& aCooldown,const bool& aUnlockedFlag, sf::Texture* aTexture);
+	virtual void OnStart();
 	virtual void OnUpdate();
 	virtual void OnRender(sf::RenderWindow* aWindow);
 	virtual void Activate();

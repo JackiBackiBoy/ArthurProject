@@ -19,7 +19,6 @@ PolygonCollider::PolygonCollider(const sf::Vector2f& aPosition, const std::strin
 	myVertices.push_back(sf::Vector2f(aWidth, aHeight));
 	myVertices.push_back(sf::Vector2f(0, aHeight));
 	b2PolygonShape tempShape = VerticesToShape(myVertices);
-
 	myBody = GetActiveScene()->AddPolygon(tempShape, aDensity, aGroup, aMask);
 	SetPosition(aPosition);
 }
@@ -48,6 +47,7 @@ void PolygonCollider::SetVelocity(const sf::Vector2f& aVelocity)
 void PolygonCollider::AddVelocity(const sf::Vector2f aValue)
 {
 	myBody->SetLinearVelocity(b2Vec2(myBody->GetLinearVelocity().x + aValue.x, myBody->GetLinearVelocity().y + aValue.y));
+	
 }
 
 sf::Vector2f PolygonCollider::GetVelocity()

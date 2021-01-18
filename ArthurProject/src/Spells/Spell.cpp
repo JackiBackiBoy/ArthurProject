@@ -6,6 +6,10 @@ Spell::Spell(const std::string& aName, const std::string& aDescription, const in
 {
 }
 
+void Spell::OnStart()
+{
+}
+
 void Spell::OnUpdate()
 {
 	if (myCooldownTimer > 0)

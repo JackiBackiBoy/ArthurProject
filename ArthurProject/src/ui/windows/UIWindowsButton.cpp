@@ -3,9 +3,6 @@
 UIWindowsButton::UIWindowsButton(const std::string& aText, const sf::Vector2f& aPosition, const std::string& aName)
 	: UIButton(aPosition, aName, new UIText(aPosition, aName, aText, sf::Color::Black, "Fonts/segoeui", 64), 41, 19, sf::Color::White, nullptr)
 {
-	//myBorderShape = sf::RectangleShape({ myWidth, myHeight });
-	//myBorderShape.
-
 	myHoverColor = sf::Color(229, 243, 255);
 	myBorderHoverColor = sf::Color(204, 232, 255);
 	myBorderTexture = new sf::Texture();
@@ -37,6 +34,12 @@ UIWindowsButton::UIWindowsButton(const std::string& aText, const sf::Vector2f& a
 	{
 		std::cout << "Error creating texture" << std::endl;
 	}
+
+	// Calculate correct y-scaling to apply, along with adjusted width
+	float tempAdjustedScaleY = (float)(myHeight * 0.5f) / 50;
+	myTextPointer->SetFontSize(tempAdjustedScaleY * myTextPointer->GetFontSize());
+
+	SetWidth(myTextPointer->GetTextWidth() * 2);
 }
 
 void UIWindowsButton::OnUpdate()

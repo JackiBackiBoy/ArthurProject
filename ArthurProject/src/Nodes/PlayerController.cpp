@@ -101,23 +101,27 @@ void PlayerController::Movement()
 	if (myCollider->IsTouchingGround())
 	{
 		LeftGround = false;
-     	sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
+		sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
 		myCollider->SetVelocity(tempSurfaceVector * tempX * mySpeed);
 	}
-	else 
+	else
 	{
-		if (myCollider->IsTouchingWall()) 
+		if (myCollider->IsTouchingWall())
 		{
+			if (myCollider->GetVelocity().y < 0)
+			{
+				myCollider->SetVelocity(sf::Vector2f(0, 0));
+			}
 			if (myCollider->GetCollidedContact()->contact->GetManifold()->localNormal.x * tempX > 0)
 			{
 				myCollider->SetVelocity(sf::Vector2f(tempX * mySpeed, myCollider->GetVelocity().y));
 			}
 		}
-		else 
+		else
 		{
 			myCollider->SetVelocity(sf::Vector2f(tempX * mySpeed, myCollider->GetVelocity().y));
 		}
-	}
+	}	
 }
 
 void PlayerController::GroundCheck()

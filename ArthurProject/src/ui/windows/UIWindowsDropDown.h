@@ -12,7 +12,7 @@ public:
 	void OnUpdate() override;
 	void OnRender(sf::RenderWindow* aWindow) override;
 
-	void AddButton(const std::string& aButtonName, const std::function<void()>* anOnClick = nullptr);
+	void AddButton(const std::string& aButtonName, std::function<void()> anOnClick = nullptr);
 
 private:
 	UIWindowsButton* myHeaderButton;

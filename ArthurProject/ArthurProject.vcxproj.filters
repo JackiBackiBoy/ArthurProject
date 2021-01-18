@@ -79,6 +79,7 @@
     <ClCompile Include="src\Spells\Spell.cpp" />
     <ClCompile Include="src\Spells\PastTime.cpp" />
     <ClCompile Include="src\data\PlayerInfo.cpp" />
+    <ClCompile Include="LevelEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nodes\Animator.h" />

@@ -28,7 +28,6 @@ public:
 
 	Scene* myScene;
 	Scene* myUiScene;
-	Node* anItem;
 	Camera* myMainCamera;
 	float myCameraMoveSpeed = 200;
 	bool isPressed = false;
@@ -153,11 +152,6 @@ public:
 	{
 		//myRawWindow->draw(*tempText->GetRawText());
 		//tempButton->OnRender(myRawWindow);
-
-		if (anItem != nullptr)
-		{
-			anItem->OnRender(myRawWindow);
-		}
 		myScene->OnRender(myRawWindow);
 		myUiScene->OnRender(myRawWindow);
 		//tempFileButton->OnRender(myRawWindow);
@@ -172,7 +166,7 @@ private:
 	UIWindowsDropDown* tempFileDropDown;
 };
 
-Window* BuildWindow()
-{
-	return new Sandbox("Arthur", 1280, 720);
-}
+//Window* BuildWindow()
+//{
+//	return new Sandbox("Arthur", 1280, 720);
+//}

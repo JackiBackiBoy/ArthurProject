@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="src\data\PlayerInfo.cpp" />
     <ClCompile Include="src\Spells\PastTime.cpp" />
     <ClCompile Include="src\Spells\Spell.cpp" />

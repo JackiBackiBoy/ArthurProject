@@ -1,14 +1,21 @@
 #include "core/Window.h"
 #include "SFML/Graphics.hpp"
 #include "ui/UIText.h"
+#include "ui/windows/UIWindowsButton.h"
+#include "ui/windows/UIWindowsDropDown.h"
 #include "Managers/AssetManager.h"
-#include "Managers/MusicManager.h"
 #include "Nodes/AudioSource.h"
 #include "TimeTracker.h"
 #include "Nodes\Scene.h"
-#include "ui\UIButton.h"
-#include "Data/SaveLoad.h"
-#include "data/Options.h"
+#include "Managers/InputManager.h"
+#include "Nodes/Camera.h"
+#include "Nodes/SpriteRenderer.h"
+#include "Nodes/PlayerController.h"
+#include "Nodes/Animator.h"
+#include "core/Ray.h"
+#include <box2d\box2d.h>
+#include "data/EntityDatabase.h"
+#include "Nodes/ResourceBar.h"
 
 class LevelEditor : public Window 
 {
@@ -19,12 +26,61 @@ public:
 
 
 	Scene* myScene;
+	Scene* myUIScene;
+	Camera* myMainCamera;
 	Node* aNode;
+	UIWindowsDropDown* myEntityList;
+	float myCameraMoveSpeed = 200;
+
+	void MoveCamera()
+	{
+		if (InputManager::GetKey(sf::Keyboard::Up))
+		{
+			myMainCamera->SetPosition(myMainCamera->GetPosition() - sf::Vector2f(0, TimeTracker::GetDeltaTime() * myCameraMoveSpeed));
+		}
+		if (InputManager::GetKey(sf::Keyboard::Left))
+		{
+			myMainCamera->SetPosition(myMainCamera->GetPosition() - sf::Vector2f(TimeTracker::GetDeltaTime() * myCameraMoveSpeed, 0));
+		}
+		if (InputManager::GetKey(sf::Keyboard::Down))
+		{
+			myMainCamera->SetPosition(myMainCamera->GetPosition() + sf::Vector2f(0, TimeTracker::GetDeltaTime() * myCameraMoveSpeed));
+		}
+		if (InputManager::GetKey(sf::Keyboard::Right))
+		{
+			myMainCamera->SetPosition(myMainCamera->GetPosition() + sf::Vector2f(TimeTracker::GetDeltaTime() * myCameraMoveSpeed, 0));
+		}
+		if (InputManager::GetKey(sf::Keyboard::P))
+		{
+			myMainCamera->Zoom(TimeTracker::GetDeltaTime());
+		}
+		if (InputManager::GetKey(sf::Keyboard::O))
+		{
+			myMainCamera->Zoom(-TimeTracker::GetDeltaTime());
+		}
+	}
 
 	void OnStart() override
 	{
 		AssetManager::Init();
 		myScene = new Scene();
+		myUIScene = new Scene();
+		Scene::UiScene = myUIScene;
+
+		myUIScene->AddChild(new UIWindowsDropDown("Entities", sf::Vector2f(0, 0), "EntityList"));
+		myEntityList = myUIScene->GetChild<UIWindowsDropDown>("EntityList");
+		for (int i = 0; i < 1; i++) 
+		{
+			myEntityList->AddButton("BushSpawn", [&]() 
+			{
+				aNode = EntityDatabase::CreateEntity(sf::Vector2f(0, 0), "BushSpawn");
+				aNode->AddChild(new UIButton(sf::Vector2f(0, 0), "Select", new UIText(sf::Vector2f(0,0),"","",sf::Color::Black, "arial", 12), 8, 8, sf::Color::Blue, nullptr));
+			});
+		}
+
+		myScene->AddChild(new Camera(sf::Vector2f(0, -50), "MainCamera"));
+		myScene->GetChild<Camera>("MainCamera")->Zoom(0.7f);
+		myMainCamera = myScene->GetChild<Camera>("MainCamera");
 	}
 
 	void OnUpdate() override
@@ -53,6 +109,7 @@ public:
 			aNode->OnUpdate();
 		}
 		myScene->OnUpdate();
+		myUIScene->OnUpdate();
 	}
 
 	void OnRender() override
@@ -65,10 +122,11 @@ public:
 			aNode->OnRender(myRawWindow);
 		}
 		myScene->OnRender(myRawWindow);
+		myUIScene->OnRender(myRawWindow);
 	}
 };
 
-//Window* BuildWindow()
-//{
-//	return new LevelEditor("LevelEditor", 1280, 720);
-//}
+Window* BuildWindow()
+{
+	return new LevelEditor("LevelEditor", 1280, 720);
+}

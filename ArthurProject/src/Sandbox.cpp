@@ -15,7 +15,7 @@
 #include "core/Ray.h"
 #include <box2d\box2d.h>
 #include "data/EntityDatabase.h"
-
+#include "Nodes/ResourceBar.h"
 class Sandbox : public Window
 {
 public:
@@ -55,6 +55,13 @@ public:
 		return (tempFloat / 200);
 	}
 
+	void CreateUi()
+	{
+		//Player Health Bar
+		myUiScene->AddChild(new ResourceBar(sf::Vector2f(500, 0), "HealthBar", 1.f, AssetManager::GetTexture("UI/HealthBar")));
+		myUiScene->GetChild<ResourceBar>("HealthBar")->AddChild(new SpriteRenderer(sf::Vector2f(0, 0), "HealthBarBackground", AssetManager::GetTexture("UI/HealthBarBackground")));
+	}
+
 	void OnStart() override
 	{
 
@@ -62,15 +69,22 @@ public:
 		AssetManager::Init();
 		myScene = new Scene();
 		myUiScene = new Scene();
+		Scene::UiScene = myUiScene;
+
+		CreateUi();
 		myScene->AddGround(std::vector<sf::Vector2f>
-		{
-			sf::Vector2f(-200, 0),
-			sf::Vector2f(200, 0),
-			sf::Vector2f(200, 20),
-			sf::Vector2f(-200, 20)
-		}, 4);
+			{
+				sf::Vector2f(-1000, -150),
+				sf::Vector2f(-110, -150),
+				sf::Vector2f(-100, -100),
+				sf::Vector2f(50, 0),
+				sf::Vector2f(200, -100),
+				sf::Vector2f(190, -150),
+				sf::Vector2f(300, -100),
+				sf::Vector2f(400, 0)
+			});
 		myScene->AddChild(EntityDatabase::CreateEntity(sf::Vector2f(0, 0), "Player"));
-		myScene->AddChild(EntityDatabase::CreateEntity(sf::Vector2f(100, -100), "BushSpawn", 0));
+		myScene->AddChild(EntityDatabase::CreateEntity(sf::Vector2f(-200,-200), "BushSpawn"));
 
 		//myScene->AddChild(new PolygonCollider(sf::Vector2f(-50, 0), "ground", std::vector<sf::Vector2f>{sf::Vector2f(0, 0), sf::Vector2f(100, 0), sf::Vector2f(100, 10), sf::Vector2f(0, 10)}, 0.f));
 		//myScene->AddChild(new PolygonCollider(sf::Vector2f(-70, -60), "ground1", 100,10, 0.f));

@@ -1,11 +1,13 @@
 #include "BushSpawnBehaviour.h"
 #include "Random.hpp"
 #include <TimeTracker.h>
+#include <Nodes\Health.h>
 void BushSpawnBehaviour::OnStart()
 {
 	myCollider = (PolygonCollider*)myParent;
 	myAnimator = myParent->GetChild<Animator>("Animator");
 	myPlayerDetectionBox = myParent->GetChild<AABB>("PlayerDetectingCol");
+	myHitbox = myParent->GetChild<AABB>("Hitbox");
 }
 void BushSpawnBehaviour::OnUpdate()
 {
@@ -104,6 +106,11 @@ void BushSpawnBehaviour::WakeUp()
 
 void BushSpawnBehaviour::AwakeUpdate()
 {
+	if (myHitbox->Intersects("PlayerCollisionBox"))
+	{
+		myHitbox->GetIntersecting("PlayerCollisionBox")[0]->GetParent()->GetChild<Health>("Health")->Damage(10);
+	}
+
 	if (myAttackState == AttackState::ChargeUp)
 	{
 		if (!myAnimator->GetPlayingFlag())
@@ -142,19 +149,37 @@ void BushSpawnBehaviour::AwakeUpdate()
 			myAnimator->SetAnimation("Exhausted");
 			myAnimator->SetLoopFlag(false);
 			myCounter = 0;
-			myCollider->SetVelocity(sf::Vector2f(0, 0));
+
+			if (myCollider->IsTouchingGround())
+			{
+				myCollider->SetVelocity(sf::Vector2f(0, 0));
+			}
 		}
 		else
 		{
-			if (myCollider->IsColliding())
+
+
+
+			if (myCollider->IsTouchingGround())
 			{
 				sf::Vector2f tempSurfaceVector = myCollider->GetGroundVector();
 				myCollider->SetVelocity(tempSurfaceVector * myDashDirection * myDashSpeed);
 			}
 			else
 			{
-				myCollider->SetVelocity(sf::Vector2f(myDashDirection * myDashSpeed, myCollider->GetVelocity().y));
+				if (myCollider->IsTouchingWall())
+				{
+					if (myCollider->GetCollidedContact()->contact->GetManifold()->localNormal.x * myDashDirection > 0)
+					{
+						myCollider->SetVelocity(sf::Vector2f(myDashDirection * myDashSpeed, myCollider->GetVelocity().y));
+					}
+				}
+				else
+				{
+					myCollider->SetVelocity(sf::Vector2f(myDashDirection * myDashSpeed, myCollider->GetVelocity().y));
+				}
 			}
+
 		}
 
 

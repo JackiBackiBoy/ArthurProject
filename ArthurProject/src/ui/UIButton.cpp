@@ -8,7 +8,8 @@ UIButton::UIButton(const sf::Vector2f& aPosition, const std::string& aName, UITe
 	myTextPointer = aText;
 	myRectangle = sf::IntRect((int)myPosition.x, (int)myPosition.y, myWidth, myHeight);
 	myButtonShape = sf::RectangleShape(sf::Vector2f((float)myWidth, (float)myHeight));
-	myButtonShape.setFillColor(myButtonColor);
+	myButtonShape.setFillColor(aButtonColor);
+	myAlpha = aButtonColor.a;
 	myButtonShape.setPosition(myPosition);
 	myBaseButtonColor = myButtonColor;
 	myHoverColor = sf::Color(myButtonColor.r / 2, myButtonColor.g / 2, myButtonColor.b / 2);
@@ -47,8 +48,7 @@ void UIButton::OnUpdate()
 	myTextPointer->SetAlpha(myAlpha);
 
 	myButtonShape.setPosition(GetPosition());
-
-	myRectangle = sf::IntRect((int)GetPosition().x, (int)GetPosition().y, myWidth, myHeight);
+	
 
 	// Hovering detection
 	if (myRectangle.contains(sf::Mouse::getPosition(*Window::CurrentWindow->GetRawWindow())))
@@ -106,7 +106,9 @@ void UIButton::OnRender(sf::RenderWindow* aWindow)
 {
 	// Draw the background button rectangle
 	aWindow->draw(myButtonShape);
-
+	sf::Vector2i v = aWindow->mapCoordsToPixel(myButtonShape.getPosition());
+	float scale = aWindow->getDefaultView().getSize().x / aWindow->getView().getSize().x;
+	myRectangle = sf::IntRect(v.x, v.y, myWidth * scale, myHeight * scale);
 	// Draw the text on the button
 	UIElement::OnRender(aWindow);
 }

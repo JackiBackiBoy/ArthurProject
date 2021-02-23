@@ -24,6 +24,11 @@ void SpriteRenderer::SetScale(sf::Vector2f aValue)
 	mySprite->setScale(aValue);
 }
 
+void SpriteRenderer::SetRotation(float anAngle) 
+{
+	mySprite->setRotation(anAngle);
+}
+
 void SpriteRenderer::SetTextureRect(const sf::IntRect& aRect)
 {
 	mySprite->setTextureRect(aRect);

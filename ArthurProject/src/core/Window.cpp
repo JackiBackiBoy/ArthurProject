@@ -19,7 +19,6 @@ void Window::Run()
 	// Call OnStart once
 	OnStart();
 	//myRawWindow->setFramerateLimit(500);
-	EntityDatabase::Init();
 	while (myRawWindow->isOpen())
 	{
 		sf::Event event;

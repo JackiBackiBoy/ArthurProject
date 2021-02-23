@@ -169,6 +169,7 @@
     <ClInclude Include="src\data\PlayerInfo.h" />
     <ClInclude Include="src\Spells\PastTime.h" />
     <ClInclude Include="src\Nodes\LineRenderer.h" />
+    <ClInclude Include="Delaunator.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\DPL Music\OST Pro - New Hope.wav" />

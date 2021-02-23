@@ -246,6 +246,7 @@
     <ClCompile Include="src\ui\windows\UIWindowsDropDown.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Delaunator.hpp" />
     <ClInclude Include="src\Nodes\LineRenderer.h" />
     <ClInclude Include="src\Spells\PastTime.h" />
     <ClInclude Include="src\data\PlayerInfo.h" />

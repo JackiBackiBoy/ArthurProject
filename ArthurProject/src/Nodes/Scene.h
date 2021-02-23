@@ -41,7 +41,8 @@ private:
 	std::vector<b2Body*> myGround;
 	std::vector<b2Body*> myDynamicBodies;
 	std::vector<std::vector<sf::Vector2f>> myGroundVerts;
-
+	sf::VertexArray myVertArr;
+	sf::Texture texture;
 
 };
 

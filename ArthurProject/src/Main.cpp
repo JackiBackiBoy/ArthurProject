@@ -5,6 +5,8 @@ extern Window* BuildWindow();
 
 int main()
 {
+	sf::ContextSettings contSettings{};
+	contSettings.antialiasingLevel = 0;
 	Window* tempWindow = BuildWindow();
 	Window::CurrentWindow = tempWindow;
 

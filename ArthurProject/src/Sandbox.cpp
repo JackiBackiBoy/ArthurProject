@@ -32,7 +32,6 @@ public:
 	float myCameraMoveSpeed = 200;
 	bool isPressed = false;
 
-
 	const int32 velocityIterations = 6;
 	const int32 positionIterations = 2;
 
@@ -70,15 +69,20 @@ public:
 		myUiScene = new Scene();
 		Scene::UiScene = myUiScene;
 
+
+
 		CreateUi();
 		myScene->AddGround(std::vector<sf::Vector2f>
 			{
 				sf::Vector2f(-1000, -150),
 				sf::Vector2f(-110, -150),
 				sf::Vector2f(-100, -100),
-				sf::Vector2f(50, 0),
+				sf::Vector2f(50, 50),
 				sf::Vector2f(200, -100),
 				sf::Vector2f(190, -150),
+				sf::Vector2f(150, -160),
+				sf::Vector2f(170, -170),
+				sf::Vector2f(230, -150),
 				sf::Vector2f(300, -100),
 				sf::Vector2f(400, 0)
 			});
@@ -166,7 +170,7 @@ private:
 	UIWindowsDropDown* tempFileDropDown;
 };
 
-//Window* BuildWindow()
-//{
-//	return new Sandbox("Arthur", 1280, 720);
-//}
+Window* BuildWindow()
+{
+	return new Sandbox("Arthur", 1280, 720);
+}

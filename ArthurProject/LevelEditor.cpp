@@ -24,7 +24,7 @@ private:
 public:
 	LevelEditor(const std::string& aTitle, const int& aWidth, const int& aHeight) : Window(aTitle, aWidth, aHeight) {};
 
-
+	std::map<std::string, sf::Texture> myTexMap;
 	Scene* myScene;
 	Scene* myUIScene;
 	Camera* myMainCamera;
@@ -63,24 +63,41 @@ public:
 	void OnStart() override
 	{
 		AssetManager::Init();
+		myTexMap = std::map<std::string, sf::Texture>
+		{
+			{"BushSpawn",AssetManager::GetTexture("Enemies/BushSpawn/AsleepIdle")}
+		};
 		myScene = new Scene();
 		myUIScene = new Scene();
 		Scene::UiScene = myUIScene;
 
 		myUIScene->AddChild(new UIWindowsDropDown("Entities", sf::Vector2f(0, 0), "EntityList"));
 		myEntityList = myUIScene->GetChild<UIWindowsDropDown>("EntityList");
-		for (int i = 0; i < 1; i++) 
+		for(std::pair<std::string, sf::Texture> p : myTexMap)
 		{
-			myEntityList->AddButton("BushSpawn", [&]() 
+			myEntityList->AddButton(p.first, [this, p]() 
 			{
-				aNode = EntityDatabase::CreateEntity(sf::Vector2f(0, 0), "BushSpawn");
-				aNode->AddChild(new UIButton(sf::Vector2f(0, 0), "Select", new UIText(sf::Vector2f(0,0),"","",sf::Color::Black, "arial", 12), 8, 8, sf::Color::Blue, nullptr));
+				aNode = new SpriteRenderer(sf::Vector2f(0, 0), p.first, p.second);
+				aNode->OnStart();
+				int w = ((SpriteRenderer*)aNode)->GetTextureSize().x;
+				int h = ((SpriteRenderer*)aNode)->GetTextureSize().y;
+				aNode->AddChild(new UIButton(sf::Vector2f(w / 4, h / 2), "Select", new UIText(sf::Vector2f(0,0),"","",sf::Color::Black, "arial", 12),
+				w / 2, h / 2, sf::Color::Color(128, 128,128, 128), nullptr));
+				aNode->GetChild<UIButton>("Select")->SetActive(false);
+				UIButton* btn = aNode->GetChild<UIButton>("Select");
+				aNode->GetChild<UIButton>("Select")->SetOnClick([this, btn]() 
+				{
+					aNode = btn->GetParent(); 
+				});
+				myScene->AddChild(aNode);
 			});
 		}
 
 		myScene->AddChild(new Camera(sf::Vector2f(0, -50), "MainCamera"));
 		myScene->GetChild<Camera>("MainCamera")->Zoom(0.7f);
 		myMainCamera = myScene->GetChild<Camera>("MainCamera");
+		myScene->OnStart();
+		myUIScene->OnStart();
 	}
 
 	void OnUpdate() override
@@ -98,16 +115,23 @@ public:
 		{
 			//anitem = selected item
 		}
-		if (false)//item was placed in scene
+		if (false)
 		{
-			myScene->AddChild(aNode);
+			
 		}
 		if (aNode != nullptr)//updates the selected node to cursor position
 		{
-			sf::Vector2i tempVector = sf::Mouse::getPosition(*myRawWindow);
+			sf::Vector2f tempVector = myMainCamera->ScreenToWorldPoint(sf::Mouse::getPosition(*myRawWindow));
+			tempVector = sf::Vector2f(round(tempVector.x), round(tempVector.y));
 			aNode->SetPosition(sf::Vector2f(tempVector.x, tempVector.y));
 			aNode->OnUpdate();
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			{
+				aNode->GetChild<UIButton>("Select")->SetActive(true);
+				aNode = nullptr;
+			}
 		}
+		MoveCamera();
 		myScene->OnUpdate();
 		myUIScene->OnUpdate();
 	}
@@ -116,17 +140,12 @@ public:
 	{
 		//myRawWindow->draw(*tempText->GetRawText());
 		//tempButton->OnRender(myRawWindow);
-
-		if (aNode != nullptr)//renders the selected node
-		{
-			aNode->OnRender(myRawWindow);
-		}
 		myScene->OnRender(myRawWindow);
 		myUIScene->OnRender(myRawWindow);
 	}
 };
 
-Window* BuildWindow()
-{
-	return new LevelEditor("LevelEditor", 1280, 720);
-}
+//Window* BuildWindow()
+//{
+//	return new LevelEditor("LevelEditor", 1280, 720);
+//}

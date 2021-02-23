@@ -1,5 +1,12 @@
 #include "Scene.h"
 #include "TimeTracker.h"
+#include "Managers\AssetManager.h"
+#include <../Delaunator.hpp>
+#include <string>
+#include <iterator>
+#include <iostream>
+#include <algorithm>
+#include <array>
 
 b2World Scene::myB2World = b2World(b2Vec2(0.0f, 10.0f));
 Scene* Scene::UiScene = nullptr;
@@ -45,8 +52,9 @@ void Scene::OnRender(sf::RenderWindow* aWindow)
 	Node::OnRender(aWindow);
     if (myGroundVerts.size() != 0) 
     {
-    	for (int j = 0; j < myGroundVerts.size(); j++) 
-    	{      
+        aWindow->draw(myVertArr, &texture);
+        for (int j = 0; j < myGroundVerts.size(); j++) 
+        {      
             int vCount = myGroundVerts[j].size() + 1;
             sf::VertexArray tempVArr(sf::PrimitiveType::LineStrip, vCount);
             for (int i = 0; i < vCount; i++)
@@ -63,7 +71,7 @@ void Scene::OnRender(sf::RenderWindow* aWindow)
                 }
             }
             aWindow->draw(tempVArr);          
-    	}
+        }
     }
 }
 
@@ -126,59 +134,60 @@ double perpDot(sf::Vector2f A, sf::Vector2f B)
 
 void Scene::AddGround(const std::vector<sf::Vector2f>& someVertices)
 {
-    int tempLastEndVert = 0;
-    while (tempLastEndVert < someVertices.size() - 1)
+    std::vector<double> tempCoords = std::vector<double>();
+    float floor = -FLT_MAX;
+    for (int i = 0; i < someVertices.size(); i++) 
     {
-        int tempVertCount = 1;
-        if (tempLastEndVert + tempVertCount != someVertices.size() - 1)
-        {
-            while (perpDot(someVertices[tempLastEndVert + tempVertCount + 0] - someVertices[tempLastEndVert + tempVertCount - 1],
-                someVertices[tempLastEndVert + tempVertCount + 1] - someVertices[tempLastEndVert + tempVertCount + 0]) < 0)
-            {
-                //convex and can continue
-                tempVertCount++;
-                if (tempLastEndVert + tempVertCount == someVertices.size() - 1)
-                {
-                    break;
-                }
-            }
-        }
-        tempVertCount++;
-        myGroundVerts.push_back(std::vector<sf::Vector2f>());
-        for (int i = 0; i < tempVertCount; i++)
-        {
-            myGroundVerts.back().push_back(someVertices[tempLastEndVert + i]);
-        }
-        if (0 == tempVertCount - 2)//lonely surface vector is ordered in a triangle
-        {
-            sf::Vector2f tempVec = (someVertices[tempLastEndVert + 1] - someVertices[tempLastEndVert]) / 2.f;
-            sf::Vector2f tempNewVert = someVertices[tempLastEndVert] + tempVec;
-            float tempLen = sqrt(tempVec.x * tempVec.x + tempVec.y * tempVec.y);
-            tempVec = sf::Vector2f(-tempVec.y / tempLen, tempVec.x / tempLen) * 2.f;
-            tempNewVert += tempVec;
-            myGroundVerts.back().push_back(tempNewVert);
+        tempCoords.push_back(someVertices[i].x);
+        tempCoords.push_back(someVertices[i].y);
+        floor = std::max(floor, someVertices[i].y);
+    }
+    tempCoords.push_back(someVertices.back().x);
+    tempCoords.push_back(floor + 100);        
+    tempCoords.push_back(someVertices.front().x);
+    tempCoords.push_back(floor + 100);
 
-            b2PolygonShape tempShape;
-            b2Vec2* tempVArr = new b2Vec2[3];
-            tempVArr[0] = b2Vec2(someVertices[tempLastEndVert + 0].x, someVertices[tempLastEndVert + 0].y);
-            tempVArr[1] = b2Vec2(someVertices[tempLastEndVert + 1].x, someVertices[tempLastEndVert + 1].y);
-            tempVArr[2] = b2Vec2(tempNewVert.x, tempNewVert.y);
+    using Coord = double;
+    using N = uint32_t;
+    using Point = std::array<Coord, 2>;
+    std::vector<std::vector<Point>> polygon;
+    std::vector<Point> points;
+    for (int i = 0; i < tempCoords.size(); i += 2) 
+    {
+        points.push_back({ tempCoords[i], tempCoords[i + 1] });
+    }
+    polygon.push_back(points);
+    std::vector<N> indices = mapbox::earcut<N>(polygon);
 
-            tempShape.Set(tempVArr, 3);
-            myGround.push_back(AddPolygon(tempShape, 0, CollisionMask::Ground, CollisionMask::All));
-        }
-        else
+    texture = AssetManager::GetTexture("GroundTexture");
+    texture.setRepeated(true);
+    myVertArr.setPrimitiveType(sf::PrimitiveType::Triangles);
+    myVertArr.resize(indices.size());
+    for (std::size_t i = 0; i < indices.size(); i++) 
+    {
+        myVertArr[i] = sf::Vector2f(points[indices[i]][0], points[indices[i]][1]);
+        myVertArr[i].texCoords = sf::Vector2f(points[indices[i]][0], points[indices[i]][1]);
+    }
+    for (int i = 0; i < indices.size(); i += 3) 
+    {
+        if ((indices[i + 0] < someVertices.size() && indices[i + 1] < someVertices.size()
+        ||  indices[i + 0] < someVertices.size() && indices[i + 2] < someVertices.size()
+        ||  indices[i + 1] < someVertices.size() && indices[i + 2] < someVertices.size())
+        && (std::abs((int)(indices[i + 1] - indices[i + 0])) == 1
+        || std::abs((int)(indices[i + 2] - indices[i + 1])) == 1
+        || std::abs((int)(indices[i + 2] - indices[i + 0])) == 1))
         {
-            b2PolygonShape tempShape;
-            b2Vec2* tempVArr = new b2Vec2[tempVertCount];
-            for (int i = 0; i < tempVertCount; i++)
-            {
-                tempVArr[i] = b2Vec2(someVertices[tempLastEndVert + i].x, someVertices[tempLastEndVert + i].y);
-            }
-            tempShape.Set(tempVArr, tempVertCount);
-            myGround.push_back(AddPolygon(tempShape, 0, CollisionMask::Ground, CollisionMask::All));
+
+            b2PolygonShape ps = b2PolygonShape();
+            b2Vec2* vec = new b2Vec2[3];
+            vec[0] = b2Vec2(points[indices[i + 0]][0], points[indices[i + 0]][1]);
+            vec[1] = b2Vec2(points[indices[i + 1]][0], points[indices[i + 1]][1]);
+            vec[2] = b2Vec2(points[indices[i + 2]][0], points[indices[i + 2]][1]);
+            ps.Set(vec, 3);
+            b2Body* b = AddPolygon(ps, 0, CollisionMask::Ground, CollisionMask::All);
+            myGround.push_back(b);
+            myGroundVerts.push_back({ {vec[0].x,vec[0].y},{vec[1].x, vec[1].y},{vec[2].x, vec[2].y} });
         }
-        tempLastEndVert += tempVertCount - 1;
     }
 }
 

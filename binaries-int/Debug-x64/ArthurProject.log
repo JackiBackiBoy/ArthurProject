@@ -1,4 +1,4 @@
-﻿  UIButton.cpp
+﻿  LevelEditor.cpp
 C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
           with
           [
@@ -9,6 +9,244 @@ C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244
           [
               T=float
           ]
-C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(45,19): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
-C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(46,20): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Development\ArthurProject\ArthurProject\LevelEditor.cpp(84,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\LevelEditor.cpp(84,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  EntityDatabase.cpp
+  LineRenderer.cpp
+  PlayerInfo.cpp
+  PastTime.cpp
+C:\Development\ArthurProject\ArthurProject\src\Spells\PastTime.cpp(62,41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Spell.cpp
+C:\Development\ArthurProject\ArthurProject\src\Spells\Spell.cpp(5,57): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+  ResourceBar.cpp
+C:\Development\ArthurProject\ArthurProject\src\Nodes\ResourceBar.cpp(29,78): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+  Event.cpp
+  Ray.cpp
+  Health.cpp
+  NodeTemplate.cpp
+  MathFunctions.cpp
+  AABB.cpp
+  BushSpawnBehaviour.cpp
+  PolygonCollider.cpp
+C:\Development\ArthurProject\ArthurProject\src\Nodes\PolygonCollider.cpp(47,45): warning C4267: 'argument': conversion from 'size_t' to 'int32', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\Nodes\PolygonCollider.cpp(96,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  b2_broad_phase.cpp
+  b2_chain_shape.cpp
+  b2_circle_shape.cpp
+  b2_collide_circle.cpp
+  b2_collide_edge.cpp
+  Generating Code...
+  Compiling...
+  b2_collide_polygon.cpp
+  b2_collision.cpp
+  b2_distance.cpp
+  b2_dynamic_tree.cpp
+  b2_edge_shape.cpp
+  b2_polygon_shape.cpp
+  b2_time_of_impact.cpp
+  b2_block_allocator.cpp
+  b2_draw.cpp
+  b2_math.cpp
+  b2_settings.cpp
+  b2_stack_allocator.cpp
+  b2_timer.cpp
+  b2_body.cpp
+  b2_chain_circle_contact.cpp
+  b2_chain_polygon_contact.cpp
+  b2_circle_contact.cpp
+  b2_contact.cpp
+  b2_contact_manager.cpp
+  b2_contact_solver.cpp
+  Generating Code...
+  Compiling...
+  b2_distance_joint.cpp
+  b2_edge_circle_contact.cpp
+  b2_edge_polygon_contact.cpp
+  b2_fixture.cpp
+  b2_friction_joint.cpp
+  b2_gear_joint.cpp
+  b2_island.cpp
+  b2_joint.cpp
+  b2_motor_joint.cpp
+  b2_mouse_joint.cpp
+  b2_polygon_circle_contact.cpp
+  b2_polygon_contact.cpp
+  b2_prismatic_joint.cpp
+  b2_pulley_joint.cpp
+  b2_revolute_joint.cpp
+  b2_weld_joint.cpp
+  b2_wheel_joint.cpp
+  b2_world.cpp
+  b2_world_callbacks.cpp
+  b2_rope.cpp
+  Generating Code...
+  Compiling...
+  InputManager.cpp
+  NodeManager.cpp
+  Camera.cpp
+  Options.cpp
+  SaveLoad.cpp
+  AudioSource.cpp
+  PlayerController.cpp
+  Scene.cpp
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(58,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(168,80): warning C4244: 'argument': conversion from '_Ty' to 'T', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(168,57): warning C4244: 'argument': conversion from '_Ty' to 'T', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(169,90): warning C4244: 'argument': conversion from '_Ty' to 'T', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(169,67): warning C4244: 'argument': conversion from '_Ty' to 'T', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(183,80): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(183,53): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(184,80): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(184,53): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(185,80): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(185,53): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=Coord
+          ]
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(187,84): warning C4305: 'argument': truncation from 'CollisionMask' to 'int16'
+C:\Development\ArthurProject\ArthurProject\src\Nodes\Scene.cpp(187,81): warning C4309: 'argument': truncation of constant value
+  AssetManager.cpp
+C:\Development\ArthurProject\ArthurProject\src\Managers\AssetManager.cpp(51,4): warning C4552: '!': result of expression not used
+  MusicManager.cpp
+  Animator.cpp
+  SpriteRenderer.cpp
+  Node.cpp
+  Sandbox.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  TimeTracker.cpp
+  UIButton.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(46,19): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(47,20): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(111,64): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIButton.cpp(111,46): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+  UIText.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  UIWindowsButton.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\windows\UIWindowsButton.cpp(40,48): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+  UIWindowsDropDown.cpp
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(16,71): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Development\ArthurProject\ArthurProject\src\ui\UIText.h(17,72): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+  LINK : C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe not found or not built by the last incremental link; performing full link
+Main.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Main.obj' or at 'C:\Development\ArthurProject\binaries\Debug-x64\vc142.pdb'; linking object as if no debug info
+Window.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Window.obj' or at 'C:\Development\ArthurProject\binaries\Debug-x64\vc142.pdb'; linking object as if no debug info
   ArthurProject.vcxproj -> C:\Development\ArthurProject\binaries\Debug-x64\ArthurProject.exe
